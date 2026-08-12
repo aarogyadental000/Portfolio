@@ -1,15 +1,39 @@
-export const doctorInfo = {
-  name: "[DOCTOR NAME]",
-  qualification: "[QUALIFICATION]",
-  specialization: "[SPECIALIZATION]",
-  experience: "[EXPERIENCE]",
-  bio: "[DOCTOR BIO]",
-  photoUrl:
-    "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80",
-  photoAlt: "[DOCTOR NAME] — portrait",
-  credentials: [
-    "[QUALIFICATION]",
-    "[SPECIALIZATION]",
-    "[EXPERIENCE]",
-  ],
-} as const;
+export type Doctor = {
+  name: string;
+  qualification: string;
+  specialization: string;
+  experience: string;
+  bio: string;
+  photoUrl: string;
+  photoAlt: string;
+};
+
+export const doctors: Doctor[] = [
+  {
+    name: "[DOCTOR NAME]",
+    qualification: "[QUALIFICATION]",
+    specialization: "[SPECIALIZATION]",
+    experience: "[EXPERIENCE]",
+    bio: "[DOCTOR BIO]",
+    photoUrl: "/images/doctor-portrait.jpg",
+    photoAlt: "[DOCTOR NAME] — portrait",
+  },
+  {
+    name: "[DOCTOR NAME 2]",
+    qualification: "[QUALIFICATION 2]",
+    specialization: "[SPECIALIZATION 2]",
+    experience: "[EXPERIENCE 2]",
+    bio: "[DOCTOR 2 BIO]",
+    photoUrl: "/images/doctor-portrait-2.jpg",
+    photoAlt: "[DOCTOR NAME 2] — portrait",
+  },
+  {
+    name: "[DOCTOR NAME 3]",
+    qualification: "[QUALIFICATION 3]",
+    specialization: "[SPECIALIZATION 3]",
+    experience: "[EXPERIENCE 3]",
+    bio: "[DOCTOR 3 BIO]",
+    photoUrl: "/images/doctor-portrait-3.jpg",
+    photoAlt: "[DOCTOR NAME 3] — portrait",
+  },
+];
