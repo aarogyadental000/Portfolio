@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import {
   AlertCircle,
   CheckCircle2,
@@ -9,6 +15,7 @@ import {
 } from "lucide-react";
 import { clinicInfo, waNumber } from "@/lib/clinic";
 import { services } from "@/data/services";
+import { SERVICE_SELECT_EVENT } from "@/lib/appointment";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -29,6 +36,27 @@ const initialForm = {
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState(initialForm);
+  const [highlighted, setHighlighted] = useState(false);
+  const highlightTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    const handleSelect = (event: Event) => {
+      const title = (event as CustomEvent<string>).detail;
+      setForm((current) => ({ ...current, service: title }));
+      setHighlighted(true);
+      window.clearTimeout(highlightTimer.current);
+      highlightTimer.current = window.setTimeout(
+        () => setHighlighted(false),
+        2600,
+      );
+    };
+
+    window.addEventListener(SERVICE_SELECT_EVENT, handleSelect);
+    return () => {
+      window.removeEventListener(SERVICE_SELECT_EVENT, handleSelect);
+      window.clearTimeout(highlightTimer.current);
+    };
+  }, []);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -142,9 +170,12 @@ export default function ContactForm() {
               name="service"
               value={form.service}
               onChange={handleChange}
-              className={inputClasses}
+              required
+              className={`${inputClasses} ${
+                highlighted ? "animate-field-pulse border-accent" : ""
+              }`}
             >
-              <option value="">Choose a service (optional)</option>
+              <option value="">Choose a service</option>
               {services
                 .filter((service) => service.featured !== false)
                 .map((service) => (
@@ -162,6 +193,7 @@ export default function ContactForm() {
               id="cf-date"
               name="date"
               type="date"
+              required
               value={form.date}
               onChange={handleChange}
               className={inputClasses}
