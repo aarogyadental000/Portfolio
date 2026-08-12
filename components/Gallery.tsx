@@ -7,7 +7,7 @@ import { galleryImages } from "@/data/gallery";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-const PER_PAGE = 6;
+const PER_PAGE = 9;
 
 export default function Gallery() {
   const [page, setPage] = useState(0);
@@ -52,6 +52,13 @@ export default function Gallery() {
                 className={layoutClass}
               >
                 <figure className="group relative h-full overflow-hidden rounded-2xl">
+                  <a
+                    href={image.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${image.alt}`}
+                    className="absolute inset-0 z-10"
+                  />
                   <div className="relative aspect-[4/3] md:absolute md:inset-0 md:aspect-auto">
                     <Image
                       src={image.src}

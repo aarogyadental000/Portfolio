@@ -4,26 +4,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { heroSlides } from "@/data/hero";
 
-const AUTOPLAY_INTERVAL = 5000;
-
-const effects = [
-  "animate-hero-fade",
-  "animate-hero-slide-right",
-  "animate-hero-slide-up",
-  "animate-hero-zoom",
-  "animate-hero-blur",
-];
+const AUTOPLAY_INTERVAL = 2000;
 
 export default function HeroSlideshow() {
   const [index, setIndex] = useState(0);
-  const [sequence, setSequence] = useState(0);
   const [paused, setPaused] = useState(false);
-
-  const effect = effects[sequence % effects.length];
 
   const advance = (target: number) => {
     setIndex(target);
-    setSequence((value) => value + 1);
   };
 
   const next = () => advance((index + 1) % heroSlides.length);
@@ -34,7 +22,6 @@ export default function HeroSlideshow() {
 
     const timer = window.setInterval(() => {
       setIndex((current) => (current + 1) % heroSlides.length);
-      setSequence((value) => value + 1);
     }, AUTOPLAY_INTERVAL);
 
     return () => window.clearInterval(timer);
@@ -42,7 +29,7 @@ export default function HeroSlideshow() {
 
   return (
     <div
-      className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10"
+      className="group relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -65,8 +52,10 @@ export default function HeroSlideshow() {
               sizes="(min-width: 1024px) 42vw, 100vw"
               aria-hidden={!active}
               inert={!active || undefined}
-              className={`object-cover transition-opacity duration-500 ${
-                active ? `opacity-100 ${effect}` : "opacity-0"
+              className={`object-cover transition duration-700 ${
+                active
+                  ? "opacity-100 animate-hero-fade group-hover:scale-105"
+                  : "opacity-0"
               }`}
             />
           );

@@ -27,7 +27,7 @@ All content lives in `lib/clinic.ts` and the `data/` directory — no component 
 - **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, Formspree endpoint, and Google reviews URL.
 - **`data/services.ts`** — the services grid.
 - **`data/doctor.ts`** — doctor profiles (hidden until `showDoctors` is set to `true`).
-- **`data/testimonials.ts`** — patient quotes (hidden until `showTestimonials` is set to `true`).
+- **`data/testimonials.ts`** — Google Maps reviews to showcase. Paste real reviews (quote, reviewer name, star rating, plus optional time and review link); section hidden until `showTestimonials` is set to `true`.
 - **`data/faq.ts`** — the FAQ accordion.
 - **`data/gallery.ts`** and **`data/hero.ts`** — image paths for the gallery and hero slideshow.
 

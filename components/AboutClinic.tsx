@@ -31,13 +31,13 @@ export default function AboutClinic() {
               aria-hidden="true"
               className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-mist-100 dark:bg-muted"
             />
-            <div className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
+            <div className="group relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
               <Image
                 src="/images/clinic-room.webp"
                 alt="Modern, well-equipped dental clinic treatment room"
                 width={760}
                 height={620}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(min-width: 1024px) 44vw, 100vw"
               />
             </div>

@@ -1,12 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
-  Baby,
-  CircleMinus,
   Crown,
-  Droplets,
-  FaceSlightlySmiling,
-  Layers,
   SlidersHorizontal,
   Sparkles,
   Stethoscope,
@@ -16,6 +11,8 @@ export type Service = {
   title: string;
   description: string;
   icon: LucideIcon;
+  image: string;
+  imageAlt: string;
   featured?: boolean;
 };
 
@@ -23,71 +20,46 @@ export const services: Service[] = [
   {
     title: "General Dentistry",
     description:
-      "Routine examinations, cleaning, fillings and preventive care for your everyday oral health.",
+      "Routine examinations, preventive care and treatment for the everyday health of your teeth and gums.",
     icon: Stethoscope,
+    image: "/images/demo-checkup-portrait.webp",
+    imageAlt: "Patient receiving a routine dental checkup",
     featured: true,
   },
   {
-    title: "Dental Cleaning",
+    title: "Dental Cleaning & Whitening",
     description:
-      "Professional cleaning to keep your teeth and gums healthy and remove plaque and tartar.",
-    icon: Droplets,
-    featured: true,
-  },
-  {
-    title: "Teeth Whitening",
-    description:
-      "Cosmetic whitening treatments for a brighter, more confident smile.",
+      "Professional plaque and tartar removal plus cosmetic whitening for a cleaner, brighter smile.",
     icon: Sparkles,
+    image: "/images/demo-hygienist.webp",
+    imageAlt: "Dental hygienist performing a professional cleaning",
     featured: true,
   },
   {
-    title: "Dental Fillings",
+    title: "Fillings & Root Canal Treatment",
     description:
-      "Care and restoration for cavities and damaged teeth using modern materials.",
-    icon: Layers,
-    featured: true,
-  },
-  {
-    title: "Root Canal Treatment",
-    description:
-      "Treatment to save infected or severely damaged teeth and relieve pain.",
+      "Modern cavity fillings and root canal therapy that save damaged or infected teeth and relieve pain.",
     icon: Activity,
+    image: "/images/demo-procedure-assist.webp",
+    imageAlt: "Dentist performing a restorative procedure",
     featured: true,
   },
   {
-    title: "Tooth Extraction",
+    title: "Crowns, Bridges & Dentures",
     description:
-      "Safe and gentle tooth removal when a tooth cannot be saved or must be removed.",
-    icon: CircleMinus,
-    featured: true,
-  },
-  {
-    title: "Dental Crowns & Bridges",
-    description:
-      "Restoration and replacement of damaged or missing teeth for natural-looking results.",
+      "Natural-looking crowns, bridges and dentures to restore or replace missing teeth.",
     icon: Crown,
-    featured: true,
-  },
-  {
-    title: "Dentures",
-    description:
-      "Comfortable, well-fitted solutions for replacing missing teeth.",
-    icon: FaceSlightlySmiling,
+    image: "/images/demo-dentist-treatment.webp",
+    imageAlt: "Dentist providing gentle dental treatment",
     featured: true,
   },
   {
     title: "Orthodontic Treatment",
     description:
-      "Treatment options to improve tooth alignment and bite for a straighter smile.",
+      "Braces and alignment options to straighten teeth and correct your bite.",
     icon: SlidersHorizontal,
-    featured: true,
-  },
-  {
-    title: "Pediatric Dentistry",
-    description:
-      "Gentle, friendly dental care that helps children build healthy habits early.",
-    icon: Baby,
+    image: "/images/demo-teen-xray.webp",
+    imageAlt: "Young patient during an orthodontic X-ray",
     featured: true,
   },
 ];

@@ -53,48 +53,55 @@ export default function ContactSection() {
           <Reveal>
             <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-8">
               <ul className="space-y-6">
-                {contactItems.map((item) => {
-                  const Icon = item.icon;
-                  const content = (
-                    <>
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <span className="flex flex-col">
-                        <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                          {item.label}
+                  {contactItems.map((item) => {
+                    const Icon = item.icon;
+                    const content = (
+                      <>
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
-                        <span className="mt-0.5 font-semibold text-foreground">
-                          {item.value}
+                        <span className="flex flex-col">
+                          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                            {item.label}
+                          </span>
+                          <span className="mt-0.5 font-semibold text-foreground">
+                            {item.value}
+                          </span>
                         </span>
-                      </span>
-                    </>
-                  );
+                      </>
+                    );
 
-                  if (item.href) {
+                    if (item.href) {
+                      return (
+                        <li key={item.label}>
+                          <a
+                            href={item.href}
+                            target={
+                              item.label === "WhatsApp" ? "_blank" : undefined
+                            }
+                            rel={
+                              item.label === "WhatsApp"
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                            className="flex items-start gap-4 rounded-xl transition-colors hover:bg-muted"
+                          >
+                            {content}
+                          </a>
+                        </li>
+                      );
+                    }
                     return (
-                      <li key={item.label}>
-                        <a
-                          href={item.href}
-                          target={
-                            item.label === "WhatsApp" ? "_blank" : undefined
-                          }
-                          rel={
-                            item.label === "WhatsApp"
-                              ? "noopener noreferrer"
-                              : undefined
-                          }
-                          className="flex items-start gap-4 rounded-xl transition-colors hover:bg-muted"
-                        >
-                          {content}
-                        </a>
+                      <li key={item.label} className="flex items-start gap-4">
+                        {content}
                       </li>
                     );
-                  }
-                  return <li key={item.label}>{content}</li>;
-                })}
+                  })}
 
-                <li className="flex items-start gap-4 border-t border-border pt-6">
+              </ul>
+
+              <div className="mt-8 border-t border-border pt-6">
+                <div className="flex items-start gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
                     <Clock className="h-5 w-5" aria-hidden="true" />
                   </span>
@@ -112,18 +119,20 @@ export default function ContactSection() {
                       Saturday: {clinicInfo.openingHours.saturday}
                     </span>
                   </span>
-                </li>
-              </ul>
+                </div>
+              </div>
 
-              <a
-                href={clinicInfo.directionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-              >
-                <Navigation className="h-4 w-4" aria-hidden="true" />
-                Get Directions
-              </a>
+              <div className="mt-auto pt-8">
+                <a
+                  href={clinicInfo.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-fit mx-auto items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                >
+                  <Navigation className="h-4 w-4" aria-hidden="true" />
+                  Get Directions
+                </a>
+              </div>
             </div>
           </Reveal>
 

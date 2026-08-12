@@ -239,7 +239,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex w-fit mx-auto items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {clinicInfo.formEndpoint.length === 0 ? (
             <MessageCircle className="h-4 w-4" aria-hidden="true" />

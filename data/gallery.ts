@@ -6,13 +6,13 @@ export type GalleryImage = {
 
 export const galleryImages: GalleryImage[] = [
   {
+    src: "/images/clinic-room.webp",
+    alt: "Modern dental treatment room",
+  },
+  {
     src: "/images/hero-treatment.webp",
     alt: "Dentist providing gentle treatment to a patient",
     tall: true,
-  },
-  {
-    src: "/images/clinic-room.webp",
-    alt: "Modern dental treatment room",
   },
   {
     src: "/images/clinic-chair.webp",
@@ -39,10 +39,6 @@ export const galleryImages: GalleryImage[] = [
     alt: "Dental team working together in a modern clinic",
   },
   {
-    src: "/images/demo-xray-review.webp",
-    alt: "Dentists reviewing a dental X-ray with a patient",
-  },
-  {
     src: "/images/demo-hygienist.webp",
     alt: "Dental professionals assisting a patient with care",
   },
@@ -55,27 +51,11 @@ export const galleryImages: GalleryImage[] = [
     alt: "Female dentist performing a dental procedure",
   },
   {
-    src: "/images/demo-teen-xray.webp",
-    alt: "Teenage patient receiving a dental X-ray",
-  },
-  {
     src: "/images/demo-consultation.webp",
     alt: "Dentist explaining a dental procedure to a patient",
   },
   {
     src: "/images/demo-checkup-portrait.webp",
     alt: "Close-up of a patient during a dental checkup",
-  },
-  {
-    src: "/images/demo-examination.webp",
-    alt: "Dentist conducting an oral examination",
-  },
-  {
-    src: "/images/demo-xray-two.webp",
-    alt: "Two dentists examining a dental X-ray in a modern clinic",
-  },
-  {
-    src: "/images/demo-treatment-mask.webp",
-    alt: "Dentist in protective gear treating a patient",
   },
 ];

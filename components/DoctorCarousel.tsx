@@ -53,7 +53,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                   type="button"
                   onClick={next}
                   aria-label={`Show next doctor (${index + 1} of ${doctors.length})`}
-                  className="relative block aspect-[4/5] w-full"
+                  className="group relative block aspect-[4/5] w-full"
                 >
                   {doctors.map((item, i) => (
                     <Image
@@ -66,8 +66,10 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       aria-hidden={i !== index}
                       inert={i !== index || undefined}
-                      className={`object-cover transition-opacity duration-500 ${
-                        i === index ? "opacity-100" : "opacity-0"
+                      className={`object-cover transition duration-700 ${
+                        i === index
+                          ? "opacity-100 group-hover:scale-105"
+                          : "opacity-0"
                       }`}
                     />
                   ))}
