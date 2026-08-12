@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { clinicInfo, siteUrl, hasSetOpeningHours } from "@/lib/clinic";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
-import { clinicInfo } from "@/lib/clinic";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +13,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://www.example.com";
+const ogImage = {
+  url: "/images/hero-dentist-patient.webp",
+  width: 1920,
+  height: 1280,
+  alt: `${clinicInfo.name} — modern dental clinic in ${clinicInfo.city}`,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -32,15 +37,62 @@ export const metadata: Metadata = {
     siteName: clinicInfo.name,
     title: `${clinicInfo.name} — Dentist in ${clinicInfo.city}, Nepal`,
     description: `Modern, compassionate dental care in ${clinicInfo.city}, Nepal. General dentistry, cleaning, whitening, root canal treatment and more.`,
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${clinicInfo.name} — Dentist in ${clinicInfo.city}, Nepal`,
+    description: `Modern, compassionate dental care in ${clinicInfo.city}, Nepal.`,
+    images: [ogImage.url],
   },
 };
+
+function parseTimeRange(value: string): { opens: string; closes: string } | undefined {
+  const parts = value.split(/[–-]/).map((part) => part.trim());
+  if (parts.length !== 2) return undefined;
+  const times = parts.map((part) => {
+    const match = part.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?$/i);
+    if (!match) return undefined;
+    let hours = Number(match[1]);
+    const minutes = match[2] ? Number(match[2]) : 0;
+    const period = match[3]?.toUpperCase();
+    if (period === "PM" && hours !== 12) hours += 12;
+    if (period === "AM" && hours === 12) hours = 0;
+    if (hours > 23 || minutes > 59) return undefined;
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
+  });
+  if (times.some((time) => time === undefined)) return undefined;
+  return { opens: times[0]!, closes: times[1]! };
+}
+
+const parsedHours = hasSetOpeningHours
+  ? parseTimeRange(clinicInfo.openingHours.weekdays)
+  : undefined;
+
+const openingHoursSpecification = parsedHours
+  ? [
+      {
+        "@type": "OpeningHoursSpecification" as const,
+        dayOfWeek: [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: parsedHours.opens,
+        closes: parsedHours.closes,
+      },
+    ]
+  : undefined;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: clinicInfo.name,
-  image:
-    "https://www.example.com/images/hero-dentist-patient.jpg",
+  image: `${siteUrl}/images/hero-dentist-patient.webp`,
+  url: siteUrl,
   telephone: clinicInfo.phone,
   email: clinicInfo.email,
   address: {
@@ -49,19 +101,14 @@ const structuredData = {
     addressLocality: clinicInfo.city,
     addressCountry: "NP",
   },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-    ],
-    opens: "00:00",
-    closes: "00:00",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: clinicInfo.geo.latitude,
+    longitude: clinicInfo.geo.longitude,
   },
+  // TODO: Set an honest price range when known (e.g. "$$").
+  priceRange: "$",
+  openingHoursSpecification,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

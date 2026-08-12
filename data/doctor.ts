@@ -8,6 +8,9 @@ export type Doctor = {
   photoAlt: string;
 };
 
+// TODO: Fill in the real doctors below.
+export const showDoctors = true;
+
 export const doctors: Doctor[] = [
   {
     name: "[DOCTOR NAME]",
@@ -15,7 +18,7 @@ export const doctors: Doctor[] = [
     specialization: "[SPECIALIZATION]",
     experience: "[EXPERIENCE]",
     bio: "[DOCTOR BIO]",
-    photoUrl: "/images/doctor-portrait.jpg",
+    photoUrl: "/images/doctor-portrait.webp",
     photoAlt: "[DOCTOR NAME] — portrait",
   },
   {
@@ -24,7 +27,7 @@ export const doctors: Doctor[] = [
     specialization: "[SPECIALIZATION 2]",
     experience: "[EXPERIENCE 2]",
     bio: "[DOCTOR 2 BIO]",
-    photoUrl: "/images/doctor-portrait-2.jpg",
+    photoUrl: "/images/doctor-portrait-2.webp",
     photoAlt: "[DOCTOR NAME 2] — portrait",
   },
   {
@@ -33,7 +36,7 @@ export const doctors: Doctor[] = [
     specialization: "[SPECIALIZATION 3]",
     experience: "[EXPERIENCE 3]",
     bio: "[DOCTOR 3 BIO]",
-    photoUrl: "/images/doctor-portrait-3.jpg",
+    photoUrl: "/images/doctor-portrait-3.webp",
     photoAlt: "[DOCTOR NAME 3] — portrait",
   },
 ];

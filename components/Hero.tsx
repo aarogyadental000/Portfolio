@@ -42,8 +42,9 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Compassionate dental care from experienced professionals, using
-              modern techniques in a comfortable and welcoming environment.
+              Compassionate dental care in Gokarneshwor, Kathmandu — from
+              experienced professionals, using modern techniques in a
+              comfortable and welcoming environment.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

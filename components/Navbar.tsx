@@ -5,17 +5,25 @@ import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { BookButton, CallButton } from "./Buttons";
+import { showDoctors } from "@/data/doctor";
 
-const navItems = [
+const baseNavItems = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#doctor", label: "Doctor" },
   { href: "#gallery", label: "Gallery" },
   { href: "#contact", label: "Contact" },
 ];
 
-const sectionIds = ["home", "about", "services", "doctor", "gallery", "contact"];
+const navItems = showDoctors
+  ? [
+      ...baseNavItems.slice(0, 3),
+      { href: "#doctor", label: "Doctor" },
+      ...baseNavItems.slice(3),
+    ]
+  : baseNavItems;
+
+const sectionIds = navItems.map((item) => item.href.slice(1));
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

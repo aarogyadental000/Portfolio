@@ -33,7 +33,7 @@ export default function AboutClinic() {
             />
             <div className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
               <Image
-                src="/images/clinic-room.jpg"
+                src="/images/clinic-room.webp"
                 alt="Modern, well-equipped dental clinic treatment room"
                 width={760}
                 height={620}
@@ -58,10 +58,10 @@ export default function AboutClinic() {
               Dental Care Built Around You
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Our clinic is built around a simple idea: dental care that
-              respects your time, your comfort and your trust. We combine a
-              patient-first approach with modern techniques and equipment, in a
-              calm and welcoming environment.
+              Our clinic in Gokarneshwor, Kathmandu is built around a simple
+              idea: dental care that respects your time, your comfort and your
+              trust. We combine a patient-first approach with modern techniques
+              and equipment, in a calm and welcoming environment.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               From routine checkups to more involved treatment, our goal is to

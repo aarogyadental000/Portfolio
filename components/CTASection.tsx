@@ -32,6 +32,10 @@ export default function CTASection() {
             <CallButton size="lg" variant="light" label="Call the Clinic" />
             <WhatsAppButton size="lg" />
           </div>
+          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-brand-200">
+            Dental emergency? Call or message us right away. We explain all
+            treatment options and costs clearly — no hidden fees, ever.
+          </p>
         </div>
       </Reveal>
     </section>

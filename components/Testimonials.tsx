@@ -1,5 +1,6 @@
-import { Quote, Star } from "lucide-react";
+import { ExternalLink, Quote, Star } from "lucide-react";
 import { testimonials, showTestimonials } from "@/data/testimonials";
+import { clinicInfo } from "@/lib/clinic";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
@@ -45,6 +46,22 @@ export default function Testimonials() {
             </Reveal>
           ))}
         </div>
+
+        {clinicInfo.reviewsUrl && (
+          <Reveal>
+            <div className="mt-10 text-center">
+              <a
+                href={clinicInfo.reviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+              >
+                Read our Google reviews
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

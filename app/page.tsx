@@ -5,6 +5,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import DoctorProfile from "@/components/DoctorProfile";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <DoctorProfile />
       <Gallery />
       <Testimonials />
+      <FAQ />
       <CTASection />
       <ContactSection />
     </>

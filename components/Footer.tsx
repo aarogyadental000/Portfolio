@@ -1,15 +1,30 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { clinicInfo, fullAddress, phoneHref, whatsappHref } from "@/lib/clinic";
+import {
+  clinicInfo,
+  fullAddress,
+  phoneHref,
+  whatsappHref,
+} from "@/lib/clinic";
 import { ToothMark } from "./Logo";
+import { showDoctors } from "@/data/doctor";
 
 const quickLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#doctor", label: "Doctor" },
   { href: "#gallery", label: "Gallery" },
   { href: "#contact", label: "Contact" },
 ];
+
+const doctorLink = { href: "#doctor", label: "Doctor" };
+
+const footerLinks = showDoctors
+  ? [
+      ...quickLinks.slice(0, 3),
+      doctorLink,
+      ...quickLinks.slice(3),
+    ]
+  : quickLinks;
 
 const contactLinks = [
   { href: phoneHref, label: clinicInfo.phone, icon: Phone },
@@ -81,7 +96,7 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="mt-4 space-y-2.5">
-              {quickLinks.map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}

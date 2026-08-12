@@ -29,6 +29,67 @@
   --color-mist-100: #eaf3f7;
   --color-mist-200: #d9e9ef;
   --color-mist-300: #bfd9e3;
+
+  --animate-hero-fade: hero-fade 0.7s ease both;
+  --animate-hero-slide-right: hero-slide-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-slide-up: hero-slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-zoom: hero-zoom 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-blur: hero-blur 0.8s ease both;
+
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-slide-right {
+    from {
+      opacity: 0;
+      transform: translateX(7%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes hero-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(7%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-zoom {
+    from {
+      opacity: 0;
+      transform: scale(1.09);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes hero-blur {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
 }
 
 @theme inline {

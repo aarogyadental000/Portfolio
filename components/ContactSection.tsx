@@ -1,8 +1,14 @@
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { clinicInfo, fullAddress, phoneHref, whatsappHref } from "@/lib/clinic";
+import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
+import {
+  clinicInfo,
+  fullAddress,
+  phoneHref,
+  whatsappHref,
+} from "@/lib/clinic";
 import GoogleMap from "./GoogleMap";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import ContactForm from "./ContactForm";
 
 const contactItems = [
   {
@@ -108,11 +114,25 @@ export default function ContactSection() {
                   </span>
                 </li>
               </ul>
+
+              <a
+                href={clinicInfo.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                <Navigation className="h-4 w-4" aria-hidden="true" />
+                Get Directions
+              </a>
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <GoogleMap className="h-80 w-full lg:h-full lg:min-h-[28rem]" />
+            <ContactForm />
+          </Reveal>
+
+          <Reveal delay={80} className="lg:col-span-2">
+            <GoogleMap className="h-80 w-full lg:h-96" />
           </Reveal>
         </div>
       </div>
