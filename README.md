@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aarogya Dental Clinic — Website
+
+A fast, static marketing website for a small dental clinic in Gokarneshwor, Kathmandu. Built with Next.js (App Router), React 19, TypeScript and Tailwind CSS v4.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command        | Description                      |
+| -------------- | -------------------------------- |
+| `npm run dev`  | Start the development server     |
+| `npm run build`| Build for production             |
+| `npm run start`| Serve the production build       |
+| `npm run lint` | Lint with ESLint                 |
 
-## Learn More
+## Editing Content
 
-To learn more about Next.js, take a look at the following resources:
+All content lives in `lib/clinic.ts` and the `data/` directory — no component edits needed for routine updates.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, Formspree endpoint, and Google reviews URL.
+- **`data/services.ts`** — the services grid.
+- **`data/doctor.ts`** — doctor profiles (hidden until `showDoctors` is set to `true`).
+- **`data/testimonials.ts`** — patient quotes (hidden until `showTestimonials` is set to `true`).
+- **`data/faq.ts`** — the FAQ accordion.
+- **`data/gallery.ts`** and **`data/hero.ts`** — image paths for the gallery and hero slideshow.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Images live in `public/images/` (WebP).
 
-## Deploy on Vercel
+### Before going live (TODO items)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Search the codebase for `TODO` to find everything still to fill in:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Replace `siteUrl` in `lib/clinic.ts` with the real domain.
+2. Add real opening hours in `lib/clinic.ts` (the site falls back to "contact us" until then).
+3. Refine the street address.
+4. Add a free Formspree endpoint to enable the contact form (until then, the form opens WhatsApp with the details pre-filled).
+5. Add the Google Business reviews URL.
+6. Fill in real doctor profiles and patient testimonials, then set `showDoctors` / `showTestimonials` to `true`.
+7. Set an honest `priceRange` in the structured data in `app/layout.tsx`.
+8. Add Facebook/Instagram links.
+
+## SEO
+
+- `app/robots.ts` — robots.txt
+- `app/sitemap.ts` — sitemap.xml
+- `app/icon.svg` — favicon
+- `app/layout.tsx` — metadata, Open Graph, Twitter card, and `Dentist` structured data (JSON-LD)
+
+## Deployment
+
+This is a fully static site (no server-side data or auth), so it deploys easily anywhere. Example on Vercel:
+
+```bash
+vercel
+```
+
+Make sure `siteUrl` in `lib/clinic.ts` matches the deployed domain so the canonical URL, sitemap, and structured data are correct.
