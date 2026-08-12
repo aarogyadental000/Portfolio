@@ -40,7 +40,7 @@ const structuredData = {
   "@type": "Dentist",
   name: clinicInfo.name,
   image:
-    "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80",
+    "https://www.example.com/images/hero-dentist-patient.jpg",
   telephone: clinicInfo.phone,
   email: clinicInfo.email,
   address: {

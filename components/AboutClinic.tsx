@@ -33,7 +33,7 @@ export default function AboutClinic() {
             />
             <div className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
               <Image
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80"
+                src="/images/clinic-room.jpg"
                 alt="Modern, well-equipped dental clinic treatment room"
                 width={760}
                 height={620}
