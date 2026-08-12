@@ -1,0 +1,106 @@
+import Image from "next/image";
+import { ArrowRight, Check, Phone } from "lucide-react";
+import { ButtonLink, CallButton } from "./Buttons";
+import { ToothMark } from "./Logo";
+import Reveal from "./Reveal";
+
+const trustPoints = [
+  "Experienced Dental Professionals",
+  "Modern Dental Care",
+  "Patient-Focused Treatment",
+  "Comfortable Environment",
+];
+
+export default function Hero() {
+  return (
+    <section
+      id="home"
+      className="relative overflow-hidden bg-gradient-to-b from-secondary via-background to-background"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex justify-end pr-8 pt-10 opacity-[0.06]"
+      >
+        <ToothMark className="h-[28rem] w-[28rem] text-brand-900" />
+      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-brand-100/60 blur-3xl dark:bg-brand-400/10"
+      />
+
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:pb-28 lg:pt-40">
+        <Reveal>
+          <div className="max-w-xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+              Your Smile, Our Priority
+            </p>
+
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Confident Smiles{" "}
+              <span className="text-accent">Start Here.</span>
+            </h1>
+
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Compassionate dental care from experienced professionals, using
+              modern techniques in a comfortable and welcoming environment.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <ButtonLink href="#contact" size="lg">
+                Book a Consultation
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ButtonLink>
+              <CallButton size="lg" />
+            </div>
+
+            <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">
+              {trustPoints.map((point) => (
+                <li key={point} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-accent">
+                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
+                  </span>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div
+              aria-hidden="true"
+              className="absolute -right-4 -top-4 h-full w-full rounded-3xl bg-brand-100/70 dark:bg-primary/15"
+            />
+            <div className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
+              <Image
+                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80"
+                alt="Dentist examining a patient in a modern dental clinic"
+                width={720}
+                height={840}
+                priority
+                className="h-full w-full object-cover"
+                sizes="(min-width: 1024px) 42vw, 100vw"
+              />
+            </div>
+
+            <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-lg shadow-ink-950/5 sm:left-8">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Phone className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Book by phone
+                </p>
+                <p className="text-sm font-semibold text-foreground">Call the clinic today</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
