@@ -1,11 +1,8 @@
-import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { clinicInfo, fullAddress, phoneHref, whatsappHref } from "@/lib/clinic";
-import { BookButton } from "./Buttons";
 import GoogleMap from "./GoogleMap";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-
-const hasDirections = clinicInfo.directionsUrl.startsWith("http");
 
 const contactItems = [
   {
@@ -111,21 +108,6 @@ export default function ContactSection() {
                   </span>
                 </li>
               </ul>
-
-              <div className="mt-8 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row">
-                <BookButton className="flex-1" />
-                {hasDirections && (
-                  <a
-                    href={clinicInfo.directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-                  >
-                    <Navigation className="h-4 w-4" aria-hidden="true" />
-                    Get Directions
-                  </a>
-                )}
-              </div>
             </div>
           </Reveal>
 
