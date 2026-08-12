@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { ButtonLink, CallButton } from "./Buttons";
+import HeroSlideshow from "./HeroSlideshow";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
 
@@ -75,17 +75,7 @@ export default function Hero() {
               aria-hidden="true"
               className="absolute -right-4 -top-4 h-full w-full rounded-3xl bg-brand-100/70 dark:bg-primary/15"
             />
-            <div className="relative overflow-hidden rounded-3xl border border-white/60 shadow-xl shadow-ink-950/10">
-              <Image
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80"
-                alt="Dentist examining a patient in a modern dental clinic"
-                width={720}
-                height={840}
-                priority
-                className="h-full w-full object-cover"
-                sizes="(min-width: 1024px) 42vw, 100vw"
-              />
-            </div>
+            <HeroSlideshow />
 
             <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-lg shadow-ink-950/5 sm:left-8">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
