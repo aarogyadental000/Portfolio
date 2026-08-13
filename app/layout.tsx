@@ -23,7 +23,7 @@ const ogImage = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${clinicInfo.name} | Dentist in ${clinicInfo.city}, Nepal`,
+    default: `Home | ${clinicInfo.name}`,
     template: `%s | ${clinicInfo.name}`,
   },
   description: `${clinicInfo.name} provides modern, compassionate dental care in ${clinicInfo.city}, Nepal. From routine checkups to advanced treatments, book your consultation today.`,

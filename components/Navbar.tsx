@@ -8,6 +8,7 @@ import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { BookButton, CallButton } from "./Buttons";
 import { showDoctors } from "@/data/doctor";
+import { clinicInfo } from "@/lib/clinic";
 
 const baseNavItems = [
   { href: "/#home", label: "Home" },
@@ -77,6 +78,12 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const label = active.charAt(0).toUpperCase() + active.slice(1);
+    document.title = `${label} | ${clinicInfo.name}`;
+  }, [active, pathname]);
 
   return (
     <header

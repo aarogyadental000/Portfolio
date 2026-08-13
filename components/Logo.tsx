@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { clinicInfo } from "@/lib/clinic";
 
 export function ToothMark({ className }: { className?: string }) {
@@ -23,9 +24,13 @@ export function ToothMark({ className }: { className?: string }) {
 export default function Logo() {
   return (
     <Link href="/#home" className="group flex items-center gap-2.5">
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-colors group-hover:bg-primary/90">
-        <ToothMark className="h-6 w-6" />
-      </span>
+      <Image
+        src="/images/logo.webp"
+        alt={clinicInfo.name}
+        width={354}
+        height={354}
+        className="h-14 w-14 object-contain"
+      />
       <span className="flex flex-col leading-tight">
         <span className="text-base font-semibold tracking-tight text-foreground">
           {clinicInfo.name}

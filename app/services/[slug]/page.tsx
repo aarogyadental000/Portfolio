@@ -14,6 +14,7 @@ import { clinicInfo } from "@/lib/clinic";
 import { ButtonLink, CallButton, WhatsAppButton } from "@/components/Buttons";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import ServicePhotoCard from "@/components/ServicePhotoCard";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -254,35 +255,12 @@ export default async function ServicePage({
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {otherServices.map((item, index) => {
-              const ItemIcon = item.icon;
-              return (
-                <Reveal key={item.slug} delay={(index % 3) * 80}>
-                  <a
-                    href={`/services/${item.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
-                  >
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-muted text-accent">
-                      <ItemIcon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-5 font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {item.description}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
-                      Learn more
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </a>
-                </Reveal>
-              );
-            })}
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {otherServices.map((item, index) => (
+              <Reveal key={item.slug} delay={(index % 3) * 80}>
+                <ServicePhotoCard service={item} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

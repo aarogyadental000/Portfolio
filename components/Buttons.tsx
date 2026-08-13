@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { CalendarDays, MessageCircle, Phone } from "lucide-react";
+import { CalendarDays, MessageCircle, Phone, Sparkle } from "lucide-react";
 import { phoneHref, whatsappHref } from "@/lib/clinic";
 
 type Variant = "primary" | "outline" | "whatsapp" | "light" | "ghost";
@@ -40,10 +40,16 @@ export function ButtonLink({
   rel,
   children,
 }: ButtonLinkProps) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `relative group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
   if (href.startsWith("/")) {
     return (
       <Link href={href} className={classes}>
+        {variant === "light" && (
+          <Sparkle
+            aria-hidden="true"
+            className="animate-twinkle pointer-events-none absolute -right-2 -top-2 h-5 w-5 text-white opacity-0 drop-shadow-[0_0_3px_rgba(255,255,255,0.9)] transition-opacity duration-200 group-hover:opacity-100"
+          />
+        )}
         {children}
       </Link>
     );
@@ -55,6 +61,12 @@ export function ButtonLink({
       rel={rel}
       className={classes}
     >
+      {variant === "light" && (
+        <Sparkle
+          aria-hidden="true"
+          className="animate-twinkle pointer-events-none absolute -right-2 -top-2 h-5 w-5 text-white opacity-0 drop-shadow-[0_0_3px_rgba(255,255,255,0.9)] transition-opacity duration-200 group-hover:opacity-100"
+        />
+      )}
       {children}
     </a>
   );

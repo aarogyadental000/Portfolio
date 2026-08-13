@@ -1,12 +1,12 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   clinicInfo,
   fullAddress,
   phoneHref,
   whatsappHref,
 } from "@/lib/clinic";
-import { ToothMark } from "./Logo";
 import { showDoctors } from "@/data/doctor";
 
 const quickLinks = [
@@ -58,9 +58,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/#home" className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white">
-                <ToothMark className="h-6 w-6" />
-              </span>
+              <Image
+                src="/images/logo.webp"
+                alt={clinicInfo.name}
+                width={354}
+                height={354}
+                className="h-16 w-16 object-contain"
+              />
               <span className="text-lg font-semibold tracking-tight text-white">
                 {clinicInfo.name}
               </span>

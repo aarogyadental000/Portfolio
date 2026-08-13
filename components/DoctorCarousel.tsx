@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BadgeCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { BadgeCheck, ChevronLeft, ChevronRight, Clock, X } from "lucide-react";
 import type { Doctor } from "@/data/doctor";
-import { BookButton, CallButton } from "./Buttons";
+import { BookButton } from "./Buttons";
 import Reveal from "./Reveal";
 
 const AUTOPLAY_INTERVAL = 5000;
@@ -19,6 +19,23 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const doctor = doctors[index];
+  const [showHours, setShowHours] = useState(false);
+  const hoursDialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = hoursDialogRef.current;
+    if (!dialog) return;
+    if (showHours && !dialog.open) dialog.showModal();
+    else if (!showHours && dialog.open) dialog.close();
+  }, [showHours]);
+
+  useEffect(() => {
+    document.body.style.overflow = showHours ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showHours]);
+
   const next = () => setIndex((current) => (current + 1) % doctors.length);
   const prev = () =>
     setIndex((current) => (current - 1 + doctors.length) % doctors.length);
@@ -141,7 +158,14 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <BookButton size="lg" />
-                <CallButton size="lg" />
+                <button
+                  type="button"
+                  onClick={() => setShowHours(true)}
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background px-6 text-base font-medium text-foreground transition-colors duration-200 hover:border-accent hover:text-accent"
+                >
+                  <Clock className="h-4 w-4" aria-hidden="true" />
+                  Working Hours
+                </button>
               </div>
             </div>
           </Reveal>
@@ -164,6 +188,59 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
       >
         <ChevronRight className="h-5 w-5" aria-hidden="true" />
       </button>
+
+      <dialog
+        ref={hoursDialogRef}
+        onClose={() => setShowHours(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setShowHours(false);
+        }}
+        aria-labelledby="working-hours-title"
+        className="m-auto w-full max-w-md rounded-3xl border border-border bg-card p-6 text-foreground shadow-xl sm:p-8 backdrop:bg-ink-950/50 backdrop:backdrop-blur-sm"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
+              <Clock className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div>
+              <h2
+                id="working-hours-title"
+                className="font-semibold tracking-tight text-foreground"
+              >
+                Working Hours
+              </h2>
+              <p className="text-sm text-muted-foreground">Dr. {doctor.name}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowHours(false)}
+            aria-label="Close working hours"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+
+        <dl className="mt-6 divide-y divide-border border-y border-border">
+          {doctor.hours.map((entry) => (
+            <div
+              key={entry.days}
+              className="flex items-center justify-between gap-4 py-3"
+            >
+              <dt className="text-sm font-medium text-foreground">
+                {entry.days}
+              </dt>
+              <dd className="text-sm text-muted-foreground">{entry.time}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-6">
+          <BookButton className="w-full" />
+        </div>
+      </dialog>
     </section>
   );
 }

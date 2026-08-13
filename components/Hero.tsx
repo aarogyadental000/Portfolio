@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={120} className="hidden md:block">
           <div className="relative mx-auto max-w-md lg:max-w-none">
             <div
               aria-hidden="true"

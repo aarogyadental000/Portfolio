@@ -6,17 +6,17 @@ export const clinicInfo = {
   name: "Aarogya Dental Clinic",
   shortName: "Aarogya",
   tagline: "Compassionate, modern dental care",
-  phone: "+977xxxxxxxxxx",
-  whatsapp: "+977xxxxxxxxxx",
-  email: "random@gmail.com",
+  phone: "+9779845824247",
+  whatsapp: "+9779845824247",
+  email: "puspadip.kharel@gmail.com",
   address: "Gokarneshwor 44600",
   city: "Kathmandu",
   country: "Nepal",
   // TODO: Replace the bracketed placeholders with real opening hours,
   // e.g. weekdays: "9:00 AM – 6:00 PM".
   openingHours: {
-    weekdays: "[OPENING TIME] – [CLOSING TIME]",
-    saturday: "Closed",
+    weekdays: "9:00 AM – 6:00 PM",
+    saturday: "12:00 AM – 6:00 PM",
     note: "Sunday – Friday",
   },
   // TODO: Add a Formspree endpoint (https://formspree.io) to enable the
@@ -32,7 +32,7 @@ export const clinicInfo = {
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d35241.08303938534!2d85.3816485!3d27.733784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b0065115d89%3A0xf264fe4f1665066!2sAarogya%20Maxillofacial%20%26%20Dental%20Care%20Pvt.%20Ltd.!5e1!3m2!1sen!2snp!4v1786518604523!5m2!1sen!2snp",
   directionsUrl: "https://www.google.com/maps/dir/27.6938458,85.3258887/Aarogya+Maxillofacial+%26+Dental+Care+Pvt.+Ltd.,+Gokarneshwor+44600/@27.7155931,85.3335339,8627m/data=!3m1!1e3!4m10!4m9!1m1!4e1!1m5!1m1!1s0x39eb1b0065115d89:0xf264fe4f1665066!2m2!1d85.3816485!2d27.733784!3e0?entry=ttu&g_ep=EgoyMDI2MDgwOS4wIKXMDSoASAFQAw%3D%3D",
   social: {
-    facebook: "",
+    facebook: "https://www.facebook.com/p/Aarogya-Maxillofacial-and-Dental-care-Pvt-Ltd-61558536381193/",
     instagram: "",
   },
   whatsappMessage: "Hello, I would like to book a dental consultation.",
