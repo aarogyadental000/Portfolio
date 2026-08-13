@@ -2,6 +2,8 @@ export type Testimonial = {
   quote: string;
   name: string;
   rating: number;
+  /** Optional local image path (or an approved remote image URL) for the reviewer. */
+  photo?: string;
   relativeTime?: string;
   url?: string;
 };
