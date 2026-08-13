@@ -14,8 +14,7 @@ import {
   Send,
 } from "lucide-react";
 import { clinicInfo, waNumber } from "@/lib/clinic";
-import { services } from "@/data/services";
-import { SERVICE_SELECT_EVENT } from "@/lib/appointment";
+import { getServiceBySlug, services } from "@/data/services";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -40,20 +39,25 @@ export default function ContactForm() {
   const highlightTimer = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    const handleSelect = (event: Event) => {
-      const title = (event as CustomEvent<string>).detail;
-      setForm((current) => ({ ...current, service: title }));
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("service");
+    if (!slug) return;
+
+    const service = getServiceBySlug(slug);
+    if (!service) return;
+
+    const timer = window.setTimeout(() => {
+      setForm((current) => ({ ...current, service: service.title }));
       setHighlighted(true);
       window.clearTimeout(highlightTimer.current);
       highlightTimer.current = window.setTimeout(
         () => setHighlighted(false),
         2600,
       );
-    };
+    }, 0);
 
-    window.addEventListener(SERVICE_SELECT_EVENT, handleSelect);
     return () => {
-      window.removeEventListener(SERVICE_SELECT_EVENT, handleSelect);
+      window.clearTimeout(timer);
       window.clearTimeout(highlightTimer.current);
     };
   }, []);
@@ -176,13 +180,11 @@ export default function ContactForm() {
               }`}
             >
               <option value="">Choose a service</option>
-              {services
-                .filter((service) => service.featured !== false)
-                .map((service) => (
-                  <option key={service.title} value={service.title}>
-                    {service.title}
-                  </option>
-                ))}
+              {services.map((service) => (
+                <option key={service.title} value={service.title}>
+                  {service.title}
+                </option>
+              ))}
             </select>
           </div>
           <div>

@@ -12,7 +12,7 @@ export const faqs: Faq[] = [
   {
     question: "What happens on my first visit?",
     answer:
-      "Your first visit usually starts with a conversation about your dental concerns, a thorough examination of your teeth and gums, and clear guidance on any treatment you may need — with no pressure to decide on the spot.",
+      "Your first visit usually starts with a conversation about your dental concerns, a thorough examination of your teeth and gums, and clear guidance on any treatment you may need, with no pressure to decide on the spot.",
   },
   {
     question: "How much do treatments cost?",

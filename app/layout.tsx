@@ -17,16 +17,16 @@ const ogImage = {
   url: "/images/hero-dentist-patient.webp",
   width: 1920,
   height: 1280,
-  alt: `${clinicInfo.name} — modern dental clinic in ${clinicInfo.city}`,
+  alt: `${clinicInfo.name}, modern dental clinic in ${clinicInfo.city}`,
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${clinicInfo.name} — Dentist in ${clinicInfo.city}, Nepal`,
+    default: `${clinicInfo.name} | Dentist in ${clinicInfo.city}, Nepal`,
     template: `%s | ${clinicInfo.name}`,
   },
-  description: `${clinicInfo.name} provides modern, compassionate dental care in ${clinicInfo.city}, Nepal. From routine checkups to advanced treatments — book your consultation today.`,
+  description: `${clinicInfo.name} provides modern, compassionate dental care in ${clinicInfo.city}, Nepal. From routine checkups to advanced treatments, book your consultation today.`,
   alternates: {
     canonical: "/",
   },
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: "en_NP",
     url: siteUrl,
     siteName: clinicInfo.name,
-    title: `${clinicInfo.name} — Dentist in ${clinicInfo.city}, Nepal`,
+    title: `${clinicInfo.name} | Dentist in ${clinicInfo.city}, Nepal`,
     description: `Modern, compassionate dental care in ${clinicInfo.city}, Nepal. General dentistry, cleaning, whitening, root canal treatment and more.`,
     images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${clinicInfo.name} — Dentist in ${clinicInfo.city}, Nepal`,
+    title: `${clinicInfo.name} | Dentist in ${clinicInfo.city}, Nepal`,
     description: `Modern, compassionate dental care in ${clinicInfo.city}, Nepal.`,
     images: [ogImage.url],
   },

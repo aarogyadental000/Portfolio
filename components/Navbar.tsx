@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -8,24 +10,27 @@ import { BookButton, CallButton } from "./Buttons";
 import { showDoctors } from "@/data/doctor";
 
 const baseNavItems = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const navItems = showDoctors
   ? [
       ...baseNavItems.slice(0, 3),
-      { href: "#doctor", label: "Doctor" },
+      { href: "/#doctor", label: "Doctor" },
       ...baseNavItems.slice(3),
     ]
   : baseNavItems;
 
-const sectionIds = navItems.map((item) => item.href.slice(1));
+const getId = (href: string) => href.split("#")[1] ?? "";
+
+const sectionIds = navItems.map((item) => getId(item.href));
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
@@ -36,6 +41,10 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isServicesRoute =
+    pathname === "/services" || pathname.startsWith("/services/");
+  const activeNav = isServicesRoute ? "services" : active;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,7 +64,7 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -87,10 +96,10 @@ export default function Navbar() {
 
         <ul className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {
-            const isActive = active === item.href.slice(1);
+            const isActive = activeNav === getId(item.href);
             return (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
@@ -106,7 +115,7 @@ export default function Navbar() {
                       isActive ? "opacity-100" : "opacity-0"
                     }`}
                   />
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -139,10 +148,10 @@ export default function Navbar() {
         >
           <ul className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
             {navItems.map((item) => {
-              const isActive = active === item.href.slice(1);
+              const isActive = activeNav === getId(item.href);
               return (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={isActive ? "true" : undefined}
@@ -153,7 +162,7 @@ export default function Navbar() {
                     }`}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

@@ -31,31 +31,31 @@ export const galleryImages: GalleryImage[] = [
     alt: "Dental tools in a clinician's hands",
   },
   {
-    src: "/images/demo-dentist-treatment.webp",
-    alt: "Dentist treating a patient in a modern dental clinic",
+    src: "/images/service-surgery.webp",
+    alt: "Dentists performing a careful oral surgical procedure",
   },
   {
-    src: "/images/demo-dental-team.webp",
-    alt: "Dental team working together in a modern clinic",
+    src: "/images/service-team.webp",
+    alt: "Dental team examining a patient in a modern clinic",
   },
   {
-    src: "/images/demo-hygienist.webp",
-    alt: "Dental professionals assisting a patient with care",
+    src: "/images/service-prophylaxis.webp",
+    alt: "Dentist professionally cleaning a patient's teeth",
   },
   {
-    src: "/images/demo-procedure-assist.webp",
-    alt: "Dentist and assistant performing a dental procedure",
+    src: "/images/service-fillings.webp",
+    alt: "Dentist light-curing a tooth-coloured filling",
   },
   {
-    src: "/images/demo-female-dentist.webp",
-    alt: "Female dentist performing a dental procedure",
+    src: "/images/service-orthodontic.webp",
+    alt: "Orthodontist adjusting braces brackets on a patient",
   },
   {
-    src: "/images/demo-consultation.webp",
-    alt: "Dentist explaining a dental procedure to a patient",
+    src: "/images/service-whitening.webp",
+    alt: "Teeth whitening treatment in progress",
   },
   {
-    src: "/images/demo-checkup-portrait.webp",
-    alt: "Close-up of a patient during a dental checkup",
+    src: "/images/service-checkup.webp",
+    alt: "Dentist examining a patient's teeth during a checkup",
   },
 ];

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Award,
   HeartHandshake,
@@ -169,8 +170,8 @@ export default function WhyChooseUs() {
             delay={160}
             className="sm:col-span-2 lg:col-span-1"
           >
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-brand-700 p-6 text-white transition-colors duration-300 hover:bg-brand-600"
             >
               <span
@@ -193,7 +194,7 @@ export default function WhyChooseUs() {
                   aria-hidden="true"
                 />
               </span>
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

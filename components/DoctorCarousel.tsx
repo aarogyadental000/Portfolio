@@ -118,7 +118,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                 {doctor.bio}
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Every treatment begins with listening — understanding your
+                Every treatment begins with listening: understanding your
                 concerns, explaining your options clearly, and building a plan
                 around what feels right for you.
               </p>

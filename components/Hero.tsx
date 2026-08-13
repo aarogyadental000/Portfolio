@@ -42,13 +42,13 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Compassionate dental care in Gokarneshwor, Kathmandu — from
+              Compassionate dental care in Gokarneshwor, Kathmandu, from
               experienced professionals, using modern techniques in a
               comfortable and welcoming environment.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="#contact" size="lg">
+              <ButtonLink href="/#contact" size="lg">
                 Book a Consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>

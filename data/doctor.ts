@@ -19,7 +19,7 @@ export const doctors: Doctor[] = [
     experience: "[EXPERIENCE]",
     bio: "[DOCTOR BIO]",
     photoUrl: "/images/doctor-portrait.webp",
-    photoAlt: "[DOCTOR NAME] — portrait",
+    photoAlt: "[DOCTOR NAME] portrait",
   },
   {
     name: "[DOCTOR NAME 2]",
@@ -28,7 +28,7 @@ export const doctors: Doctor[] = [
     experience: "[EXPERIENCE 2]",
     bio: "[DOCTOR 2 BIO]",
     photoUrl: "/images/doctor-portrait-2.webp",
-    photoAlt: "[DOCTOR NAME 2] — portrait",
+    photoAlt: "[DOCTOR NAME 2] portrait",
   },
   {
     name: "[DOCTOR NAME 3]",
@@ -37,6 +37,6 @@ export const doctors: Doctor[] = [
     experience: "[EXPERIENCE 3]",
     bio: "[DOCTOR 3 BIO]",
     photoUrl: "/images/doctor-portrait-3.webp",
-    photoAlt: "[DOCTOR NAME 3] — portrait",
+    photoAlt: "[DOCTOR NAME 3] portrait",
   },
 ];

@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000).
 All content lives in `lib/clinic.ts` and the `data/` directory — no component edits needed for routine updates.
 
 - **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, Formspree endpoint, and Google reviews URL.
-- **`data/services.ts`** — the services grid.
+- **`data/services.ts`** — the services grid plus the dedicated service detail pages (`/services/<slug>`). Each service has a `slug`, short `description`, and detail fields: `longDescription`, `whatToExpect`, `benefits` and `pricingNote`.
 - **`data/doctor.ts`** — doctor profiles (hidden until `showDoctors` is set to `true`).
 - **`data/testimonials.ts`** — Google Maps reviews to showcase. Paste real reviews (quote, reviewer name, star rating, plus optional time and review link); section hidden until `showTestimonials` is set to `true`.
 - **`data/faq.ts`** — the FAQ accordion.

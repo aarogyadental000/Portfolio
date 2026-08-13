@@ -1,4 +1,5 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import Link from "next/link";
 import {
   clinicInfo,
   fullAddress,
@@ -9,14 +10,14 @@ import { ToothMark } from "./Logo";
 import { showDoctors } from "@/data/doctor";
 
 const quickLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#contact", label: "Contact" },
 ];
 
-const doctorLink = { href: "#doctor", label: "Doctor" };
+const doctorLink = { href: "/#doctor", label: "Doctor" };
 
 const footerLinks = showDoctors
   ? [
@@ -56,14 +57,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="#home" className="flex items-center gap-2.5">
+            <Link href="/#home" className="flex items-center gap-2.5">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white">
                 <ToothMark className="h-6 w-6" />
               </span>
               <span className="text-lg font-semibold tracking-tight text-white">
                 {clinicInfo.name}
               </span>
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
               {clinicInfo.tagline}. Modern, compassionate dental care in{" "}
               {clinicInfo.city}, Nepal.
@@ -98,12 +99,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm transition-colors hover:text-brand-300"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

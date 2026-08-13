@@ -1,9 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
-import { SERVICE_SELECT_EVENT } from "@/lib/appointment";
 
 export default function ServiceCard({ title }: { title: string }) {
   const service = services.find((item) => item.title === title);
@@ -30,16 +27,11 @@ export default function ServiceCard({ title }: { title: string }) {
         />
 
         <a
-          href="#contact"
-          onClick={() =>
-            window.dispatchEvent(
-              new CustomEvent(SERVICE_SELECT_EVENT, { detail: service.title }),
-            )
-          }
+          href={`/services/${service.slug}`}
           className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         >
           <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-background/95 px-5 py-2.5 text-sm font-medium text-foreground shadow-lg backdrop-blur transition-transform duration-300 group-hover:translate-y-0">
-            Book Now
+            Learn More
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </a>

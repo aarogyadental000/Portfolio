@@ -65,7 +65,7 @@ export default function AboutClinic() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               From routine checkups to more involved treatment, our goal is to
-              keep things clear, comfortable and honest — so every visit leaves
+              keep things clear, comfortable and honest, so every visit leaves
               you confident in your smile.
             </p>
 
@@ -86,7 +86,7 @@ export default function AboutClinic() {
             </ul>
 
             <div className="mt-9">
-              <ButtonLink href="#doctor" variant="outline">
+              <ButtonLink href="/#doctor" variant="outline">
                 Meet Your Dentist
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>

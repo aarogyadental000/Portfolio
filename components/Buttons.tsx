@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { CalendarDays, MessageCircle, Phone } from "lucide-react";
 import { phoneHref, whatsappHref } from "@/lib/clinic";
 
@@ -39,12 +40,20 @@ export function ButtonLink({
   rel,
   children,
 }: ButtonLinkProps) {
+  const classes = `inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={classes}>
+        {children}
+      </Link>
+    );
+  }
   return (
     <a
       href={href}
       target={target}
       rel={rel}
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={classes}
     >
       {children}
     </a>
@@ -59,7 +68,7 @@ export function BookButton({
   className?: string;
 }) {
   return (
-    <ButtonLink href="#contact" size={size} className={className}>
+    <ButtonLink href="/#contact" size={size} className={className}>
       <CalendarDays className="h-4 w-4" aria-hidden="true" />
       Book a Consultation
     </ButtonLink>

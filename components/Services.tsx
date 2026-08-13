@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { services } from "@/data/services";
 import SectionHeading from "./SectionHeading";
 import ServiceCard from "./ServiceCard";
@@ -19,17 +22,68 @@ export default function Services() {
 
         <div
           id="services-grid"
-          className="mt-14 flex flex-wrap justify-center gap-5"
+          className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {visibleServices.map((service, index) => (
             <Reveal
               key={service.title}
               delay={(index % 3) * 80}
-              className="h-full w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]"
+              className="h-full w-full"
             >
               <ServiceCard title={service.title} />
             </Reveal>
           ))}
+
+          <Reveal
+            delay={(visibleServices.length % 3) * 80}
+            className="h-full w-full"
+          >
+            <Link
+              href="/services"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
+            >
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src="/images/service-team.webp"
+                  alt="Our dental team ready to help"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent"
+                />
+
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-ink-950/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+
+                <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-background/95 px-5 py-2.5 text-sm font-medium text-foreground shadow-lg backdrop-blur transition-transform duration-300 group-hover:translate-y-0">
+                    View All
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </span>
+              </div>
+
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
+                    <LayoutGrid className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground">
+                    Explore all treatments
+                  </h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  See the full range of care we offer, from checkups to oral
+                  surgery.
+                </p>
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>

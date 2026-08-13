@@ -25,7 +25,7 @@ export default function CTASection() {
             Ready to Take Care of Your Smile?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-brand-100">
-            Schedule a consultation with our dental team. We are here to help —
+            Schedule a consultation with our dental team. We are here to help:
             simply call or message us on WhatsApp.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -34,7 +34,7 @@ export default function CTASection() {
           </div>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-brand-200">
             Dental emergency? Call or message us right away. We explain all
-            treatment options and costs clearly — no hidden fees, ever.
+            treatment options and costs clearly. No hidden fees, ever.
           </p>
         </div>
       </Reveal>

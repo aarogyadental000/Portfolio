@@ -45,7 +45,7 @@ export default function ContactSection() {
           <SectionHeading
             eyebrow="Contact & Location"
             title="Visit Our Clinic"
-            description="We would love to welcome you. Reach out any way that suits you — call, message or drop by."
+            description="We would love to welcome you. Reach out any way that suits you: call, message or drop by."
           />
         </Reveal>
 
