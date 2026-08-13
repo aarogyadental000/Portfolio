@@ -15,6 +15,7 @@ import { ButtonLink, CallButton, WhatsAppButton } from "@/components/Buttons";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ServicePhotoCard from "@/components/ServicePhotoCard";
+import ShinyText from "@/components/ShinyText";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -218,8 +219,13 @@ export default async function ServicePage({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="rounded-3xl bg-brand-900 px-7 py-12 text-center shadow-xl shadow-brand-900/20 sm:px-10 lg:py-16">
-              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                Ready to book {service.title.toLowerCase()}?
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                <ShinyText
+                  text={`Ready to book ${service.title.toLowerCase()}?`}
+                  color="#e0f2fe"
+                  shineColor="#ffffff"
+                  speed={5}
+                />
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-brand-100">
                 Tell us a little about what you need and we will get back to

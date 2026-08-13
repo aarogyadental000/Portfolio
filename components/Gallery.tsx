@@ -1,19 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/data/gallery";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-const PER_PAGE = 9;
+const PER_PAGE_DESKTOP = 9;
+const PER_PAGE_MOBILE = 6;
 
 export default function Gallery() {
   const [page, setPage] = useState(0);
-  const pageCount = Math.ceil(galleryImages.length / PER_PAGE);
-  const start = page * PER_PAGE;
-  const pageImages = galleryImages.slice(start, start + PER_PAGE);
+  const [perPage, setPerPage] = useState(PER_PAGE_DESKTOP);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    const update = () => {
+      setPerPage(media.matches ? PER_PAGE_DESKTOP : PER_PAGE_MOBILE);
+      setPage(0);
+    };
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const pageCount = Math.ceil(galleryImages.length / perPage);
+  const start = page * perPage;
+  const pageImages = galleryImages.slice(start, start + perPage);
 
   const goTo = (target: number) => {
     setPage(target);
@@ -35,7 +49,7 @@ export default function Gallery() {
 
         <div
           id="gallery-grid"
-          className="mt-14 grid scroll-mt-24 grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[13rem]"
+          className="mt-14 grid scroll-mt-24 grid-cols-2 gap-4 md:grid-cols-3 md:auto-rows-[13rem]"
         >
           {pageImages.map((image, index) => {
             const layoutClass =
@@ -66,8 +80,8 @@ export default function Gallery() {
                       fill
                       sizes={
                         index === 0
-                          ? "(min-width: 1024px) 66vw, 100vw"
-                          : "(min-width: 1024px) 33vw, 100vw"
+                          ? "(min-width: 1024px) 66vw, (min-width: 768px) 33vw, 50vw"
+                          : "(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 50vw"
                       }
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />

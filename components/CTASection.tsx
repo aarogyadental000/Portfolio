@@ -1,6 +1,7 @@
 import { CallButton, WhatsAppButton } from "./Buttons";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
+import ShinyText from "./ShinyText";
 
 export default function CTASection() {
   return (
@@ -21,8 +22,13 @@ export default function CTASection() {
 
       <Reveal>
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Ready to Take Care of Your Smile?
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            <ShinyText
+              text="Ready to Take Care of Your Smile?"
+              color="#e0f2fe"
+              shineColor="#ffffff"
+              speed={5}
+            />
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-brand-100">
             Schedule a consultation with our dental team. We are here to help:

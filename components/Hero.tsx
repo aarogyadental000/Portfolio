@@ -3,6 +3,7 @@ import { ButtonLink, CallButton } from "./Buttons";
 import HeroSlideshow from "./HeroSlideshow";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
+import ShinyText from "./ShinyText";
 
 const trustPoints = [
   "Experienced Dental Professionals",
@@ -38,7 +39,12 @@ export default function Hero() {
 
             <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Confident Smiles{" "}
-              <span className="text-accent">Start Here.</span>
+              <ShinyText
+                text="Start Here."
+                color="#0284c7"
+                shineColor="#7dd3fc"
+                speed={4}
+              />
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
@@ -52,7 +58,18 @@ export default function Hero() {
                 Book a Consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>
-              <CallButton size="lg" />
+              <span className="hidden md:inline-flex">
+                <CallButton size="lg" />
+              </span>
+              <ButtonLink
+                href="/#services"
+                size="lg"
+                variant="outline"
+                className="md:hidden"
+              >
+                Our Services
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ButtonLink>
             </div>
 
             <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">

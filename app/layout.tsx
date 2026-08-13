@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import HashScrollManager from "@/components/HashScrollManager";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { clinicInfo, siteUrl, hasSetOpeningHours } from "@/lib/clinic";
@@ -145,6 +146,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main id="main">{children}</main>
           <Footer />
           <MobileContactBar />
+          <ScrollToTopButton />
         </ThemeProvider>
         <script
           type="application/ld+json"
