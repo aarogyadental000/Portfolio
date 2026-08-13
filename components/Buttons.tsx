@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   outline:
     "border border-border bg-background text-foreground hover:border-accent hover:text-accent",
   whatsapp:
-    "bg-emerald-700 text-white shadow-sm shadow-emerald-900/10 hover:bg-emerald-600",
+    "bg-sky-700 text-white shadow-sm shadow-sky-900/10 hover:bg-sky-600",
   light: "bg-white text-ink-900 hover:bg-brand-50",
   ghost: "text-muted-foreground hover:text-accent",
 };

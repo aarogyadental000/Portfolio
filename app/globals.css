@@ -5,17 +5,17 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-50: #effaf9;
-  --color-brand-100: #d8f1ef;
-  --color-brand-200: #b2e3e1;
-  --color-brand-300: #7fcecb;
-  --color-brand-400: #47b0ad;
-  --color-brand-500: #2b9390;
-  --color-brand-600: #1f7775;
-  --color-brand-700: #1d6060;
-  --color-brand-800: #1c4e4f;
-  --color-brand-900: #1a4242;
-  --color-brand-950: #0a2627;
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-200: #bae6fd;
+  --color-brand-300: #7dd3fc;
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+  --color-brand-700: #0369a1;
+  --color-brand-800: #075985;
+  --color-brand-900: #0c4a6e;
+  --color-brand-950: #082f49;
 
   --color-ink-300: #bfd9e3;
   --color-ink-400: #9fb8c5;
@@ -56,10 +56,10 @@
   @keyframes field-pulse {
     0%,
     100% {
-      box-shadow: 0 0 0 0 rgba(31, 119, 117, 0);
+      box-shadow: 0 0 0 0 rgba(2, 132, 199, 0);
     }
     50% {
-      box-shadow: 0 0 0 4px rgba(31, 119, 117, 0.35);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.35);
     }
   }
 
@@ -100,7 +100,7 @@
   --card: #ffffff;
   --card-foreground: #17293a;
 
-  --primary: #1d6060;
+  --primary: #0369a1;
   --primary-foreground: #ffffff;
 
   --secondary: #f4f9fb;
@@ -109,12 +109,12 @@
   --muted: #eaf3f7;
   --muted-foreground: #3c5872;
 
-  --accent: #1f7775;
+  --accent: #0284c7;
   --accent-foreground: #ffffff;
 
   --border: #e6edf2;
   --input: #d9e9ef;
-  --ring: #1f7775;
+  --ring: #0284c7;
 }
 
 .dark {
@@ -126,8 +126,8 @@
   --card: #172033;
   --card-foreground: #e8eef6;
 
-  --primary: #47b0ad;
-  --primary-foreground: #0a2627;
+  --primary: #38bdf8;
+  --primary-foreground: #082f49;
 
   --secondary: #111827;
   --secondary-foreground: #dbe7f0;
@@ -135,12 +135,12 @@
   --muted: #1c2638;
   --muted-foreground: #94a3b8;
 
-  --accent: #7fcecb;
-  --accent-foreground: #0a2627;
+  --accent: #7dd3fc;
+  --accent-foreground: #082f49;
 
   --border: #263247;
   --input: #263247;
-  --ring: #47b0ad;
+  --ring: #38bdf8;
 }
 
 @layer base {

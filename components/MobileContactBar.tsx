@@ -20,7 +20,7 @@ export default function MobileContactBar() {
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-16 items-center justify-center gap-2.5 bg-emerald-700 text-white transition-colors active:bg-emerald-600"
+          className="flex h-16 items-center justify-center gap-2.5 bg-sky-700 text-white transition-colors active:bg-sky-600"
         >
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
           <span className="text-base font-semibold">WhatsApp</span>
