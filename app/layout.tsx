@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
+import HashScrollManager from "@/components/HashScrollManager";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { clinicInfo, siteUrl, hasSetOpeningHours } from "@/lib/clinic";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
@@ -139,6 +140,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <ThemeProvider>
+          <HashScrollManager />
           <Navbar />
           <main id="main">{children}</main>
           <Footer />
