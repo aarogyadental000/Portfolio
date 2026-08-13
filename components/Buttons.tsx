@@ -28,6 +28,7 @@ type ButtonLinkProps = {
   className?: string;
   target?: string;
   rel?: string;
+  onClick?: () => void;
   children: ReactNode;
 };
 
@@ -38,12 +39,13 @@ export function ButtonLink({
   className = "",
   target,
   rel,
+  onClick,
   children,
 }: ButtonLinkProps) {
   const classes = `relative group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {variant === "light" && (
           <Sparkle
             aria-hidden="true"
@@ -59,6 +61,7 @@ export function ButtonLink({
       href={href}
       target={target}
       rel={rel}
+      onClick={onClick}
       className={classes}
     >
       {variant === "light" && (
@@ -75,12 +78,14 @@ export function ButtonLink({
 export function BookButton({
   size = "md",
   className = "",
+  onClick,
 }: {
   size?: keyof typeof sizes;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
-    <ButtonLink href="/#contact" size={size} className={className}>
+    <ButtonLink href="/#contact" size={size} className={className} onClick={onClick}>
       <CalendarDays className="h-4 w-4" aria-hidden="true" />
       Book a Consultation
     </ButtonLink>

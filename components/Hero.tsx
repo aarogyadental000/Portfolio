@@ -48,9 +48,8 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Compassionate dental care in Gokarneshwor, Kathmandu, from
-              experienced professionals, using modern techniques in a
-              comfortable and welcoming environment.
+              Welcome to Aarogya Maxillofacial and Dental Care Pvt. Ltd. 
+              Gokarneshwor trusted destination for comprehensive dental and maxillofacial treatments with state-of-the-art technology and compassionate care.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

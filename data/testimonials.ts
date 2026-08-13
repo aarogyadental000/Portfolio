@@ -13,18 +13,18 @@ export const showTestimonials = true;
 // and url (a link to that review on Google Maps).
 export const testimonials: Testimonial[] = [
   {
-    quote: "[PATIENT QUOTE 1]",
-    name: "[PATIENT NAME]",
+    quote: "I had my dental implants done here and the experience was incredible. The doctors were so professional and caring. My fixed teeth feel completely natural, I'm so happy with the results!",
+    name: "Ramesh Shrestha",
     rating: 5,
   },
   {
-    quote: "[PATIENT QUOTE 2]",
-    name: "[PATIENT NAME 2]",
+    quote: "My 86-year-old father got his complete dentures fixed here. The team was so patient and gentle with him. Patient's happiness is truly their goal. Highly recommend Aarogya Dental Care!",
+    name: "Sita Poudel",
     rating: 5,
   },
   {
-    quote: "[PATIENT QUOTE 3]",
-    name: "[PATIENT NAME 3]",
+    quote: "Had a wisdom tooth extraction that I was dreading for months. The procedure was completely painless and recovery was quick. The clinic is super clean and the staff is wonderful.",
+    name: "Anish Karki",
     rating: 5,
   },
 ];

@@ -3,11 +3,11 @@ export const siteUrl = "https://www.example.com";
 
 // TODO: Fill in the street/building, then refine the address below.
 export const clinicInfo = {
-  name: "Aarogya Dental Clinic",
+  name: "Aarogya Maxillofacial & Dental Care",
   shortName: "Aarogya",
   tagline: "Compassionate, modern dental care",
-  phone: "+9779845824247",
-  whatsapp: "+9779845824247",
+  phone: "+977-9845824247",
+  whatsapp: "+977-9845824247",
   email: "puspadip.kharel@gmail.com",
   address: "Gokarneshwor 44600",
   city: "Kathmandu",
@@ -24,7 +24,7 @@ export const clinicInfo = {
   formEndpoint: "",
   // TODO: Link to the clinic's Google Business reviews page. When empty,
   // the "Read our reviews" link is hidden.
-  reviewsUrl: "",
+  reviewsUrl: "https://www.google.com/maps/place/Aarogya+Maxillofacial+%26+Dental+Care+Pvt.+Ltd./@27.733784,85.3790736,1012m/data=!3m1!1e3!4m8!3m7!1s0x39eb1b0065115d89:0xf264fe4f1665066!8m2!3d27.733784!4d85.3816485!9m1!1b1!16s%2Fg%2F11xggcpc60?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D",
   geo: {
     latitude: 27.733784,
     longitude: 85.3816485,
