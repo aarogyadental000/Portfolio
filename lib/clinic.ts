@@ -72,7 +72,7 @@ export const branches: Branch[] = [
     slug: "branch-2",
     name: "Aarogya Maxillofacial & Dental Care (Boudha)",
     shortName: "Boudha",
-    address: "Boudha Main Road, Kathmandu 44100",
+    address: "Boudha Main Road 44100",
     city: "Kathmandu",
     phone: "+977-XXXXXXXXXX",
     whatsapp: "+977-XXXXXXXXXX",
