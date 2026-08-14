@@ -66,7 +66,7 @@ export default function BranchWelcome() {
             key={branch.slug}
             type="button"
             onClick={() => select(branch.slug)}
-            className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-background p-5 text-left transition-colors duration-200"
+            className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-background p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
           >
             <span className="flex items-center gap-2 font-semibold text-foreground">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted text-accent">
@@ -81,7 +81,7 @@ export default function BranchWelcome() {
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
               {branch.phone}
             </span>
-            <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-medium text-primary transition-all duration-200 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
+            <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-medium text-primary transition-all duration-200 group-hover:scale-105 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
               Visit this branch
             </span>
           </button>
