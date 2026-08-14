@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, BadgeCheck, HeartHandshake, Sparkles } from "lucide-react";
 import Reveal from "./Reveal";
 import { ButtonLink } from "./Buttons";
+import { useBranch } from "./BranchProvider";
 
 const highlights = [
   {
@@ -22,6 +25,7 @@ const highlights = [
 ];
 
 export default function AboutClinic() {
+  const { branch } = useBranch();
   return (
     <section id="about" className="bg-background py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
@@ -58,8 +62,8 @@ export default function AboutClinic() {
               Dental Care Built Around You
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Our clinic in Gokarneshwor, Kathmandu is built around a simple
-              idea: dental care that respects your time, your comfort and your
+              Our {branch.shortName} clinic is built around a simple idea:
+              dental care that respects your time, your comfort and your
               trust. We combine a patient-first approach with modern techniques
               and equipment, in a calm and welcoming environment.
             </p>

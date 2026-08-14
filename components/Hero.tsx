@@ -1,9 +1,13 @@
+"use client";
+
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { ButtonLink, CallButton } from "./Buttons";
 import HeroSlideshow from "./HeroSlideshow";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
 import ShinyText from "./ShinyText";
+import { useBranch } from "./BranchProvider";
+import { clinicInfo } from "@/lib/clinic";
 
 const trustPoints = [
   "Experienced Dental Professionals",
@@ -13,6 +17,8 @@ const trustPoints = [
 ];
 
 export default function Hero() {
+  const { branch } = useBranch();
+
   return (
     <section
       id="home"
@@ -48,8 +54,10 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Welcome to Aarogya Maxillofacial and Dental Care Pvt. Ltd. 
-              Gokarneshwor trusted destination for comprehensive dental and maxillofacial treatments with state-of-the-art technology and compassionate care.
+              Welcome to {clinicInfo.name}. Our {branch.shortName} branch is a
+              trusted destination for comprehensive dental and maxillofacial
+              treatments with state-of-the-art technology and compassionate
+              care.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

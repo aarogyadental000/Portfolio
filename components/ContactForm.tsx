@@ -13,8 +13,9 @@ import {
   MessageCircle,
   Send,
 } from "lucide-react";
-import { clinicInfo, waNumber } from "@/lib/clinic";
+import { clinicInfo, branchWhatsappHref } from "@/lib/clinic";
 import { getServiceBySlug, services } from "@/data/services";
+import { useBranch } from "./BranchProvider";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -33,6 +34,7 @@ const initialForm = {
 };
 
 export default function ContactForm() {
+  const { branch } = useBranch();
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState(initialForm);
   const [highlighted, setHighlighted] = useState(false);
@@ -77,6 +79,7 @@ export default function ContactForm() {
 
     if (!hasEndpoint) {
       const message = [
+        `Branch: ${branch.shortName}`,
         `Name: ${form.name}`,
         `Phone: ${form.phone}`,
         form.service && `Service: ${form.service}`,
@@ -87,7 +90,7 @@ export default function ContactForm() {
         .join("\n");
 
       window.open(
-        `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`,
+        branchWhatsappHref(branch, message),
         "_blank",
         "noopener,noreferrer",
       );

@@ -1,7 +1,11 @@
+"use client";
+
 import { MessageCircle, Phone } from "lucide-react";
-import { phoneHref, whatsappHref } from "@/lib/clinic";
+import { branchPhoneHref, branchWhatsappHref } from "@/lib/clinic";
+import { useBranch } from "./BranchProvider";
 
 export default function MobileContactBar() {
+  const { branch } = useBranch();
   return (
     <nav
       aria-label="Contact"
@@ -10,14 +14,14 @@ export default function MobileContactBar() {
     >
       <div className="grid grid-cols-2">
         <a
-          href={phoneHref}
+          href={branchPhoneHref(branch)}
           className="flex h-16 items-center justify-center gap-2.5 text-foreground transition-colors active:bg-muted"
         >
           <Phone className="h-5 w-5" aria-hidden="true" />
           <span className="text-base font-semibold">Call</span>
         </a>
         <a
-          href={whatsappHref}
+          href={branchWhatsappHref(branch)}
           target="_blank"
           rel="noopener noreferrer"
           className="flex h-16 items-center justify-center gap-2.5 bg-sky-700 text-white transition-colors active:bg-sky-600"

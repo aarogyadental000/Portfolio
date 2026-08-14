@@ -1,17 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import { ExternalLink, Quote, Star } from "lucide-react";
-import { testimonials, showTestimonials } from "@/data/testimonials";
-import { clinicInfo } from "@/lib/clinic";
+import { testimonialsByBranch, showTestimonials } from "@/data/testimonials";
 import Reveal from "./Reveal";
+import { useBranch } from "./BranchProvider";
 
 function getInitial(name: string) {
   return name.trim().charAt(0).toUpperCase();
 }
 
 export default function Testimonials() {
+  const { branch } = useBranch();
+  const testimonials = testimonialsByBranch[branch.slug] ?? [];
+
   if (!showTestimonials || testimonials.length === 0) {
     return null;
   }
+  const reviewsUrl = branch.reviewsUrl;
 
   return (
     <section id="testimonials" className="bg-background py-20 lg:py-28">
@@ -100,11 +106,11 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {clinicInfo.reviewsUrl && (
+        {reviewsUrl && (
           <Reveal>
             <div className="mt-10 text-center">
               <a
-                href={clinicInfo.reviewsUrl}
+                href={reviewsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"

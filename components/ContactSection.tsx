@@ -1,43 +1,47 @@
+"use client";
+
 import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 import {
-  clinicInfo,
-  fullAddress,
-  phoneHref,
-  whatsappHref,
+  branchFullAddress,
+  branchPhoneHref,
+  branchWhatsappHref,
 } from "@/lib/clinic";
 import GoogleMap from "./GoogleMap";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import ContactForm from "./ContactForm";
-
-const contactItems = [
-  {
-    icon: MapPin,
-    label: "Clinic Address",
-    value: fullAddress,
-    href: undefined as string | undefined,
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: clinicInfo.phone,
-    href: phoneHref,
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: clinicInfo.whatsapp,
-    href: whatsappHref,
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: clinicInfo.email,
-    href: `mailto:${clinicInfo.email}`,
-  },
-];
+import { useBranch } from "./BranchProvider";
 
 export default function ContactSection() {
+  const { branch } = useBranch();
+
+  const contactItems = [
+    {
+      icon: MapPin,
+      label: "Clinic Address",
+      value: branchFullAddress(branch),
+      href: undefined as string | undefined,
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: branch.phone,
+      href: branchPhoneHref(branch),
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: branch.whatsapp,
+      href: branchWhatsappHref(branch),
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: branch.email,
+      href: `mailto:${branch.email}`,
+    },
+  ];
+
   return (
     <section id="contact" className="bg-secondary py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -45,7 +49,7 @@ export default function ContactSection() {
           <SectionHeading
             eyebrow="Contact & Location"
             title="Visit Our Clinic"
-            description="We would love to welcome you. Reach out any way that suits you: call, message or drop by."
+            description={`We would love to welcome you to our ${branch.shortName} branch. Reach out any way that suits you: call, message or drop by.`}
           />
         </Reveal>
 
@@ -110,13 +114,13 @@ export default function ContactSection() {
                       Opening Hours
                     </span>
                     <span className="mt-0.5 font-semibold text-foreground">
-                      {clinicInfo.openingHours.note}
+                      {branch.openingHours.note}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      {clinicInfo.openingHours.weekdays}
+                      {branch.openingHours.weekdays}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      Saturday: {clinicInfo.openingHours.saturday}
+                      Saturday: {branch.openingHours.saturday}
                     </span>
                   </span>
                 </div>
@@ -124,7 +128,7 @@ export default function ContactSection() {
 
               <div className="mt-auto pt-8">
                 <a
-                  href={clinicInfo.directionsUrl}
+                  href={branch.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-fit mx-auto items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"

@@ -1,13 +1,17 @@
+"use client";
+
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
+  branchFullAddress,
+  branchPhoneHref,
+  branchWhatsappHref,
+  branches,
   clinicInfo,
-  fullAddress,
-  phoneHref,
-  whatsappHref,
 } from "@/lib/clinic";
 import { showDoctors } from "@/data/doctor";
+import { useBranch } from "./BranchProvider";
 
 const quickLinks = [
   { href: "/#home", label: "Home" },
@@ -20,23 +24,8 @@ const quickLinks = [
 const doctorLink = { href: "/#doctor", label: "Doctor" };
 
 const footerLinks = showDoctors
-  ? [
-      ...quickLinks.slice(0, 3),
-      doctorLink,
-      ...quickLinks.slice(3),
-    ]
+  ? [...quickLinks.slice(0, 3), doctorLink, ...quickLinks.slice(3)]
   : quickLinks;
-
-const contactLinks = [
-  { href: phoneHref, label: clinicInfo.phone, icon: Phone },
-  {
-    href: whatsappHref,
-    label: clinicInfo.whatsapp,
-    icon: MessageCircle,
-    external: true,
-  },
-  { href: `mailto:${clinicInfo.email}`, label: clinicInfo.email, icon: Mail },
-];
 
 const socials = [
   {
@@ -52,6 +41,20 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { branch } = useBranch();
+  const otherBranches = branches.filter((item) => item.slug !== branch.slug);
+
+  const contactLinks = [
+    { href: branchPhoneHref(branch), label: branch.phone, icon: Phone },
+    {
+      href: branchWhatsappHref(branch),
+      label: branch.whatsapp,
+      icon: MessageCircle,
+      external: true,
+    },
+    { href: `mailto:${branch.email}`, label: branch.email, icon: Mail },
+  ];
+
   return (
     <footer className="bg-ink-950 pb-20 text-ink-300 lg:pb-0">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -134,9 +137,21 @@ export default function Footer() {
               ))}
               <li className="inline-flex items-start gap-2 text-sm">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                <span className="break-words">{fullAddress}</span>
+                <span className="break-words">{branchFullAddress(branch)}</span>
               </li>
             </ul>
+
+            {otherBranches.length > 0 && (
+              <ul className="mt-5 border-t border-white/10 pt-4 text-sm">
+                <li className="inline-flex items-center gap-2 text-ink-400">
+                  <MapPin className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+                  Also at {otherBranches.map((item) => item.shortName).join(", ")}
+                </li>
+                <li className="mt-1 pl-6">
+                  {otherBranches.map((item) => item.address).join(", ")}
+                </li>
+              </ul>
+            )}
           </div>
 
           <div>
@@ -146,10 +161,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               <li className="inline-flex items-center gap-2">
                 <Clock className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                {clinicInfo.openingHours.note}
+                {branch.openingHours.note}
               </li>
-              <li className="pl-6">{clinicInfo.openingHours.weekdays}</li>
-              <li className="pl-6">Saturday: {clinicInfo.openingHours.saturday}</li>
+              <li className="pl-6">{branch.openingHours.weekdays}</li>
+              <li className="pl-6">Saturday: {branch.openingHours.saturday}</li>
             </ul>
           </div>
         </div>

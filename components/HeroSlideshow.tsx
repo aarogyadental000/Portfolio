@@ -2,11 +2,22 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { heroSlides } from "@/data/hero";
+import type { HeroSlide } from "@/data/hero";
+import { heroSlidesByBranch } from "@/data/hero";
+import { useBranch } from "./BranchProvider";
 
 const AUTOPLAY_INTERVAL = 2000;
 
 export default function HeroSlideshow() {
+  const { branch } = useBranch();
+  const heroSlides = heroSlidesByBranch[branch.slug] ?? [];
+
+  if (heroSlides.length === 0) return null;
+
+  return <Slideshow key={branch.slug} slides={heroSlides} />;
+}
+
+function Slideshow({ slides }: { slides: HeroSlide[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -14,18 +25,18 @@ export default function HeroSlideshow() {
     setIndex(target);
   };
 
-  const next = () => advance((index + 1) % heroSlides.length);
+  const next = () => advance((index + 1) % slides.length);
 
   useEffect(() => {
     if (paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setInterval(() => {
-      setIndex((current) => (current + 1) % heroSlides.length);
+      setIndex((current) => (current + 1) % slides.length);
     }, AUTOPLAY_INTERVAL);
 
     return () => window.clearInterval(timer);
-  }, [paused, index]);
+  }, [paused, index, slides.length]);
 
   return (
     <div
@@ -36,10 +47,10 @@ export default function HeroSlideshow() {
       <button
         type="button"
         onClick={next}
-        aria-label={`Show next photo (${index + 1} of ${heroSlides.length})`}
+        aria-label={`Show next photo (${index + 1} of ${slides.length})`}
         className="relative block aspect-[6/7] w-full"
       >
-        {heroSlides.map((slide, i) => {
+        {slides.map((slide, i) => {
           const active = i === index;
           return (
             <Image
@@ -63,7 +74,7 @@ export default function HeroSlideshow() {
       </button>
 
       <div className="absolute bottom-5 right-5 flex gap-2">
-        {heroSlides.map((slide, i) => (
+        {slides.map((slide, i) => (
           <button
             key={slide.src}
             type="button"

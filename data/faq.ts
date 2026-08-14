@@ -32,6 +32,6 @@ export const faqs: Faq[] = [
   {
     question: "Where is the clinic located?",
     answer:
-      "We are located in Gokarneshwor, Kathmandu. See the map and directions in the contact section, or message us and we will guide you.",
+      "We operate in Kathmandu. Choose your nearest branch using the branch selector, then see its map and directions in the contact section, or message us and we will guide you.",
   },
 ];

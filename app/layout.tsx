@@ -4,9 +4,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import BranchFab from "@/components/BranchFab";
 import HashScrollManager from "@/components/HashScrollManager";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { clinicInfo, siteUrl, hasSetOpeningHours } from "@/lib/clinic";
+import { BranchProvider } from "@/components/BranchProvider";
+import BranchWelcome from "@/components/BranchWelcome";
+import {
+  branches,
+  clinicInfo,
+  hasSetBranchOpeningHours,
+  siteUrl,
+  type Branch,
+} from "@/lib/clinic";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 import "./globals.css";
 
@@ -67,50 +76,56 @@ function parseTimeRange(value: string): { opens: string; closes: string } | unde
   return { opens: times[0]!, closes: times[1]! };
 }
 
-const parsedHours = hasSetOpeningHours
-  ? parseTimeRange(clinicInfo.openingHours.weekdays)
-  : undefined;
+function buildBranchDentist(branch: Branch) {
+  const parsedHours = hasSetBranchOpeningHours(branch)
+    ? parseTimeRange(branch.openingHours.weekdays)
+    : undefined;
 
-const openingHoursSpecification = parsedHours
-  ? [
-      {
-        "@type": "OpeningHoursSpecification" as const,
-        dayOfWeek: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-        ],
-        opens: parsedHours.opens,
-        closes: parsedHours.closes,
-      },
-    ]
-  : undefined;
+  const openingHoursSpecification = parsedHours
+    ? [
+        {
+          "@type": "OpeningHoursSpecification" as const,
+          dayOfWeek: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+          ],
+          opens: parsedHours.opens,
+          closes: parsedHours.closes,
+        },
+      ]
+    : undefined;
+
+  return {
+    "@type": "Dentist",
+    name: clinicInfo.name,
+    image: `${siteUrl}/images/hero-dentist-patient.webp`,
+    url: siteUrl,
+    telephone: branch.phone,
+    email: branch.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: branch.address,
+      addressLocality: branch.city,
+      addressCountry: "NP",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: branch.geo.latitude,
+      longitude: branch.geo.longitude,
+    },
+    // TODO: Set an honest price range when known (e.g. "$$").
+    priceRange: "$",
+    openingHoursSpecification,
+  };
+}
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Dentist",
-  name: clinicInfo.name,
-  image: `${siteUrl}/images/hero-dentist-patient.webp`,
-  url: siteUrl,
-  telephone: clinicInfo.phone,
-  email: clinicInfo.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: clinicInfo.address,
-    addressLocality: clinicInfo.city,
-    addressCountry: "NP",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: clinicInfo.geo.latitude,
-    longitude: clinicInfo.geo.longitude,
-  },
-  // TODO: Set an honest price range when known (e.g. "$$").
-  priceRange: "$",
-  openingHoursSpecification,
+  "@graph": branches.map(buildBranchDentist),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -141,12 +156,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <ThemeProvider>
-          <HashScrollManager />
-          <Navbar />
-          <main id="main">{children}</main>
-          <Footer />
-          <MobileContactBar />
-          <ScrollToTopButton />
+          <BranchProvider>
+            <HashScrollManager />
+            <Navbar />
+            <main id="main">{children}</main>
+            <Footer />
+            <MobileContactBar />
+            <BranchFab />
+            <ScrollToTopButton />
+            <BranchWelcome />
+          </BranchProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

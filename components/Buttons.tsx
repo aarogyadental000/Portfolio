@@ -1,7 +1,10 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { CalendarDays, MessageCircle, Phone, Sparkle } from "lucide-react";
-import { phoneHref, whatsappHref } from "@/lib/clinic";
+import { branchPhoneHref, branchWhatsappHref } from "@/lib/clinic";
+import { useBranch } from "./BranchProvider";
 
 type Variant = "primary" | "outline" | "whatsapp" | "light" | "ghost";
 
@@ -103,9 +106,10 @@ export function CallButton({
   label?: string;
   className?: string;
 }) {
+  const { branch } = useBranch();
   return (
     <ButtonLink
-      href={phoneHref}
+      href={branchPhoneHref(branch)}
       variant={variant}
       size={size}
       className={className}
@@ -125,9 +129,10 @@ export function WhatsAppButton({
   label?: string;
   className?: string;
 }) {
+  const { branch } = useBranch();
   return (
     <ButtonLink
-      href={whatsappHref}
+      href={branchWhatsappHref(branch)}
       variant="whatsapp"
       size={size}
       target="_blank"

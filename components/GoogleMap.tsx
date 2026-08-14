@@ -1,17 +1,41 @@
-import { MapPin } from "lucide-react";
-import { clinicInfo } from "@/lib/clinic";
+"use client";
 
-const hasEmbed = clinicInfo.mapEmbedUrl.startsWith("http");
+import { MapPin } from "lucide-react";
+import { useBranch } from "./BranchProvider";
 
 export default function GoogleMap({ className = "" }: { className?: string }) {
+  const { branch, branches, select } = useBranch();
+  const hasEmbed = branch.mapEmbedUrl.startsWith("http");
+
   return (
     <div
-      className={`overflow-hidden rounded-3xl border border-border bg-muted shadow-sm ${className}`}
+      className={`relative overflow-hidden rounded-3xl border border-border bg-muted shadow-sm ${className}`}
     >
+      <div className="absolute left-1/2 top-3 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full bg-background/90 p-1 shadow-lg shadow-ink-950/10 backdrop-blur">
+        {branches.map((item) => {
+          const isActive = item.slug === branch.slug;
+          return (
+            <button
+              key={item.slug}
+              type="button"
+              onClick={() => select(item.slug)}
+              aria-pressed={isActive}
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                isActive
+                  ? "bg-accent text-white"
+                  : "text-muted-foreground hover:text-accent"
+              }`}
+            >
+              {item.shortName}
+            </button>
+          );
+        })}
+      </div>
+
       {hasEmbed ? (
         <iframe
-          src={clinicInfo.mapEmbedUrl}
-          title={`Map showing the location of ${clinicInfo.name}`}
+          src={branch.mapEmbedUrl}
+          title={`Map showing the location of ${branch.name}`}
           className="h-full w-full border-0"
           loading="lazy"
           allowFullScreen
@@ -24,11 +48,8 @@ export default function GoogleMap({ className = "" }: { className?: string }) {
           </span>
           <p className="font-semibold text-foreground">Map coming soon</p>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Add your Google Maps embed URL to{" "}
-            <code className="rounded bg-card px-1.5 py-0.5 text-xs text-accent">
-              lib/clinic.ts
-            </code>{" "}
-            to show the clinic location.
+            The map for the {branch.shortName} branch is being added. In the
+            meantime, use the other branch or contact us for directions.
           </p>
         </div>
       )}
