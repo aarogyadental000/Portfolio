@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
               return (
                 <div
                   key={stat.label}
-                  className={`group relative flex items-center gap-3 px-6 py-8 transition-colors hover:bg-mist-50 dark:hover:bg-white/5 ${
+                  className={`group relative flex items-center gap-3 px-4 py-8 transition-colors hover:bg-mist-50 dark:hover:bg-white/5 sm:px-6 ${
                     index >= 2 ? "border-t border-border lg:border-t-0" : ""
                   } ${index > 0 ? "border-l border-border" : ""}`}
                 >

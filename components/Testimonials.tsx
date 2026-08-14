@@ -23,7 +23,7 @@ export default function Testimonials() {
               Testimonials
               <span aria-hidden="true" className="h-px w-7 bg-brand-600 dark:bg-brand-400" />
             </p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               What Our Patients Say
             </h2>
             <p className="mt-5 text-base leading-loose text-muted-foreground sm:text-lg">
