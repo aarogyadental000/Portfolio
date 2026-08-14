@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
 
@@ -26,7 +27,7 @@ export default function ServiceCard({ title }: { title: string }) {
           className="absolute inset-0 bg-ink-950/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
 
-        <a
+        <Link
           href={`/services/${service.slug}`}
           className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         >
@@ -34,7 +35,7 @@ export default function ServiceCard({ title }: { title: string }) {
             Learn More
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
-        </a>
+        </Link>
       </div>
 
       <div className="flex flex-1 flex-col p-7">

@@ -16,6 +16,7 @@ import {
 } from "@/lib/clinic";
 import {
   BRANCH_CHOSEN_KEY,
+  getStoredBranchChosen,
   BRANCH_STORAGE_KEY,
   getStoredBranchSlug,
 } from "@/lib/branch";
@@ -42,7 +43,7 @@ export function BranchProvider({ children }: { children: ReactNode }) {
       if (stored && stored !== primaryBranch.slug) {
         setBranchSlug(stored);
       }
-      setHasChosen(false);
+      setHasChosen(getStoredBranchChosen());
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
