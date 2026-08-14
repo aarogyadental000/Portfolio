@@ -19,8 +19,10 @@ export default function BranchWelcome() {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    else if ((!open || hasChosen) && dialog.open) dialog.close();
+    if (open && !dialog.open) {
+      dialog.showModal();
+      dialog.focus();
+    } else if ((!open || hasChosen) && dialog.open) dialog.close();
   }, [open, hasChosen]);
 
   useEffect(() => {
@@ -37,10 +39,11 @@ export default function BranchWelcome() {
   return (
     <dialog
       ref={dialogRef}
+      tabIndex={-1}
       onClose={close}
       onCancel={(event) => event.preventDefault()}
       aria-labelledby="branch-welcome-title"
-      className="m-auto w-[calc(100vw-2rem)] max-w-lg rounded-3xl border border-border bg-card p-6 text-foreground shadow-xl sm:p-8 backdrop:bg-ink-950/60 backdrop:backdrop-blur-sm"
+      className="m-auto w-[calc(100vw-2rem)] max-w-lg rounded-3xl border border-border bg-card p-6 text-foreground shadow-xl outline-none sm:p-8 backdrop:bg-ink-950/60 backdrop:backdrop-blur-sm"
     >
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
@@ -63,10 +66,10 @@ export default function BranchWelcome() {
             key={branch.slug}
             type="button"
             onClick={() => select(branch.slug)}
-            className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-background p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+            className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-background p-5 text-left transition-colors duration-200"
           >
             <span className="flex items-center gap-2 font-semibold text-foreground">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted text-accent">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
               </span>
               {branch.shortName}
@@ -78,7 +81,7 @@ export default function BranchWelcome() {
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
               {branch.phone}
             </span>
-            <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200 group-hover:scale-105 group-hover:bg-primary/90 group-hover:shadow-md">
+            <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-medium text-primary transition-all duration-200 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
               Visit this branch
             </span>
           </button>
