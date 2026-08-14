@@ -91,7 +91,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
 
   return (
     <section id="doctor" className="relative bg-secondary py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:hidden">
           <Reveal>
             <SectionHeading
@@ -291,24 +291,24 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
             </div>
           </Reveal>
         </div>
-      </div>
 
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous doctor"
-        className="absolute left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
-      >
-        <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next doctor"
-        className="absolute right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
-      >
-        <ChevronRight className="h-5 w-5" aria-hidden="true" />
-      </button>
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous doctor"
+          className="absolute -left-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
+        >
+          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next doctor"
+          className="absolute -right-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
+        >
+          <ChevronRight className="h-5 w-5" aria-hidden="true" />
+        </button>
+      </div>
 
       <dialog
         ref={bioDialogRef}

@@ -115,18 +115,27 @@ export default function ContactSection() {
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
                       <Clock className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span className="flex flex-col">
+                    <span className="flex flex-1 flex-col">
                       <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         Opening Hours
                       </span>
-                      <span className="mt-0.5 font-semibold text-foreground">
-                        {branch.openingHours.note}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        {branch.openingHours.weekdays}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        Saturday: {branch.openingHours.saturday}
+                      <span className="mt-2 grid grid-cols-2 gap-4">
+                        <span>
+                          <span className="block font-semibold text-foreground">
+                            {branch.openingHours.note}
+                          </span>
+                          <span className="mt-0.5 block text-sm text-muted-foreground">
+                            {branch.openingHours.weekdays}
+                          </span>
+                        </span>
+                        <span>
+                          <span className="block font-semibold text-foreground">
+                            Saturday
+                          </span>
+                          <span className="mt-0.5 block text-sm text-muted-foreground">
+                            {branch.openingHours.saturday}
+                          </span>
+                        </span>
                       </span>
                     </span>
                   </div>

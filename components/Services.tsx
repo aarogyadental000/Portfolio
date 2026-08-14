@@ -36,7 +36,7 @@ export default function Services() {
                 delay={(index % 3) * 80}
                 className="h-full w-full"
               >
-                <div className="relative">
+                <div className="relative h-full">
                   {isMaxillo && (
                     <span className="absolute -top-2 -right-2 z-10 rounded-full bg-brand-700 px-2.5 py-1 text-xs font-semibold text-white shadow-md sm:-top-3 sm:-right-3">
                       Maxillofacial

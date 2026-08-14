@@ -123,7 +123,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-8">
+    <div className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-8">
       <h3 className="text-xl font-semibold tracking-tight text-foreground">
         Book an Appointment
       </h3>
