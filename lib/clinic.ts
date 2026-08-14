@@ -37,7 +37,8 @@ export const clinicInfo = {
     facebook: "https://www.facebook.com/p/Aarogya-Maxillofacial-and-Dental-care-Pvt-Ltd-61558536381193/",
     instagram: "",
   },
-  whatsappMessage: "Hello, I would like to book a dental consultation.",
+  whatsappMessage:
+    "Hello, I would like to book a consultation at Aarogya Maxillofacial & Dental Care. Could you please help me with an appointment?",
 };
 
 // TODO: Add the second branch's remaining real details when known:

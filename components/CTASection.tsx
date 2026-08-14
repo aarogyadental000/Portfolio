@@ -24,23 +24,23 @@ export default function CTASection() {
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             <ShinyText
-              text="Ready to Take Care of Your Smile?"
+              text="Take the First Step Toward Better Oral Health"
               color="#e0f2fe"
               shineColor="#ffffff"
               speed={5}
             />
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-brand-100">
-            Schedule a consultation with our dental team. We are here to help:
-            simply call or message us on WhatsApp.
+            Whether you need a routine checkup, dental implants, or maxillofacial
+            surgery, we are here to help. Book a free consultation and we will
+            guide you through every option.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <CallButton size="lg" variant="light" label="Call the Clinic" />
             <WhatsAppButton size="lg" />
           </div>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-brand-200">
-            Dental emergency? Call or message us right away. We explain all
-            treatment options and costs clearly. No hidden fees, ever.
+            Free consultation • No hidden fees • We answer within a few hours
           </p>
         </div>
       </Reveal>

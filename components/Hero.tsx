@@ -6,8 +6,6 @@ import HeroSlideshow from "./HeroSlideshow";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
 import ShinyText from "./ShinyText";
-import { useBranch } from "./BranchProvider";
-import { clinicInfo } from "@/lib/clinic";
 
 const trustPoints = [
   "Maxillofacial & Implant Surgery",
@@ -17,8 +15,6 @@ const trustPoints = [
 ];
 
 export default function Hero() {
-  const { branch } = useBranch();
-
   return (
     <section
       id="home"
@@ -61,24 +57,28 @@ export default function Hero() {
               referral runarounds.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/#contact" size="lg">
-                Book a Consultation
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ButtonLink>
-              <span className="hidden md:inline-flex">
-                <CallButton size="lg" />
-              </span>
-              <ButtonLink
-                href="/#services"
-                size="lg"
-                variant="outline"
-                className="md:hidden"
-              >
-                Our Services
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ButtonLink>
-            </div>
+             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+               <ButtonLink href="/#contact" size="lg">
+                 Book a Consultation
+                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
+               </ButtonLink>
+               <span className="hidden md:inline-flex">
+                 <CallButton size="lg" />
+               </span>
+               <ButtonLink
+                 href="/#services"
+                 size="lg"
+                 variant="outline"
+                 className="md:hidden"
+               >
+                 Our Services
+                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
+               </ButtonLink>
+             </div>
+
+             <p className="mt-4 text-sm text-muted-foreground">
+               Free consultation • No hidden fees • Same-day appointments available
+             </p>
 
             <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">
               {trustPoints.map((point) => (

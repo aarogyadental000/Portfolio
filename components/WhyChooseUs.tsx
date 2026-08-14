@@ -183,12 +183,12 @@ export default function WhyChooseUs() {
               <div className="relative">
                 <h3 className="font-semibold">Not sure what you need?</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-100">
-                  Ask us. We will gladly guide you toward the right treatment
-                  for your smile.
+                  Book a free consultation and we will gladly guide you toward
+                  the right treatment for your smile.
                 </p>
               </div>
               <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
-                Talk to us
+                Book a Consultation
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
                   aria-hidden="true"

@@ -113,7 +113,7 @@ export default function Testimonials() {
                 href={reviewsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
               >
                 Read our Google reviews
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
