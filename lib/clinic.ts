@@ -27,7 +27,7 @@ export type Branch = {
 export const clinicInfo = {
   name: "Aarogya Maxillofacial & Dental Care",
   shortName: "Aarogya",
-  tagline: "Compassionate, modern dental care",
+  tagline: "Maxillofacial expertise, complete dental care",
   city: "Kathmandu",
   country: "Nepal",
   // TODO: Add a Formspree endpoint (https://formspree.io) to enable the

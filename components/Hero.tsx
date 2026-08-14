@@ -10,10 +10,10 @@ import { useBranch } from "./BranchProvider";
 import { clinicInfo } from "@/lib/clinic";
 
 const trustPoints = [
-  "Experienced Dental Professionals",
-  "Modern Dental Care",
-  "Patient-Focused Treatment",
-  "Comfortable Environment",
+  "Maxillofacial & Implant Surgery",
+  "Full-Service General Dentistry",
+  "10+ Years of Clinical Excellence",
+  "Transparent, Honest Guidance",
 ];
 
 export default function Hero() {
@@ -40,13 +40,13 @@ export default function Hero() {
           <div className="max-w-xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              Your Smile, Our Priority
+              Maxillofacial Care & General Dentistry
             </p>
 
             <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Confident Smiles{" "}
+              Surgical Precision.{" "}
               <ShinyText
-                text="Start Here."
+                text="Compassionate Dentistry."
                 color="#0284c7"
                 shineColor="#7dd3fc"
                 speed={4}
@@ -54,10 +54,11 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Welcome to {clinicInfo.name}. Our {branch.shortName} branch is a
-              trusted destination for comprehensive dental and maxillofacial
-              treatments with state-of-the-art technology and compassionate
-              care.
+              We&apos;re not just another dental clinic. Aarogya Maxillofacial & Dental
+              Care brings the full depth of oral and maxillofacial surgery —
+              implants, extractions, jaw procedures — together with warm,
+              patient-first general dentistry. One location, one team, no
+              referral runarounds.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

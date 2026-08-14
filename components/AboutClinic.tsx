@@ -9,18 +9,18 @@ import { useBranch } from "./BranchProvider";
 const highlights = [
   {
     icon: HeartHandshake,
-    title: "Patient-first care",
-    text: "Your comfort and oral health come first in everything we do.",
+    title: "In-house maxillofacial care",
+    text: "Implants, extractions, and jaw surgery performed by our own surgical team — no outside referrals.",
   },
   {
     icon: Sparkles,
-    title: "Modern equipment",
-    text: "Contemporary dental techniques and technology where appropriate.",
+    title: "Complete general dentistry",
+    text: "Cleanings, root canals, orthodontics, and cosmetic work from clinicians who know your full history.",
   },
   {
     icon: BadgeCheck,
-    title: "Honest guidance",
-    text: "Clear explanations and honest recommendations at every step.",
+    title: "Honest, transparent guidance",
+    text: "We explain every option, cost, and timeline before treatment begins — no hidden fees, no pressure.",
   },
 ];
 
@@ -59,18 +59,20 @@ export default function AboutClinic() {
               About Our Clinic
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Dental Care Built Around You
+              Dental Care With Surgical Depth
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Our {branch.shortName} clinic is built around a simple idea:
-              dental care that respects your time, your comfort and your
-              trust. We combine a patient-first approach with modern techniques
-              and equipment, in a calm and welcoming environment.
+              Our {branch.shortName} clinic is different from most practices in
+              Kathmandu. While many dental offices refer complex cases elsewhere,
+              Aarogya Maxillofacial & Dental Care handles everything from routine
+              cleanings and orthodontics to oral surgery and jaw procedures —
+              under one roof, with one consistent team.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              From routine checkups to more involved treatment, our goal is to
-              keep things clear, comfortable and honest, so every visit leaves
-              you confident in your smile.
+              That means no awkward referrals, no repeating your history to a new
+              surgeon, and no gap between your general dentist and your
+              specialist. Every treatment plan is coordinated, transparent, and
+              designed around your comfort.
             </p>
 
             <ul className="mt-8 space-y-5">
