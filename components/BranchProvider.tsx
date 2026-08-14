@@ -17,7 +17,6 @@ import {
 import {
   BRANCH_CHOSEN_KEY,
   BRANCH_STORAGE_KEY,
-  getStoredBranchChosen,
   getStoredBranchSlug,
 } from "@/lib/branch";
 
@@ -44,7 +43,7 @@ export function BranchProvider({ children }: { children: ReactNode }) {
       if (stored && stored !== primaryBranch.slug) {
         setBranchSlug(stored);
       }
-      setHasChosen(getStoredBranchChosen());
+      setHasChosen(false);
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
