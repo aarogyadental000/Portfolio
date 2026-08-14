@@ -34,7 +34,7 @@ export default function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:pb-28 lg:pt-40">
         <Reveal>
           <div className="max-w-xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm">
+            <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm max-[430px]:text-[10px] max-[430px]:px-3">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
               Maxillofacial Care & General Dentistry
             </p>
