@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -56,9 +56,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-ink-950 pb-20 text-ink-300 lg:pb-0">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:gap-12 lg:grid-cols-4 lg:items-center">
+    <footer className="bg-ink-950 pb-18 text-ink-300 lg:pb-2">
+      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/#home" className="flex items-center gap-2.5">
               <Image
@@ -99,11 +99,11 @@ export default function Footer() {
             )}
           </div>
 
-          <nav aria-label="Footer">
+          <nav aria-label="Footer" className="hidden lg:block">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Quick Links
             </h3>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -121,7 +121,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Contact
             </h3>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-4">
               {contactLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -135,43 +135,43 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li className="inline-flex items-start gap-2 text-sm">
+              <li className="hidden items-start gap-2 text-sm lg:inline-flex">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                 <span className="break-words">{branchFullAddress(branch)}</span>
               </li>
             </ul>
 
             {otherBranches.length > 0 && (
-              <ul className="mt-5 border-t border-white/10 pt-4 text-sm">
+              <ul className="mt-5 hidden border-t border-white/10 pt-3 text-sm lg:block">
                 <li className="inline-flex items-center gap-2 text-ink-400">
                   <MapPin className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                   Also at {otherBranches.map((item) => item.shortName).join(", ")}
                 </li>
-                <li className="mt-1 pl-6">
-                  {otherBranches.map((item) => item.address).join(", ")}
-                </li>
+                <li className="mt-1 pl-6">{otherBranches.map((item) => item.address).join(", ")}</li>
               </ul>
             )}
           </div>
 
-          <div>
+          <div className="hidden lg:block">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Opening Hours
             </h3>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              <li className="inline-flex items-center gap-2">
-                <Clock className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                {branch.openingHours.note}
+            <ul className="mt-4 space-y-4 text-sm">
+              <li>
+                <p className="font-medium text-white">{branch.openingHours.note}</p>
+                <p className="mt-1">{branch.openingHours.weekdays}</p>
               </li>
-              <li className="pl-6">{branch.openingHours.weekdays}</li>
-              <li className="pl-6">Saturday: {branch.openingHours.saturday}</li>
+              <li>
+                <p className="font-medium text-white">Saturday</p>
+                <p className="mt-1">{branch.openingHours.saturday}</p>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-sm text-ink-400 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-sm text-ink-400 sm:flex-row sm:px-6 lg:px-8">
           <p>
             © {new Date().getFullYear()} {clinicInfo.name}. All rights reserved.
           </p>

@@ -57,7 +57,7 @@ export default function Hero() {
               referral runarounds.
             </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:items-center">
                 <span className="relative">
                   <span aria-hidden="true" className="absolute inset-0 -z-10 rounded-full bg-primary/30 animate-pulse-ring" />
                   <ButtonLink href="/#contact" size="lg">
