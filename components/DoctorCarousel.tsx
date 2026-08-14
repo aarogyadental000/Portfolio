@@ -3,12 +3,15 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
+  ArrowLeft,
+  ArrowRight,
   BadgeCheck,
   ChevronLeft,
   ChevronRight,
   Clock,
   UserRound,
   X,
+  ZoomIn,
 } from "lucide-react";
 import type { Doctor } from "@/data/doctor";
 import { BookButton } from "./Buttons";
@@ -31,6 +34,9 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
   const hoursDialogRef = useRef<HTMLDialogElement>(null);
   const [showBio, setShowBio] = useState(false);
   const bioDialogRef = useRef<HTMLDialogElement>(null);
+  const [showPhoto, setShowPhoto] = useState(false);
+  const photoDialogRef = useRef<HTMLDialogElement>(null);
+  const [hoursBackToBio, setHoursBackToBio] = useState(false);
 
   useEffect(() => {
     const dialog = hoursDialogRef.current;
@@ -47,18 +53,25 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
   }, [showBio]);
 
   useEffect(() => {
-    document.body.style.overflow = showHours || showBio ? "hidden" : "";
+    const dialog = photoDialogRef.current;
+    if (!dialog) return;
+    if (showPhoto && !dialog.open) dialog.showModal();
+    else if (!showPhoto && dialog.open) dialog.close();
+  }, [showPhoto]);
+
+  useEffect(() => {
+    document.body.style.overflow = showHours || showBio || showPhoto ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [showHours, showBio]);
+  }, [showHours, showBio, showPhoto]);
 
   const next = () => setIndex((current) => (current + 1) % doctors.length);
   const prev = () =>
     setIndex((current) => (current - 1 + doctors.length) % doctors.length);
 
   useEffect(() => {
-    if (paused || showHours || showBio || doctors.length < 2) return;
+    if (paused || showHours || showBio || showPhoto || doctors.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setInterval(() => {
@@ -66,7 +79,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
     }, AUTOPLAY_INTERVAL);
 
     return () => window.clearInterval(timer);
-  }, [paused, showHours, showBio, index, doctors.length]);
+  }, [paused, showHours, showBio, showPhoto, index, doctors.length]);
 
   return (
     <section id="doctor" className="relative bg-secondary py-20 lg:py-28">
@@ -76,7 +89,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
             <SectionHeading
               eyebrow="Meet Your Dentist"
               title="Our Doctors"
-              description="Tap a doctor to read their bio, or tap View Working Hours for their schedule."
+              description="Tap a photo to view it, or tap Learn More to read their bio."
             />
           </Reveal>
 
@@ -88,9 +101,9 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                     type="button"
                     onClick={() => {
                       setIndex(i);
-                      setShowBio(true);
+                      setShowPhoto(true);
                     }}
-                    aria-label={`View ${item.name}'s bio`}
+                    aria-label={`View ${item.name}'s photo`}
                     className="relative block aspect-[4/3] w-full overflow-hidden"
                   >
                     <Image
@@ -109,8 +122,8 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                       className="absolute inset-0 flex items-center justify-center bg-ink-950/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     >
                       <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-background/95 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur transition-transform duration-300 group-hover:translate-y-0">
-                        <UserRound className="h-4 w-4" aria-hidden="true" />
-                        View Bio
+                        <ZoomIn className="h-4 w-4" aria-hidden="true" />
+                        View Photo
                       </span>
                     </div>
                   </button>
@@ -132,13 +145,13 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                       type="button"
                       onClick={() => {
                         setIndex(i);
-                        setShowHours(true);
+                        setShowBio(true);
                       }}
-                      aria-label={`View ${item.name}'s working hours`}
+                      aria-label={`Read ${item.name}'s bio`}
                       className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors group-hover:border-accent group-hover:text-accent"
                     >
-                      <Clock className="h-4 w-4" aria-hidden="true" />
-                      View Working Hours
+                      Learn More
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
@@ -253,7 +266,10 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                 <BookButton size="lg" />
                 <button
                   type="button"
-                  onClick={() => setShowHours(true)}
+                  onClick={() => {
+                    setHoursBackToBio(false);
+                    setShowHours(true);
+                  }}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background px-6 text-base font-medium text-foreground transition-colors duration-200 hover:border-accent hover:text-accent"
                 >
                   <Clock className="h-4 w-4" aria-hidden="true" />
@@ -331,8 +347,65 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
           </div>
         </dl>
 
-        <div className="mt-6">
-          <BookButton className="w-full" onClick={() => setShowBio(false)} />
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={() => {
+              setShowBio(false);
+              setHoursBackToBio(true);
+              setShowHours(true);
+            }}
+            className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent sm:flex-1"
+          >
+            <Clock className="h-4 w-4" aria-hidden="true" />
+            Working Hours
+          </button>
+          <BookButton
+            className="w-full sm:flex-1"
+            onClick={() => setShowBio(false)}
+          />
+        </div>
+      </dialog>
+
+      <dialog
+        ref={photoDialogRef}
+        onClose={() => setShowPhoto(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setShowPhoto(false);
+        }}
+        aria-labelledby="doctor-photo-title"
+        className="m-auto w-full max-w-lg rounded-3xl border border-border bg-card p-4 text-foreground shadow-xl sm:p-6 backdrop:bg-ink-950/70 backdrop:backdrop-blur-sm"
+      >
+        <div className="relative overflow-hidden rounded-2xl">
+          <Image
+            src={doctor.photoUrl}
+            alt={doctor.photoAlt}
+            width={800}
+            height={1000}
+            className="h-auto w-full object-cover"
+            sizes="(min-width: 512px) 32rem, 100vw"
+          />
+        </div>
+        <div className="mt-4 flex items-start justify-between gap-4">
+          <div>
+            <h2
+              id="doctor-photo-title"
+              className="font-semibold tracking-tight text-foreground"
+            >
+              Dr. {doctor.name}
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              {doctor.specialization}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowPhoto(false)}
+            aria-label="Close photo"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
         </div>
       </dialog>
 
@@ -360,14 +433,29 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
               <p className="text-sm text-muted-foreground">Dr. {doctor.name}</p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => setShowHours(false)}
-            aria-label="Close working hours"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            {hoursBackToBio && (
+              <button
+                type="button"
+                onClick={() => {
+                  setShowHours(false);
+                  setShowBio(true);
+                }}
+                aria-label="Back to doctor bio"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setShowHours(false)}
+              aria-label="Close working hours"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         <dl className="mt-6 divide-y divide-border border-y border-border">
