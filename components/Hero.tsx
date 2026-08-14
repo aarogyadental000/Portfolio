@@ -55,8 +55,8 @@ export default function Hero() {
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               We&apos;re not just another dental clinic. Aarogya Maxillofacial & Dental
-              Care brings the full depth of oral and maxillofacial surgery —
-              implants, extractions, jaw procedures — together with warm,
+              Care brings the full depth of oral and maxillofacial surgery
+              implants, extractions, jaw procedures together with warm,
               patient-first general dentistry. One location, one team, no
               referral runarounds.
             </p>

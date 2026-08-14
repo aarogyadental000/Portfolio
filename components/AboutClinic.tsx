@@ -10,7 +10,7 @@ const highlights = [
   {
     icon: HeartHandshake,
     title: "In-house maxillofacial care",
-    text: "Implants, extractions, and jaw surgery performed by our own surgical team — no outside referrals.",
+    text: "Implants, extractions, and jaw surgery performed by our own surgical team no outside referrals.",
   },
   {
     icon: Sparkles,
@@ -65,7 +65,7 @@ export default function AboutClinic() {
               Our {branch.shortName} clinic is different from most practices in
               Kathmandu. While many dental offices refer complex cases elsewhere,
               Aarogya Maxillofacial & Dental Care handles everything from routine
-              cleanings and orthodontics to oral surgery and jaw procedures —
+              cleanings and orthodontics to oral surgery and jaw procedures
               under one roof, with one consistent team.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
