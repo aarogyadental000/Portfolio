@@ -20,10 +20,10 @@ export default function GoogleMap({ className = "" }: { className?: string }) {
               type="button"
               onClick={() => select(item.slug)}
               aria-pressed={isActive}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
                 isActive
                   ? "bg-accent text-white"
-                  : "text-muted-foreground hover:text-accent"
+                  : "text-muted-foreground hover:text-accent hover:bg-muted"
               }`}
             >
               {item.shortName}

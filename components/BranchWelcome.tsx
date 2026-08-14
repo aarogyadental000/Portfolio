@@ -56,7 +56,7 @@ export default function BranchWelcome() {
           {clinicInfo.name}
         </h2>
         <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-          Pick your preferred branch to continue.
+          Select your preferred branch to see the right contact details and availability.
         </p>
       </div>
 

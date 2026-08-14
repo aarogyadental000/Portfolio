@@ -7,14 +7,14 @@ export default function ServiceCard({ title }: { title: string }) {
   if (!service) return null;
   const Icon = service.icon;
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
       <div className="relative h-44 overflow-hidden">
         <Image
           src={service.image}
           alt={service.imageAlt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div
           aria-hidden="true"
@@ -37,7 +37,7 @@ export default function ServiceCard({ title }: { title: string }) {
         </a>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-7">
         <div className="flex items-center gap-3">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
             <Icon className="h-5 w-5" aria-hidden="true" />

@@ -26,14 +26,13 @@ type BranchContextValue = {
   select: (slug: string) => void;
   hasChosen: boolean;
   markChosen: () => void;
+  requestOpenFab: () => void;
+  fabOpenSignal: number;
 };
 
 const BranchContext = createContext<BranchContextValue | null>(null);
 
 export function BranchProvider({ children }: { children: ReactNode }) {
-  // Default to the primary branch on the server and during hydration to
-  // avoid a mismatch with the pre-rendered HTML. A saved choice is applied
-  // in an effect below (brief flash of the primary branch is accepted).
   const [branchSlug, setBranchSlug] = useState<string>(primaryBranch.slug);
   const [hasChosen, setHasChosen] = useState(true);
 
@@ -67,9 +66,14 @@ export function BranchProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(BRANCH_CHOSEN_KEY, "true");
   }, []);
 
+  const [fabOpenSignal, setFabOpenSignal] = useState(0);
+  const requestOpenFab = useCallback(() => {
+    setFabOpenSignal((c) => c + 1);
+  }, []);
+
   return (
     <BranchContext.Provider
-      value={{ branch, branches, select, hasChosen, markChosen }}
+      value={{ branch, branches, select, hasChosen, markChosen, requestOpenFab, fabOpenSignal }}
     >
       {children}
     </BranchContext.Provider>

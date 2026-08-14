@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { BookButton, CallButton } from "./Buttons";
+import { useBranch } from "./BranchProvider";
 import { showDoctors } from "@/data/doctor";
 import { clinicInfo } from "@/lib/clinic";
 
@@ -32,6 +33,7 @@ const sectionIds = navItems.map((item) => getId(item.href));
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { branch, requestOpenFab } = useBranch();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
@@ -141,7 +143,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-ink-800 transition-colors hover:bg-muted dark:text-ink-300"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-xl text-ink-800 transition-all hover:bg-muted active:bg-muted dark:text-ink-300"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -153,7 +155,13 @@ export default function Navbar() {
           id="mobile-menu"
           className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background lg:hidden"
         >
-          <ul className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-6">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-700 dark:bg-brand-900/30 dark:text-brand-200">
+              <MapPin className="h-3 w-3" aria-hidden="true" />
+              {branch.shortName}
+            </span>
+          </div>
+          <ul className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
             {navItems.map((item) => {
               const isActive = activeNav === getId(item.href);
               return (
@@ -162,21 +170,37 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={isActive ? "true" : undefined}
-                    className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                    className={`flex items-center rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
                       isActive
                         ? "bg-muted text-accent"
                         : "text-ink-800 hover:bg-muted dark:text-ink-300"
                     }`}
                   >
                     {item.label}
+                    {isActive && (
+                      <span aria-hidden="true" className="ml-auto h-1.5 w-1.5 rounded-full bg-accent" />
+                    )}
                   </Link>
                 </li>
               );
             })}
           </ul>
-          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 pb-6 pt-1 sm:px-6">
+          <div className="mx-auto flex flex-col gap-3 px-4 pb-6 pt-1 sm:px-6">
             <BookButton className="w-full" />
             <CallButton label="Call Now" className="w-full" variant="outline" />
+          </div>
+          <div className="mx-auto px-4 pb-6 sm:px-6">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                requestOpenFab();
+              }}
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              <MapPin className="h-4 w-4" aria-hidden="true" />
+              Switch branch
+            </button>
           </div>
         </div>
       )}

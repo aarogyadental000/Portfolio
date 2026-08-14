@@ -19,7 +19,7 @@ export default function ServicePhotoCard({ service }: { service: Service }) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-7">
+      <div className="flex flex-1 flex-col p-7 sm:p-8">
         <div className="flex items-center gap-3">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-accent">
             <Icon className="h-5 w-5" aria-hidden="true" />

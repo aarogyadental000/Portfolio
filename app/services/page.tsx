@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, BadgeCheck } from "lucide-react";
 import { services } from "@/data/services";
 import Reveal from "@/components/Reveal";
-import { ButtonLink, CallButton, WhatsAppButton } from "@/components/Buttons";
+import { CallButton, WhatsAppButton } from "@/components/Buttons";
 import ServicePhotoCard from "@/components/ServicePhotoCard";
-
-export const metadata: Metadata = {
-  title: "Our Services",
-  description:
-    "Explore the complete range of dental treatments we offer in Gokarneshwor, Kathmandu, from routine checkups and cleanings to root canals, crowns and orthodontics.",
-};
+import { useBranch } from "@/components/BranchProvider";
 
 export default function ServicesPage() {
+  const { branch } = useBranch();
   return (
     <>
       <section className="relative overflow-hidden bg-secondary pb-16 pt-28 lg:pb-20 lg:pt-40">
@@ -35,12 +32,12 @@ export default function ServicesPage() {
               Our Services
             </p>
             <h1 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Comprehensive dental care, all in one place
+              Complete dental and maxillofacial care
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               From routine checkups and cleanings to root canals, crowns and
               orthodontics, we provide complete care for your oral health in a
-              calm, comfortable environment.
+              calm, comfortable environment at our {branch.shortName} clinic.
             </p>
           </Reveal>
         </div>
@@ -68,14 +65,13 @@ export default function ServicesPage() {
                   </h2>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Tell us what is bothering you and we will guide you to the
-                    right care.
+                    right care - from general dentistry to maxillofacial surgery.
                   </p>
                 </div>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/#contact">Book a Consultation</ButtonLink>
-                <CallButton label="Call Now" />
                 <WhatsAppButton />
+                <CallButton label="Call Now" />
               </div>
             </div>
           </Reveal>

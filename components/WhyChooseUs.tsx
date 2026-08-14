@@ -65,11 +65,11 @@ export default function WhyChooseUs() {
               return (
                 <div
                   key={stat.label}
-                  className={`group relative flex items-center gap-3 px-4 py-8 transition-colors hover:bg-mist-50 dark:hover:bg-white/5 sm:px-6 ${
+                  className={`group relative flex items-center gap-3 px-4 py-8 transition-all hover:bg-mist-50 dark:hover:bg-white/5 sm:px-6 ${
                     index >= 2 ? "border-t border-border lg:border-t-0" : ""
                   } ${index > 0 ? "border-l border-border" : ""}`}
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-accent transition-all group-hover:bg-accent group-hover:text-white">
                     <Icon
                       className="h-5 w-5 group-hover:animate-icon-bounce"
                       aria-hidden="true"
@@ -149,7 +149,7 @@ export default function WhyChooseUs() {
                   >
                     {pad(index)}
                   </span>
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-sm shadow-brand-900/10">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-sm shadow-brand-900/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
                     <Icon
                       className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
                       aria-hidden="true"
@@ -161,6 +161,10 @@ export default function WhyChooseUs() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {reason.text}
                   </p>
+                  <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    Learn more
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+                  </span>
                 </div>
               </Reveal>
             );
@@ -172,11 +176,11 @@ export default function WhyChooseUs() {
           >
             <Link
               href="/#contact"
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-brand-700 p-6 text-white transition-colors duration-300 hover:bg-brand-600"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-brand-700 p-6 text-white transition-all duration-300 hover:bg-brand-600 hover:shadow-lg"
             >
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-6 -top-6 text-brand-500/30"
+                className="pointer-events-none absolute -right-6 -top-6 text-brand-500/30 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
               >
                 <MessagesSquare className="h-24 w-24" />
               </span>

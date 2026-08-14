@@ -20,7 +20,7 @@ import { useBranch } from "./BranchProvider";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses =
-  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/30";
+  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground transition-all placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/30";
 
 const labelClasses =
   "mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-foreground";
@@ -244,7 +244,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="flex w-fit mx-auto items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex w-full mx-auto items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-all hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-0"
         >
           {clinicInfo.formEndpoint.length === 0 ? (
             <MessageCircle className="h-4 w-4" aria-hidden="true" />

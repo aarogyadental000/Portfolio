@@ -17,12 +17,12 @@ export default function FAQ() {
         <div className="mt-12 space-y-3">
           {faqs.map((faq, index) => (
             <Reveal key={faq.question} delay={(index % 3) * 60}>
-              <details className="group rounded-2xl border border-border bg-secondary/60 transition-colors hover:border-primary/40 open:bg-card">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-6 py-4 font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+              <details className="group rounded-2xl border border-border bg-secondary/60 transition-all hover:border-primary/40 open:bg-card open:shadow-sm">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-6 py-4 font-semibold text-foreground transition-colors hover:bg-muted/50 [&::-webkit-details-marker]:hidden">
                   {faq.question}
                   <span
                     aria-hidden="true"
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-accent shadow-sm transition-transform duration-300 group-open:rotate-45"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-accent shadow-sm transition-all duration-300 group-open:rotate-45 group-open:bg-accent group-open:text-white"
                   >
                     <svg
                       viewBox="0 0 24 24"

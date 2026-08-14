@@ -57,41 +57,46 @@ export default function Hero() {
               referral runarounds.
             </p>
 
-             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-               <ButtonLink href="/#contact" size="lg">
-                 Book a Consultation
-                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-               </ButtonLink>
-               <span className="hidden md:inline-flex">
-                 <CallButton size="lg" />
-               </span>
-               <ButtonLink
-                 href="/#services"
-                 size="lg"
-                 variant="outline"
-                 className="md:hidden"
-               >
-                 Our Services
-                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-               </ButtonLink>
-             </div>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <span className="relative">
+                  <span aria-hidden="true" className="absolute inset-0 -z-10 rounded-full bg-primary/30 animate-pulse-ring" />
+                  <ButtonLink href="/#contact" size="lg">
+                    Book a Consultation
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </ButtonLink>
+                </span>
+                <span className="hidden md:inline-flex">
+                  <CallButton size="lg" />
+                </span>
+                <ButtonLink
+                  href="/#services"
+                  size="lg"
+                  variant="outline"
+                  className="md:hidden"
+                >
+                  Our Services
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </ButtonLink>
+              </div>
 
-             <p className="mt-4 text-sm text-muted-foreground">
-               Free consultation • No hidden fees • Same-day appointments available
-             </p>
+              <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="flex h-2 w-2 shrink-0 rounded-full bg-emerald-500" aria-hidden="true" />
+                Free consultation • No hidden fees • Same-day appointments available
+              </p>
 
-            <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">
-              {trustPoints.map((point) => (
-                <li key={point} className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-accent">
-                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {point}
-                  </span>
-                </li>
-              ))}
-            </ul>
+             <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">
+               {trustPoints.map((point) => (
+                 <li key={point} className="flex items-start gap-2.5">
+                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-accent">
+                     <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
+                   </span>
+                   <span className="text-sm font-medium text-muted-foreground">
+                     {point}
+                   </span>
+                 </li>
+               ))}
+             </ul>
+
           </div>
         </Reveal>
 

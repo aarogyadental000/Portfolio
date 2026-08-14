@@ -257,16 +257,26 @@ export default async function ServicePage({
             <SectionHeading
               eyebrow="More Treatments"
               title="Explore other services"
-              description="We provide complete dental care under one roof."
+              description="Complete dental and maxillofacial care under one roof."
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {otherServices.map((item, index) => (
-              <Reveal key={item.slug} delay={(index % 3) * 80}>
-                <ServicePhotoCard service={item} />
-              </Reveal>
-            ))}
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {otherServices.map((item, index) => {
+              const isMaxillo = item.slug === "oral-surgery" || item.slug === "dental-prosthesis";
+              return (
+                <Reveal key={item.slug} delay={(index % 3) * 80}>
+                  <div className="relative">
+                    {isMaxillo && (
+                      <span className="absolute -top-2 -right-2 z-10 rounded-full bg-brand-700 px-2.5 py-1 text-xs font-semibold text-white shadow-md">
+                        Maxillofacial
+                      </span>
+                    )}
+                    <ServicePhotoCard service={item} />
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

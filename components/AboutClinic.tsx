@@ -59,7 +59,7 @@ export default function AboutClinic() {
               About Our Clinic
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Dental Care With Surgical Depth
+              Maxillofacial Expertise, Complete Dental Care
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               Our {branch.shortName} clinic is different from most practices in
@@ -92,9 +92,9 @@ export default function AboutClinic() {
             </ul>
 
             <div className="mt-9">
-              <ButtonLink href="/#doctor" variant="outline">
+              <ButtonLink href="/#doctor" variant="outline" className="group">
                 Meet Your Dentist
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
               </ButtonLink>
             </div>
           </div>

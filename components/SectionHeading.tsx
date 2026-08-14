@@ -16,7 +16,7 @@ export default function SectionHeading({
   const isCenter = align === "center";
   return (
     <div
-      className={`max-w-2xl ${isCenter ? "mx-auto text-center" : "text-left"} ${className}`}
+      className={`mx-auto max-w-2xl ${isCenter ? "text-center" : "text-left"} ${className}`}
     >
       <p
         className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent ${
@@ -31,7 +31,7 @@ export default function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-5 text-base leading-loose text-muted-foreground sm:text-lg">
+        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
           {description}
         </p>
       )}

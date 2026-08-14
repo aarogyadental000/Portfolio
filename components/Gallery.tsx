@@ -97,7 +97,7 @@ function GalleryGrid({
               delay={(index % 3) * 80}
               className={layoutClass}
             >
-              <figure className="group relative h-full overflow-hidden rounded-2xl">
+              <figure className="group relative h-full overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <a
                   href={image.src}
                   target="_blank"
@@ -141,7 +141,7 @@ function GalleryGrid({
             onClick={() => goTo(page - 1)}
             disabled={page === 0}
             aria-label="Previous page"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -153,10 +153,10 @@ function GalleryGrid({
               onClick={() => goTo(i)}
               aria-current={i === page ? "page" : undefined}
               aria-label={`Go to page ${i + 1}`}
-              className={`h-10 w-10 rounded-full text-sm font-medium transition-colors ${
+              className={`h-10 w-10 rounded-full text-sm font-medium transition-all ${
                 i === page
                   ? "bg-primary text-primary-foreground"
-                  : "border border-border bg-card text-foreground hover:border-accent hover:text-accent"
+                  : "border border-border bg-card text-foreground hover:border-accent hover:text-accent hover:shadow-sm"
               }`}
             >
               {i + 1}
@@ -168,7 +168,7 @@ function GalleryGrid({
             onClick={() => goTo(page + 1)}
             disabled={page === pageCount - 1}
             aria-label="Next page"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>

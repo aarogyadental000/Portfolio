@@ -42,13 +42,13 @@ export default function Testimonials() {
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
           {testimonials.map((testimonial) => (
             <Reveal key={testimonial.name}>
-              <figure className="flex h-full min-h-80 flex-col rounded-2xl border border-border bg-card p-8 shadow-[0_4px_18px_rgba(23,41,58,0.07)] dark:shadow-black/20 sm:p-9">
+              <figure className="group flex h-full min-h-80 flex-col rounded-2xl border border-border bg-card p-8 shadow-[0_4px_18px_rgba(23,41,58,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md dark:shadow-black/20 sm:p-9">
                 <Quote
-                  className="h-9 w-9 fill-brand-200 text-brand-200 dark:fill-brand-400/40 dark:text-brand-400/40"
+                  className="h-9 w-9 fill-brand-200 text-brand-200 transition-colors group-hover:fill-brand-300 group-hover:text-brand-300 dark:fill-brand-400/40 dark:text-brand-400/40"
                   aria-hidden="true"
                 />
 
-                <blockquote className="mt-5 flex-1 text-base leading-relaxed text-foreground italic sm:text-[1.02rem]">
+                <blockquote className="mt-5 flex-1 text-base leading-relaxed text-foreground italic sm:text-lg">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
@@ -113,7 +113,7 @@ export default function Testimonials() {
                 href={reviewsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-sm hover:-translate-y-0.5"
               >
                 Read our Google reviews
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />

@@ -10,12 +10,12 @@ type Variant = "primary" | "outline" | "whatsapp" | "light" | "ghost";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-primary text-primary-foreground shadow-sm shadow-brand-900/10 hover:bg-primary/90",
+    "bg-primary text-primary-foreground shadow-sm shadow-brand-900/10 hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5",
   outline:
-    "border border-border bg-background text-foreground hover:border-accent hover:text-accent",
+    "border border-border bg-background text-foreground hover:border-accent hover:text-accent hover:shadow-sm hover:-translate-y-0.5",
   whatsapp:
-    "bg-sky-700 text-white shadow-sm shadow-sky-900/10 hover:bg-sky-600",
-  light: "bg-white text-ink-900 hover:bg-brand-50",
+    "bg-sky-700 text-white shadow-sm shadow-sky-900/10 hover:bg-sky-600 hover:shadow-md hover:-translate-y-0.5",
+  light: "bg-white text-ink-900 shadow-sm hover:bg-brand-50 hover:shadow-md hover:-translate-y-0.5",
   ghost: "text-muted-foreground hover:text-accent",
 };
 

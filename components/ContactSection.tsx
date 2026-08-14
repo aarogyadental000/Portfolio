@@ -48,7 +48,7 @@ export default function ContactSection() {
           <Reveal>
             <SectionHeading
               eyebrow="Contact & Location"
-              title="Start Your Visit"
+              title={`Start Your Visit at ${branch.shortName}`}
               description={`Reach out in whatever way feels easiest. We will confirm your appointment and answer any questions before you come in.`}
             />
           </Reveal>
@@ -56,6 +56,12 @@ export default function ContactSection() {
           <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2">
             <Reveal>
               <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-8">
+                <div className="mb-6 flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-foreground">Contact Details</h3>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700 dark:border-brand-700 dark:bg-brand-900/30 dark:text-brand-200">
+                    {branch.shortName} Branch
+                  </span>
+                </div>
                 <ul className="space-y-6">
                     {contactItems.map((item) => {
                       const Icon = item.icon;
@@ -75,7 +81,7 @@ export default function ContactSection() {
                         </>
                       );
 
-                      if (item.href) {
+                       if (item.href) {
                         return (
                           <li key={item.label}>
                             <a
@@ -88,7 +94,7 @@ export default function ContactSection() {
                                   ? "noopener noreferrer"
                                   : undefined
                               }
-                              className="flex items-start gap-4 rounded-xl transition-colors hover:bg-muted"
+                              className="flex items-start gap-4 rounded-xl transition-all hover:bg-muted"
                             >
                               {content}
                             </a>
@@ -131,7 +137,7 @@ export default function ContactSection() {
                   href={branch.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-all hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Navigation className="h-4 w-4" aria-hidden="true" />
                   Get Directions

@@ -33,11 +33,12 @@ export default function CTASection() {
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-brand-100">
             Whether you need a routine checkup, dental implants, or maxillofacial
             surgery, we are here to help. Book a free consultation and we will
-            guide you through every option.
+            guide you through every option - from general dentistry to specialist
+            oral surgery.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <CallButton size="lg" variant="light" label="Call the Clinic" />
             <WhatsAppButton size="lg" />
+            <CallButton size="lg" variant="light" label="Call the Clinic" />
           </div>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-brand-200">
             Free consultation • No hidden fees • We answer within a few hours
