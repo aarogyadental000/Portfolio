@@ -3,7 +3,7 @@ import AboutClinic from "@/components/AboutClinic";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import DoctorProfile from "@/components/DoctorProfile";
-import Gallery from "@/components/Gallery";
+import { Gallery } from "@/components/LazySections";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";

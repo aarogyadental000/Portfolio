@@ -53,9 +53,9 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink-950 pb-24 text-ink-300 lg:pb-0">
+    <footer className="bg-ink-950 pb-20 text-ink-300 lg:pb-0">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:gap-12 lg:grid-cols-4 lg:items-center">
           <div>
             <Link href="/#home" className="flex items-center gap-2.5">
               <Image
@@ -63,9 +63,9 @@ export default function Footer() {
                 alt={clinicInfo.name}
                 width={354}
                 height={354}
-                className="h-16 w-16 object-contain"
+                className="h-16 w-16 shrink-0 object-contain"
               />
-              <span className="text-lg font-semibold tracking-tight text-white">
+              <span className="min-w-0 text-lg font-semibold tracking-tight text-white">
                 {clinicInfo.name}
               </span>
             </Link>
@@ -125,16 +125,16 @@ export default function Footer() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 text-sm transition-colors hover:text-brand-300"
+                    className="inline-flex items-start gap-2 text-sm transition-colors hover:text-brand-300"
                   >
-                    <link.icon className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                    {link.label}
+                    <link.icon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+                    <span className="break-words">{link.label}</span>
                   </a>
                 </li>
               ))}
               <li className="inline-flex items-start gap-2 text-sm">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                {fullAddress}
+                <span className="break-words">{fullAddress}</span>
               </li>
             </ul>
           </div>
@@ -148,8 +148,8 @@ export default function Footer() {
                 <Clock className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                 {clinicInfo.openingHours.note}
               </li>
-              <li>{clinicInfo.openingHours.weekdays}</li>
-              <li>Saturday: {clinicInfo.openingHours.saturday}</li>
+              <li className="pl-6">{clinicInfo.openingHours.weekdays}</li>
+              <li className="pl-6">Saturday: {clinicInfo.openingHours.saturday}</li>
             </ul>
           </div>
         </div>

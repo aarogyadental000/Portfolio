@@ -1,5 +1,5 @@
 import { doctors, showDoctors } from "@/data/doctor";
-import DoctorCarousel from "./DoctorCarousel";
+import { DoctorCarousel } from "./LazySections";
 
 export default function DoctorProfile() {
   if (!showDoctors || doctors.length === 0) {
