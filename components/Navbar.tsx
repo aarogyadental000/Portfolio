@@ -33,7 +33,7 @@ const sectionIds = navItems.map((item) => getId(item.href));
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { branch, requestOpenFab } = useBranch();
+  const { branch } = useBranch();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
@@ -188,19 +188,6 @@ export default function Navbar() {
           <div className="mx-auto flex flex-col gap-3 px-4 pb-6 pt-1 sm:px-6">
             <BookButton className="w-full" />
             <CallButton label="Call Now" className="w-full" variant="outline" />
-          </div>
-          <div className="mx-auto px-4 pb-6 sm:px-6">
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                requestOpenFab();
-              }}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              <MapPin className="h-4 w-4" aria-hidden="true" />
-              Switch branch
-            </button>
           </div>
         </div>
       )}

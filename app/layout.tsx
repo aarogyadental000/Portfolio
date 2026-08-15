@@ -8,7 +8,6 @@ import BranchFab from "@/components/BranchFab";
 import HashScrollManager from "@/components/HashScrollManager";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BranchProvider } from "@/components/BranchProvider";
-import BranchWelcome from "@/components/BranchWelcome";
 import {
   branches,
   clinicInfo,
@@ -164,7 +163,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <MobileContactBar />
             <BranchFab />
             <ScrollToTopButton />
-            <BranchWelcome />
           </BranchProvider>
         </ThemeProvider>
         <script
