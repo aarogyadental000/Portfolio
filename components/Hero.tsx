@@ -1,11 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { ButtonLink, CallButton } from "./Buttons";
 import HeroSlideshow from "./HeroSlideshow";
 import { ToothMark } from "./Logo";
 import Reveal from "./Reveal";
 import ShinyText from "./ShinyText";
+import { useBranch } from "./BranchProvider";
+import { heroSlidesByBranch } from "@/data/hero";
 
 const trustPoints = [
   "Maxillofacial & Implant Surgery",
@@ -15,11 +18,27 @@ const trustPoints = [
 ];
 
 export default function Hero() {
+  const { branch } = useBranch();
+  const heroBg = (heroSlidesByBranch[branch.slug] ?? [])[0];
+
   return (
     <section
       id="home"
       className="relative overflow-hidden bg-gradient-to-b from-secondary via-background to-background"
     >
+      {heroBg && (
+        <div aria-hidden="true" className="absolute inset-0 md:hidden">
+          <Image
+            src={heroBg.src}
+            alt={heroBg.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary/60 to-background" />
+        </div>
+      )}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 flex justify-end pr-8 pt-10 opacity-[0.06]"
@@ -31,7 +50,7 @@ export default function Hero() {
         className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-brand-100/60 blur-3xl dark:bg-brand-400/10"
       />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:pb-28 lg:pt-40">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:pb-28 lg:pt-40">
         <Reveal>
           <div className="max-w-xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm max-[430px]:text-[10px] max-[430px]:px-3">
@@ -49,7 +68,7 @@ export default function Hero() {
               />
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-[400px]:hidden">
               We&apos;re not just another dental clinic. Aarogya Maxillofacial & Dental
               Care brings the full depth of oral and maxillofacial surgery
               implants, extractions, jaw procedures together with warm,

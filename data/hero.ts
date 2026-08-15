@@ -8,6 +8,10 @@ export type HeroSlide = {
 export const heroSlidesByBranch: Record<string, HeroSlide[]> = {
   gokarneshwor: [
     {
+      src: "/images/clinic-bright.webp",
+      alt: "Bright and clean dental clinic room",
+    },
+    {
       src: "/images/hero-dentist-patient.webp",
       alt: "Dentist examining a patient in a modern dental clinic",
     },
@@ -15,19 +19,15 @@ export const heroSlidesByBranch: Record<string, HeroSlide[]> = {
       src: "/images/hero-treatment.webp",
       alt: "Dentist providing gentle treatment to a patient",
     },
-    {
-      src: "/images/clinic-bright.webp",
-      alt: "Bright and clean dental clinic room",
-    },
   ],
   "branch-2": [
     {
-      src: "/images/clinic-bright.webp",
-      alt: "Bright and clean dental clinic room",
-    },
-    {
       src: "/images/clinic-room.webp",
       alt: "Modern dental treatment room",
+    },
+    {
+      src: "/images/clinic-bright.webp",
+      alt: "Bright and clean dental clinic room",
     },
     {
       src: "/images/hero-dentist-patient.webp",
