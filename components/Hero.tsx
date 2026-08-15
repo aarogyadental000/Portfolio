@@ -41,7 +41,7 @@ export default function Hero() {
       )}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex justify-end pr-8 pt-10 opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 hidden justify-end pr-8 pt-10 opacity-[0.06] md:flex"
       >
         <ToothMark className="h-[28rem] w-[28rem] text-brand-900" />
       </div>

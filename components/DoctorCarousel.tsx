@@ -102,9 +102,19 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
           </Reveal>
 
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {doctors.map((item, i) => (
-              <Reveal key={item.photoUrl} delay={(i % 2) * 80} className="h-full">
-              <div className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
+            {doctors.map((item, i) => {
+              const isLastOdd = doctors.length % 2 === 1 && i === doctors.length - 1;
+              return (
+              <Reveal
+                key={item.photoUrl}
+                delay={(i % 2) * 80}
+                className={`h-full ${isLastOdd ? "sm:col-span-2" : ""}`}
+              >
+              <div
+                className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md ${
+                  isLastOdd ? "sm:mx-auto sm:w-[calc(50%-0.625rem)]" : ""
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => {
@@ -164,7 +174,8 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                 </div>
               </div>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
 
