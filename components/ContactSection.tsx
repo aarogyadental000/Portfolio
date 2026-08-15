@@ -54,7 +54,7 @@ export default function ContactSection() {
           </Reveal>
 
           <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2">
-            <Reveal>
+            <Reveal className="order-2 lg:order-1">
               <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-sm sm:p-8">
                 <div className="mb-6 flex items-center justify-between">
                   <h3 className="text-lg font-semibold text-foreground">Contact Details</h3>
@@ -155,11 +155,11 @@ export default function ContactSection() {
               </div>
             </Reveal>
 
-            <Reveal delay={120}>
+            <Reveal delay={120} className="order-1 lg:order-2">
               <ContactForm />
             </Reveal>
 
-            <Reveal delay={80} className="lg:col-span-2">
+            <Reveal delay={80} className="order-3 lg:col-span-2">
               <GoogleMap className="h-80 w-full lg:h-96" />
             </Reveal>
           </div>
