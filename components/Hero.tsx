@@ -68,7 +68,7 @@ export default function Hero() {
               />
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-[400px]:hidden">
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground [@media(max-width:400px)_and_(max-height:700px)]:hidden">
               We&apos;re not just another dental clinic. Aarogya Maxillofacial & Dental
               Care brings the full depth of oral and maxillofacial surgery
               implants, extractions, jaw procedures together with warm,
