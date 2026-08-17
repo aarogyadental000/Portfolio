@@ -35,7 +35,7 @@ export default function Logo() {
         <span className="text-base font-semibold tracking-tight text-foreground">
           {clinicInfo.name}
         </span>
-        <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
+        <span className="text-xs font-medium uppercase tracking-[0.14em] text-accent">
           {clinicInfo.city}
         </span>
       </span>

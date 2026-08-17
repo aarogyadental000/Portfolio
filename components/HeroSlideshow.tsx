@@ -63,10 +63,10 @@ function Slideshow({ slides }: { slides: HeroSlide[] }) {
               sizes="(min-width: 1024px) 42vw, 100vw"
               aria-hidden={!active}
               inert={!active || undefined}
-              className={`object-cover transition duration-700 ${
+              className={`object-cover ${
                 active
                   ? "opacity-100 animate-hero-fade group-hover:scale-105"
-                  : "opacity-0"
+                  : "opacity-0 scale-100"
               }`}
             />
           );

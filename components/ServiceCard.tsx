@@ -47,7 +47,7 @@ export default function ServiceCard({ title }: { title: string }) {
             {service.title}
           </h3>
         </div>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
           {service.description}
         </p>
       </div>

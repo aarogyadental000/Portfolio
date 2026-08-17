@@ -87,7 +87,7 @@ export default function Footer() {
                          target="_blank"
                          rel="noopener noreferrer"
                          aria-label={social.label}
-                         className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-ink-300 transition-all hover:bg-brand-600 hover:text-white hover:scale-110"
+                          className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-ink-300 transition-all hover:bg-brand-600 hover:text-white hover:scale-110"
                        >
                         <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                           <path d={social.path} />
@@ -128,7 +128,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-start gap-2 text-sm transition-colors hover:text-brand-300"
+                    className="inline-flex items-start gap-2 py-1.5 text-sm transition-colors hover:text-brand-300"
                   >
                     <link.icon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                     <span className="break-words">{link.label}</span>

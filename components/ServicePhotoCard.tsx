@@ -31,7 +31,7 @@ export default function ServicePhotoCard({ service }: { service: Service }) {
         <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
           {service.description}
         </p>
-        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent underline decoration-accent/0 underline-offset-2 transition-all duration-200 group-hover:decoration-accent/60">
           Learn more
           <ArrowRight
             className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
