@@ -6,6 +6,7 @@ import MobileContactBar from "@/components/MobileContactBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import BranchFab from "@/components/BranchFab";
 import HashScrollManager from "@/components/HashScrollManager";
+import RegisterSW from "@/components/RegisterSW";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BranchProvider } from "@/components/BranchProvider";
 import {
@@ -163,6 +164,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <MobileContactBar />
             <BranchFab />
             <ScrollToTopButton />
+            <RegisterSW />
           </BranchProvider>
         </ThemeProvider>
         <script
