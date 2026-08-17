@@ -21,13 +21,13 @@ export const showDoctors = true;
 export const doctorsByBranch: Record<string, Doctor[]> = {
   gokarneshwor: [
     {
-      name: "Tanvir Rahman",
+      name: "Dr. Puspadip Kharel",
       qualification: "BDS, FCPS (Oral & Maxillofacial Surgery)",
-      specialization: "Dental Implants",
+      specialization: "Maxillofacial Surgeon",
       experience: "12+ Years",
-      bio: "Dr. Tanvir Rahman leads our maxillofacial surgery team with over a decade of hands-on experience in dental implants and complex oral surgery. Having placed well over a thousand implants, he combines precise surgical technique with a calm, reassuring approach that puts even the most anxious patients at ease.",
+      bio: "Dr. Puspadip Kharel leads our maxillofacial surgery team with over a decade of hands-on experience in dental implants and complex oral surgery. Having placed well over a thousand implants, he combines precise surgical technique with a calm, reassuring approach that puts even the most anxious patients at ease.",
       photoUrl: "/images/doctor-portrait.webp",
-      photoAlt: "Dr. Tanvir Rahman portrait",
+      photoAlt: "Dr. Puspadip Kharel portrait",
       hours: [
         { days: "Sunday", time: "9:00 AM – 6:00 PM" },
         { days: "Monday", time: "9:00 AM – 6:00 PM" },
@@ -39,13 +39,13 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Farhana Islam",
+      name: "Dr. Sudhir Sapkota",
       qualification: "BDS, MS (Orthodontics)",
-      specialization: "Braces & Aligners",
+      specialization: "Dental Surgeon & Implantologist",
       experience: "9+ Years",
-      bio: "Dr. Farhana Islam believes orthodontics is about more than straight teeth. She takes the time to understand each patient's daily life, concerns, and goals, then crafts a personalized plan using clear aligners or modern braces that fits around work, school, and social commitments.",
+      bio: "Dr. Sudhir Sapkota believes orthodontics is about more than straight teeth. He takes the time to understand each patient's daily life, concerns, and goals, then crafts a personalized plan using clear aligners or modern braces that fits around work, school, and social commitments.",
       photoUrl: "/images/doctor-portrait-2.webp",
-      photoAlt: "Dr. Farhana Islam portrait",
+      photoAlt: "Dr. Sudhir Sapkota portrait",
       hours: [
         { days: "Sunday", time: "10:00 AM – 7:00 PM" },
         { days: "Monday", time: "10:00 AM – 7:00 PM" },
@@ -57,13 +57,13 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Shaila Akter",
+      name: "Dr. Shirish Silwal",
       qualification: "BDS, PGT (Endodontics)",
-      specialization: "Root Canal Therapy",
+      specialization: "Orthodontist & Dental Specialist",
       experience: "7+ Years",
-      bio: "Dr. Shaila Akter knows that 'root canal' still sounds alarming to many patients. Her gentle technique and use of rotary endodontics mean most procedures are quicker and more comfortable than expected, with the goal of saving your natural tooth whenever possible.",
+      bio: "Dr. Shirish Silwal knows that 'root canal' still sounds alarming to many patients. His gentle technique and use of rotary endodontics mean most procedures are quicker and more comfortable than expected, with the goal of saving your natural tooth whenever possible.",
       photoUrl: "/images/doctor-portrait-3.webp",
-      photoAlt: "Dr. Shaila Akter portrait",
+      photoAlt: "Dr. Shirish Silwal portrait",
       hours: [
         { days: "Sunday", time: "9:30 AM – 5:30 PM" },
         { days: "Monday", time: "9:30 AM – 5:30 PM" },
@@ -79,7 +79,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
     {
       name: "Anil Maharjan",
       qualification: "BDS, MDS (Oral & Maxillofacial Surgery)",
-      specialization: "Dental Implants",
+      specialization: "Maxillofacial Surgeon",
       experience: "10+ Years",
       bio: "Dr. Anil Maharjan brings careful, methodical precision to every surgical case. From single implants to full-mouth rehabilitation, he plans each procedure in detail and talks you through every step, so you know exactly what to expect before, during, and after treatment.",
       photoUrl: "/images/doctor-portrait.webp",

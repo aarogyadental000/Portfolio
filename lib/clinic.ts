@@ -75,8 +75,8 @@ export const branches: Branch[] = [
     shortName: "Boudha",
     address: "Boudha Main Road 44100",
     city: "Kathmandu",
-    phone: "+977-XXXXXXXXXX",
-    whatsapp: "+977-XXXXXXXXXX",
+    phone: "+977-9845824247",
+    whatsapp: "+977-9845824247",
     email: "puspadip.kharel@gmail.com",
     openingHours: {
       weekdays: "[9:00 AM – 6:00 PM]",
