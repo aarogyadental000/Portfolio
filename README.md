@@ -2,6 +2,15 @@
 
 A fast, static marketing website for a small dental clinic in Gokarneshwor, Kathmandu. Built with Next.js (App Router), React 19, TypeScript and Tailwind CSS v4.
 
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **UI:** React 19, TypeScript 5
+- **Styling:** Tailwind CSS v4
+- **Icons:** Lucide React
+- **Font:** Geist Sans
+- **PWA:** Service Worker with offline caching
+
 ## Getting Started
 
 ```bash
@@ -20,31 +29,48 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run start`| Serve the production build       |
 | `npm run lint` | Lint with ESLint                 |
 
+## Features
+
+- **Multi-branch support** — two clinic branches (Gokarneshwor & Boudha) with independent contact info, doctors, testimonials, and gallery. Branch choice persists in localStorage.
+- **Light / dark theme** — toggle with system preference detection, persisted in localStorage.
+- **PWA** — installable with a service worker for offline caching of static assets.
+- **SEO** — Open Graph, Twitter cards, JSON-LD structured data (Schema.org `Dentist`), robots.txt, and auto-generated sitemap.
+- **Contact form** — appointment booking via Formspree, with automatic WhatsApp fallback when no endpoint is configured.
+- **Mobile contact bar** — fixed bottom bar with one-tap Call and WhatsApp buttons.
+- **Scroll-reveal animations** — IntersectionObserver-based with `prefers-reduced-motion` respect.
+- **Responsive design** — mobile-first with a sticky navbar and hash-based section navigation.
+
+## Project Structure
+
+```
+dental-clinic/
+├── app/                       # Next.js App Router pages & layouts
+│   ├── services/              # Services listing and [slug] detail pages
+│   └── layout.tsx             # Root layout, SEO metadata, JSON-LD
+├── components/                # React components (Navbar, Hero, ContactForm, etc.)
+├── data/                      # Static content (services, doctors, FAQs, gallery)
+├── lib/                       # Clinic config (clinic.ts) and helpers
+├── public/images/             # WebP images
+└── package.json
+```
+
 ## Editing Content
 
 All content lives in `lib/clinic.ts` and the `data/` directory — no component edits needed for routine updates.
 
 - **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, Formspree endpoint, and Google reviews URL.
 - **`data/services.ts`** — the services grid plus the dedicated service detail pages (`/services/<slug>`). Each service has a `slug`, short `description`, and detail fields: `longDescription`, `whatToExpect`, `benefits` and `pricingNote`.
-- **`data/doctor.ts`** — doctor profiles (hidden until `showDoctors` is set to `true`).
-- **`data/testimonials.ts`** — Google Maps reviews to showcase. Paste real reviews (quote, reviewer name, star rating, plus optional time and review link); section hidden until `showTestimonials` is set to `true`.
+- **`data/doctor.ts`** — doctor profiles organized by branch (hidden until `showDoctors` is set to `true`).
+- **`data/testimonials.ts`** — patient reviews organized by branch (hidden until `showTestimonials` is set to `true`).
 - **`data/faq.ts`** — the FAQ accordion.
 - **`data/gallery.ts`** and **`data/hero.ts`** — image paths for the gallery and hero slideshow.
+- **`data/stats.ts`** — statistics numbers.
 
 Images live in `public/images/` (WebP).
 
-### Before going live (TODO items)
+### Multi-Branch Content
 
-Search the codebase for `TODO` to find everything still to fill in:
-
-1. Replace `siteUrl` in `lib/clinic.ts` with the real domain.
-2. Add real opening hours in `lib/clinic.ts` (the site falls back to "contact us" until then).
-3. Refine the street address.
-4. Add a free Formspree endpoint to enable the contact form (until then, the form opens WhatsApp with the details pre-filled).
-5. Add the Google Business reviews URL.
-6. Fill in real doctor profiles and patient testimonials, then set `showDoctors` / `showTestimonials` to `true`.
-7. Set an honest `priceRange` in the structured data in `app/layout.tsx`.
-8. Add Facebook/Instagram links.
+Each data file supports branch-specific content. The site ships with two branches (Gokarneshwor and Boudha). To update content for a branch, edit the corresponding entry in the data file. The currently selected branch is stored in localStorage and can be switched via the floating branch button.
 
 ## SEO
 
