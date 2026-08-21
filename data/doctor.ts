@@ -21,7 +21,7 @@ export const showDoctors = true;
 export const doctorsByBranch: Record<string, Doctor[]> = {
   gokarneshwor: [
     {
-      name: "Dr. Puspadip Kharel",
+      name: "Puspadip Kharel",
       qualification: "BDS, FCPS (Oral & Maxillofacial Surgery)",
       specialization: "Maxillofacial Surgeon",
       experience: "12+ Years",
@@ -39,7 +39,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Dr. Sudhir Sapkota",
+      name: "Sudhir Sapkota",
       qualification: "BDS, MS (Orthodontics)",
       specialization: "Dental Surgeon & Implantologist",
       experience: "9+ Years",
@@ -57,7 +57,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Dr. Shirish Silwal",
+      name: "Shirish Silwal",
       qualification: "BDS, PGT (Endodontics)",
       specialization: "Orthodontist & Dental Specialist",
       experience: "7+ Years",
@@ -100,7 +100,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       specialization: "Braces & Aligners",
       experience: "8+ Years",
       bio: "Dr. Sunita Gurung treats every orthodontic patient as an individual. Whether you are a teenager needing braces or a professional seeking discreet clear aligners, she explains each phase of treatment clearly and adjusts the plan to suit your lifestyle and budget.",
-      photoUrl: "/images/doctor/IMG_3066.webp",
+      photoUrl: "/is/doctor/IMG_3066.webp",
       photoAlt: "Dr. Sunita Gurung portrait",
       hours: [
         { days: "Sunday", time: "10:00 AM – 7:00 PM" },
