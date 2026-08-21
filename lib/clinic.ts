@@ -1,5 +1,5 @@
 // TODO: Replace with the clinic's real domain before going live.
-export const siteUrl = "https://www.example.com";
+export const siteUrl = "https://www.aarogyadental.com.np";
 
 export type OpeningHours = {
   weekdays: string;
@@ -25,7 +25,7 @@ export type Branch = {
 };
 
 export const clinicInfo = {
-  name: "Aarogya Maxillofacial & Dental Care",
+  name: "Aarogya Maxillofacial & Dental Care Pvt. Ltd.",
   shortName: "Aarogya",
   tagline: "Maxillofacial expertise, complete dental care",
   city: "Kathmandu",
@@ -47,7 +47,7 @@ export const clinicInfo = {
 export const branches: Branch[] = [
   {
     slug: "gokarneshwor",
-    name: "Aarogya Maxillofacial & Dental Care",
+    name: "Aarogya Maxillofacial & Dental Care Pvt. Ltd.",
     shortName: "Gokarneshwor",
     address: "Gokarneshwor 44600",
     city: "Kathmandu",
@@ -71,7 +71,7 @@ export const branches: Branch[] = [
   },
   {
     slug: "branch-2",
-    name: "Aarogya Maxillofacial & Dental Care (Boudha)",
+    name: "Aarogya Maxillofacial & Dental Care Pvt. Ltd.",
     shortName: "Boudha",
     address: "Boudha Main Road 44100",
     city: "Kathmandu",

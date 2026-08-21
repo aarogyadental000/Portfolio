@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,7 +7,7 @@ import MobileContactBar from "@/components/MobileContactBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import BranchFab from "@/components/BranchFab";
 import HashScrollManager from "@/components/HashScrollManager";
-import RegisterSW from "@/components/RegisterSW";
+import UnregisterSW from "@/components/UnregisterSW";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BranchProvider } from "@/components/BranchProvider";
 import {
@@ -25,10 +26,10 @@ const geistSans = Geist({
 });
 
 const ogImage = {
-  url: "/images/hero-dentist-patient.webp",
+  url: "/images/clinic-bright.webp",
   width: 1920,
   height: 1280,
-  alt: `${clinicInfo.name}, modern dental clinic in ${clinicInfo.city}`,
+  alt: `${clinicInfo.name}, bright and modern dental clinic in ${clinicInfo.city}`,
 };
 
 export const metadata: Metadata = {
@@ -102,7 +103,7 @@ function buildBranchDentist(branch: Branch) {
   return {
     "@type": "Dentist",
     name: clinicInfo.name,
-    image: `${siteUrl}/images/hero-dentist-patient.webp`,
+    image: `${siteUrl}/images/clinic-bright.webp`,
     url: siteUrl,
     telephone: branch.phone,
     email: branch.email,
@@ -136,19 +137,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${geistSans.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var k=${JSON.stringify(
-              THEME_STORAGE_KEY,
-            )};var s=null;try{s=window.localStorage.getItem(k);}catch(e){}var t=s==="light"||s==="dark"?s:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(t==="dark"){document.documentElement.classList.add("dark");}})();`,
-          }}
-        />
-      </head>
       <body
         suppressHydrationWarning
         className="flex min-h-full flex-col"
       >
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){var k=${JSON.stringify(
+            THEME_STORAGE_KEY,
+          )};var s=null;try{s=window.localStorage.getItem(k);}catch(e){}var t=s==="light"||s==="dark"?s:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(t==="dark"){document.documentElement.classList.add("dark");}})();`}
+        </Script>
         <a
           href="#main"
           className="sr-only z-[100] bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
@@ -164,7 +161,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <MobileContactBar />
             <BranchFab />
             <ScrollToTopButton />
-            <RegisterSW />
+            <UnregisterSW />
           </BranchProvider>
         </ThemeProvider>
         <script

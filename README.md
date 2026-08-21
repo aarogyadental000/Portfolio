@@ -9,7 +9,6 @@ A fast, static marketing website for a small dental clinic in Gokarneshwor, Kath
 - **Styling:** Tailwind CSS v4
 - **Icons:** Lucide React
 - **Font:** Geist Sans
-- **PWA:** Service Worker with offline caching
 
 ## Getting Started
 
@@ -33,7 +32,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - **Multi-branch support** — two clinic branches (Gokarneshwor & Boudha) with independent contact info, doctors, testimonials, and gallery. Branch choice persists in localStorage.
 - **Light / dark theme** — toggle with system preference detection, persisted in localStorage.
-- **PWA** — installable with a service worker for offline caching of static assets.
 - **SEO** — Open Graph, Twitter cards, JSON-LD structured data (Schema.org `Dentist`), robots.txt, and auto-generated sitemap.
 - **Contact form** — appointment booking via Formspree, with automatic WhatsApp fallback when no endpoint is configured.
 - **Mobile contact bar** — fixed bottom bar with one-tap Call and WhatsApp buttons.
