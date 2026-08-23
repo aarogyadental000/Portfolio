@@ -100,7 +100,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       specialization: "Braces & Aligners",
       experience: "8+ Years",
       bio: "Dr. Sunita Gurung treats every orthodontic patient as an individual. Whether you are a teenager needing braces or a professional seeking discreet clear aligners, she explains each phase of treatment clearly and adjusts the plan to suit your lifestyle and budget.",
-      photoUrl: "/is/doctor/IMG_3066.webp",
+      photoUrl: "/images/doctor/IMG_3066.webp",
       photoAlt: "Dr. Sunita Gurung portrait",
       hours: [
         { days: "Sunday", time: "10:00 AM – 7:00 PM" },

@@ -11,9 +11,6 @@ export const heroSlidesByBranch: Record<string, HeroSlide[]> = {
       src: "/images/2.webp",
       alt: "Bright and clean dental clinic room",
     },{
-      src: "/images/4.webp",
-      alt: "Bright and clean dental clinic room",
-    },{
       src: "/images/5.webp",
       alt: "Bright and clean dental clinic room",
     },
@@ -22,9 +19,6 @@ export const heroSlidesByBranch: Record<string, HeroSlide[]> = {
   "branch-2": [
     {
       src: "/images/3.webp",
-      alt: "Modern dental treatment room",
-    },{
-      src: "/images/4.webp",
       alt: "Modern dental treatment room",
     },{
       src: "/images/5.webp",

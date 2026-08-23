@@ -9,6 +9,10 @@ export type GalleryImage = {
 export const galleryImagesByBranch: Record<string, GalleryImage[]> = {
   gokarneshwor: [
     {
+      src: "/images/4.webp",
+      alt: "Modern dental treatment room",
+    },
+    {
       src: "/images/1.webp",
       alt: "Modern dental treatment room",
     },{
@@ -17,10 +21,8 @@ export const galleryImagesByBranch: Record<string, GalleryImage[]> = {
     },{
       src: "/images/7.webp",
       alt: "Modern dental treatment room",
-    },{
-      src: "/images/4.webp",
-      alt: "Modern dental treatment room",
-    },{
+    },
+    {
       src: "/images/5.webp",
       alt: "Modern dental treatment room",
     },{

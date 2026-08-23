@@ -84,6 +84,7 @@ function GalleryGrid({
           </div>
         )}
         {pageImages.map((image, index) => {
+          const fileName = image.src.split("/").pop() ?? image.src;
           const layoutClass =
             index === 0
               ? "md:col-span-2 md:row-span-2"
@@ -123,7 +124,7 @@ function GalleryGrid({
                   className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
                 <figcaption className="absolute inset-x-4 bottom-4 translate-y-1 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  {image.alt}
+                  {fileName}
                 </figcaption>
               </figure>
             </Reveal>
