@@ -74,7 +74,7 @@ Each data file supports branch-specific content. The site ships with two branche
 
 - `app/robots.ts` — robots.txt
 - `app/sitemap.ts` — sitemap.xml
-- `app/icon.svg` — favicon
+- `app/icon.png` — favicon
 - `app/layout.tsx` — metadata, Open Graph, Twitter card, and `Dentist` structured data (JSON-LD)
 
 ## Deployment

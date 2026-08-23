@@ -25,6 +25,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [theme]);
 
   const toggle = useCallback(() => {
+    const root = document.documentElement;
+    root.classList.add("theme-transition");
+    window.setTimeout(() => root.classList.remove("theme-transition"), 300);
     setTheme((current) => {
       const next: Theme = current === "dark" ? "light" : "dark";
       window.localStorage.setItem(THEME_STORAGE_KEY, next);

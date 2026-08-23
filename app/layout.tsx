@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -7,7 +7,6 @@ import MobileContactBar from "@/components/MobileContactBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import BranchFab from "@/components/BranchFab";
 import HashScrollManager from "@/components/HashScrollManager";
-import UnregisterSW from "@/components/UnregisterSW";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BranchProvider } from "@/components/BranchProvider";
 import {
@@ -24,6 +23,13 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1220" },
+  ],
+};
 
 const ogImage = {
   url: "/images/clinic-bright.webp",
@@ -78,27 +84,46 @@ function parseTimeRange(value: string): { opens: string; closes: string } | unde
 }
 
 function buildBranchDentist(branch: Branch) {
-  const parsedHours = hasSetBranchOpeningHours(branch)
-    ? parseTimeRange(branch.openingHours.weekdays)
-    : undefined;
+  const openingHoursSpecification: Array<{
+    "@type": "OpeningHoursSpecification";
+    dayOfWeek: string[];
+    opens: string;
+    closes: string;
+  }> = [];
 
-  const openingHoursSpecification = parsedHours
-    ? [
-        {
-          "@type": "OpeningHoursSpecification" as const,
-          dayOfWeek: [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-          ],
-          opens: parsedHours.opens,
-          closes: parsedHours.closes,
-        },
-      ]
-    : undefined;
+  if (hasSetBranchOpeningHours(branch)) {
+    const weekdays = parseTimeRange(branch.openingHours.weekdays);
+    if (weekdays) {
+      openingHoursSpecification.push({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: weekdays.opens,
+        closes: weekdays.closes,
+      });
+    }
+
+    const saturday = parseTimeRange(branch.openingHours.saturday);
+    if (saturday) {
+      openingHoursSpecification.push({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: saturday.opens,
+        closes: saturday.closes,
+      });
+    }
+  }
+
+  const socialProfiles = [
+    clinicInfo.social.facebook,
+    clinicInfo.social.instagram,
+  ].filter(Boolean);
 
   return {
     "@type": "Dentist",
@@ -118,9 +143,11 @@ function buildBranchDentist(branch: Branch) {
       latitude: branch.geo.latitude,
       longitude: branch.geo.longitude,
     },
-    // TODO: Set an honest price range when known (e.g. "$$").
-    priceRange: "$",
-    openingHoursSpecification,
+    // priceRange is omitted until the clinic's real price range is known.
+    ...(socialProfiles.length > 0 ? { sameAs: socialProfiles } : {}),
+    ...(openingHoursSpecification.length > 0
+      ? { openingHoursSpecification }
+      : {}),
   };
 }
 
@@ -161,7 +188,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <MobileContactBar />
             <BranchFab />
             <ScrollToTopButton />
-            <UnregisterSW />
           </BranchProvider>
         </ThemeProvider>
         <script

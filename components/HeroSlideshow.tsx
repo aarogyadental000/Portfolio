@@ -6,7 +6,7 @@ import type { HeroSlide } from "@/data/hero";
 import { heroSlidesByBranch } from "@/data/hero";
 import { useBranch } from "./BranchProvider";
 
-const AUTOPLAY_INTERVAL = 2000;
+const AUTOPLAY_INTERVAL = 5000;
 
 export default function HeroSlideshow() {
   const { branch } = useBranch();

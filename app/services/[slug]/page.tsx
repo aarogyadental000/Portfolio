@@ -10,7 +10,7 @@ import {
   CircleDollarSign,
 } from "lucide-react";
 import { getServiceBySlug, services } from "@/data/services";
-import { clinicInfo } from "@/lib/clinic";
+import { clinicInfo, siteUrl } from "@/lib/clinic";
 import { ButtonLink, CallButton, WhatsAppButton } from "@/components/Buttons";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -29,9 +29,27 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return {};
+  const url = `${siteUrl}/services/${service.slug}`;
   return {
     title: service.title,
     description: service.description,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | ${clinicInfo.shortName}`,
+      description: service.description,
+      url,
+      siteName: clinicInfo.name,
+      images: [
+        {
+          url: service.image,
+          width: 1800,
+          height: 1350,
+          alt: service.imageAlt,
+        },
+      ],
+    },
   };
 }
 

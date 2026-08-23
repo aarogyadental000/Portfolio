@@ -189,10 +189,11 @@
     text-rendering: optimizeLegibility;
   }
 
-  body,
-  body *,
-  body *::before,
-  body *::after {
+  html.theme-transition,
+  html.theme-transition body,
+  html.theme-transition body *,
+  html.theme-transition body *::before,
+  html.theme-transition body *::after {
     transition-property: background-color, border-color, color, fill, stroke;
     transition-duration: 200ms;
     transition-timing-function: ease;
