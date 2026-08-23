@@ -11,10 +11,9 @@ import { useBranch } from "./BranchProvider";
 import { heroSlidesByBranch } from "@/data/hero";
 
 const trustPoints = [
-  "Maxillofacial & Implant Surgery",
-  "Full-Service General Dentistry",
-  "10+ Years of Clinical Excellence",
-  "Transparent, Honest Guidance",
+  "10+ years of expertise",
+  "Implants & maxillofacial surgery",
+  "No hidden fees. Ever.",
 ];
 
 export default function Hero() {
@@ -55,13 +54,13 @@ export default function Hero() {
           <div className="max-w-xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent shadow-sm max-[430px]:text-[10px] max-[430px]:px-3">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              Maxillofacial Care & General Dentistry
+              Namaste, Kathmandu!
             </p>
 
             <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Surgical Precision.{" "}
+              Expert dental care.{" "}
               <ShinyText
-                text="Compassionate Dentistry."
+                text="Big Muskan energy."
                 color="#0284c7"
                 shineColor="#7dd3fc"
                 speed={4}
@@ -69,10 +68,8 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground [@media(max-width:400px)_and_(max-height:700px)]:hidden">
-              We&apos;re not just another dental clinic. Aarogya Maxillofacial & Dental
-              Care brings the full depth of oral and maxillofacial surgery
-              implants, extractions, jaw procedures together with warm,
-              patient-first general dentistry. 
+              From implants and braces to everyday checkups — gentle, honest
+              care that keeps Kathmandu grinning.
             </p>
 
               <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:items-center">
@@ -99,10 +96,10 @@ export default function Hero() {
 
               <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="flex h-2 w-2 shrink-0 rounded-full bg-emerald-500" aria-hidden="true" />
-                Free consultation • No hidden fees • Same-day appointments available
+                Free consultation • Same-day appointments
               </p>
 
-             <ul className="mt-10 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-6 sm:grid-cols-2">
+             <ul className="mt-10 grid max-w-md grid-cols-1 gap-y-3 border-t border-border pt-6">
                {trustPoints.map((point) => (
                  <li key={point} className="flex items-start gap-2.5">
                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-accent">
