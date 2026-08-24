@@ -68,7 +68,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground [@media(max-width:400px)_and_(max-height:700px)]:hidden">
-              From implants and braces to everyday checkups — gentle, honest
+              From implants and braces to everyday checkups - gentle, honest
               care that keeps Kathmandu grinning.
             </p>
 
