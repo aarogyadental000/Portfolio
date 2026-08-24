@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import BranchFab from "@/components/BranchFab";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import HashScrollManager from "@/components/HashScrollManager";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BranchProvider } from "@/components/BranchProvider";
@@ -188,6 +189,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <MobileContactBar />
             <BranchFab />
             <ScrollToTopButton />
+            <WhatsAppFab />
           </BranchProvider>
         </ThemeProvider>
         <script
