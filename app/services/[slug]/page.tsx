@@ -283,8 +283,12 @@ export default async function ServicePage({
             {otherServices.map((item, index) => {
               const isMaxillo = item.slug === "oral-surgery" || item.slug === "dental-prosthesis";
               return (
-                <Reveal key={item.slug} delay={(index % 3) * 80}>
-                  <div className="relative">
+                <Reveal
+                  key={item.slug}
+                  delay={(index % 3) * 80}
+                  className="h-full"
+                >
+                  <div className="relative h-full">
                     {isMaxillo && (
                       <span className="absolute -top-2 -right-2 z-10 rounded-full bg-brand-700 px-2.5 py-1 text-xs font-semibold text-white shadow-md">
                         Maxillofacial
