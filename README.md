@@ -33,7 +33,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - **Multi-branch support** — two clinic branches (Gokarneshwor & Boudha) with independent contact info, doctors, testimonials, and gallery. Branch choice persists in localStorage.
 - **Light / dark theme** — toggle with system preference detection, persisted in localStorage.
 - **SEO** — Open Graph, Twitter cards, JSON-LD structured data (Schema.org `Dentist`), robots.txt, and auto-generated sitemap.
-- **Contact form** — appointment booking via Formspree, with automatic WhatsApp fallback when no endpoint is configured.
+- **Contact form** — appointment booking via a secure `/api/appointment` route (Nodemailer SMTP) with a custom branded HTML email. If email is not configured, the API returns an error and the form directs patients to WhatsApp.
 - **Mobile contact bar** — fixed bottom bar with one-tap Call and WhatsApp buttons.
 - **Scroll-reveal animations** — IntersectionObserver-based with `prefers-reduced-motion` respect.
 - **Responsive design** — mobile-first with a sticky navbar and hash-based section navigation.
@@ -56,7 +56,7 @@ dental-clinic/
 
 All content lives in `lib/clinic.ts` and the `data/` directory — no component edits needed for routine updates.
 
-- **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, Formspree endpoint, and Google reviews URL.
+- **`lib/clinic.ts`** — clinic name, phone, WhatsApp, email, address, opening hours, map embed, social links, site URL, and Google reviews URL. SMTP credentials live in `.env.local` (never committed).
 - **`data/services.ts`** — the services grid plus the dedicated service detail pages (`/services/<slug>`). Each service has a `slug`, short `description`, and detail fields: `longDescription`, `whatToExpect`, `benefits` and `pricingNote`.
 - **`data/doctor.ts`** — doctor profiles organized by branch (hidden until `showDoctors` is set to `true`).
 - **`data/testimonials.ts`** — patient reviews organized by branch (hidden until `showTestimonials` is set to `true`).

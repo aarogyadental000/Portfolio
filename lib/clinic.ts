@@ -30,9 +30,6 @@ export const clinicInfo = {
   tagline: "Maxillofacial expertise, complete dental care",
   city: "Kathmandu",
   country: "Nepal",
-  // TODO: Add a Formspree endpoint (https://formspree.io) to enable the
-  // contact form. When empty, the form falls back to WhatsApp/mailto.
-  formEndpoint: "",
   social: {
     facebook: "https://www.facebook.com/p/Aarogya-Maxillofacial-and-Dental-care-Pvt-Ltd-61558536381193/",
     instagram: "",
@@ -79,9 +76,9 @@ export const branches: Branch[] = [
     whatsapp: "+977-9845824247",
     email: "puspadip.kharel@gmail.com",
     openingHours: {
-      weekdays: "[9:00 AM – 6:00 PM]",
-      saturday: "[12:00 AM – 6:00 PM]",
-      note: "[Sunday – Friday]",
+      weekdays: "9:00 AM – 6:00 PM",
+      saturday: "12:00 AM – 6:00 PM",
+      note: "Sunday – Friday",
     },
     geo: {
       latitude: 27.7204292,

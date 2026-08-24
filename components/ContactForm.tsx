@@ -10,10 +10,8 @@ import {
 import {
   AlertCircle,
   CheckCircle2,
-  MessageCircle,
   Send,
 } from "lucide-react";
-import { clinicInfo, branchWhatsappHref } from "@/lib/clinic";
 import { getServiceBySlug, services } from "@/data/services";
 import { useBranch } from "./BranchProvider";
 
@@ -75,43 +73,33 @@ export default function ContactForm() {
     event.preventDefault();
     if (status === "submitting") return;
 
-    const hasEndpoint = clinicInfo.formEndpoint.length > 0;
-
-    if (!hasEndpoint) {
-      const message = [
-        `Branch: ${branch.shortName}`,
-        `Name: ${form.name}`,
-        `Phone: ${form.phone}`,
-        form.service && `Service: ${form.service}`,
-        form.date && `Preferred date: ${form.date}`,
-        form.message && `Message: ${form.message}`,
-      ]
-        .filter(Boolean)
-        .join("\n");
-
-      window.open(
-        branchWhatsappHref(branch, message),
-        "_blank",
-        "noopener,noreferrer",
-      );
-      return;
-    }
+    const botcheck = event.currentTarget.querySelector<HTMLInputElement>(
+      'input[name="botcheck"]',
+    );
 
     setStatus("submitting");
     try {
-      const response = await fetch(clinicInfo.formEndpoint, {
+      const response = await fetch("/api/appointment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          ...form,
-          _subject: `New appointment request from ${clinicInfo.name} website`,
+          branch: branch.shortName,
+          name: form.name,
+          phone: form.phone,
+          service: form.service,
+          date: form.date,
+          message: form.message,
+          botcheck: botcheck?.checked ?? false,
         }),
       });
 
-      if (!response.ok) {
+      const data = (await response.json().catch(() => null)) as {
+        success?: boolean;
+      } | null;
+
+      if (!response.ok || !data?.success) {
         throw new Error("Submission failed");
       }
 
@@ -132,6 +120,14 @@ export default function ContactForm() {
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="hidden"
+        />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="cf-name" className={labelClasses}>
@@ -246,23 +242,9 @@ export default function ContactForm() {
           disabled={status === "submitting"}
           className="flex w-full mx-auto items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm shadow-brand-900/10 transition-all hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-0"
         >
-          {clinicInfo.formEndpoint.length === 0 ? (
-            <MessageCircle className="h-4 w-4" aria-hidden="true" />
-          ) : (
-            <Send className="h-4 w-4" aria-hidden="true" />
-          )}
-          {status === "submitting"
-            ? "Sending…"
-            : clinicInfo.formEndpoint.length === 0
-              ? "Send via WhatsApp"
-              : "Send request"}
+          <Send className="h-4 w-4" aria-hidden="true" />
+          {status === "submitting" ? "Sending…" : "Send request"}
         </button>
-
-        {clinicInfo.formEndpoint.length === 0 && (
-          <p className="text-center text-xs text-muted-foreground">
-            This will open WhatsApp with your details pre-filled.
-          </p>
-        )}
       </form>
     </div>
   );
