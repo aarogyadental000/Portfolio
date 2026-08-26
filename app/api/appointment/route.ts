@@ -271,7 +271,8 @@ export async function POST(request: Request) {
       html: buildEmailHtml(result.data),
       attachments: [
         {
-          filename: "logo-email.png",
+          filename: false,
+          contentType: "image/png",
           content: logo,
           cid: "appointment-logo",
         },

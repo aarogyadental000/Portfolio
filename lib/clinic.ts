@@ -53,7 +53,7 @@ export const branches: Branch[] = [
     email: "puspadip.kharel@gmail.com",
     openingHours: {
       weekdays: "9:00 AM – 6:00 PM",
-      saturday: "12:00 AM – 6:00 PM",
+      saturday: "12:00 PM – 6:00 PM",
       note: "Sunday – Friday",
     },
     geo: {
@@ -77,7 +77,7 @@ export const branches: Branch[] = [
     email: "puspadip.kharel@gmail.com",
     openingHours: {
       weekdays: "9:00 AM – 6:00 PM",
-      saturday: "12:00 AM – 6:00 PM",
+      saturday: "12:00 PM – 6:00 PM",
       note: "Sunday – Friday",
     },
     geo: {
