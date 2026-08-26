@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -33,10 +33,12 @@ const sectionIds = navItems.map((item) => getId(item.href));
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { branch } = useBranch();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
+  const lastServicesClick = useRef(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -44,6 +46,17 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleServicesClick = () => {
+    const now = Date.now();
+    if (now - lastServicesClick.current < 300) {
+      lastServicesClick.current = 0;
+      setOpen(false);
+      router.push("/services");
+    } else {
+      lastServicesClick.current = now;
+    }
+  };
 
   const isServicesRoute =
     pathname === "/services" || pathname.startsWith("/services/");
@@ -104,6 +117,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={item.label === "Services" ? handleServicesClick : undefined}
                   aria-current={isActive ? "true" : undefined}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
@@ -162,7 +176,7 @@ export default function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={item.label === "Services" ? handleServicesClick : () => setOpen(false)}
                     aria-current={isActive ? "true" : undefined}
                     className={`flex items-center rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
                       isActive
