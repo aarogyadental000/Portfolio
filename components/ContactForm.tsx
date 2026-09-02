@@ -34,6 +34,7 @@ const initialForm = {
 export default function ContactForm() {
   const { branch } = useBranch();
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [form, setForm] = useState(initialForm);
   const [highlighted, setHighlighted] = useState(false);
   const highlightTimer = useRef<number | undefined>(undefined);
@@ -97,9 +98,11 @@ export default function ContactForm() {
 
       const data = (await response.json().catch(() => null)) as {
         success?: boolean;
+        message?: string;
       } | null;
 
       if (!response.ok || !data?.success) {
+        setErrorMessage(data?.message ?? null);
         throw new Error("Submission failed");
       }
 
@@ -223,7 +226,8 @@ export default function ContactForm() {
             className="flex items-start gap-2 rounded-xl bg-red-50 p-3 text-sm font-medium text-red-700 dark:bg-red-950/40 dark:text-red-300"
           >
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            Something went wrong. Please try again, or message us on WhatsApp.
+            {errorMessage ??
+              "Something went wrong. Please try again, or message us on WhatsApp."}
           </p>
         )}
 

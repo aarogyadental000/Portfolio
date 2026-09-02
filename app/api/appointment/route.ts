@@ -9,8 +9,13 @@ import {
   siteUrl,
 } from "@/lib/clinic";
 import { services } from "@/data/services";
+import { clientIpFromRequest, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
+
+// Basic per-IP rate limiting: at most 5 requests per 15 minutes.
+const RATE_LIMIT = 5;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 
 type AppointmentInput = {
   branch: string;
@@ -194,6 +199,22 @@ function buildEmailText(data: AppointmentInput): string {
 }
 
 export async function POST(request: Request) {
+  const { allowed, retryAfterSeconds } = rateLimit(
+    `appointment:${clientIpFromRequest(request)}`,
+    RATE_LIMIT,
+    RATE_LIMIT_WINDOW_MS,
+  );
+  if (!allowed) {
+    return NextResponse.json(
+      {
+        success: false,
+        message:
+          "Too many requests. Please try again in a few minutes, or contact us on WhatsApp or by phone.",
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -282,8 +303,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("[appointment] Failed to send email:", error);
+    // Persist the full validated request to the server logs so the clinic
+    // can recover it manually if the email provider is down.
+    console.error(
+      `[appointment] UNDELIVERED appointment request (recover manually): ${JSON.stringify(result.data)}`,
+    );
     return NextResponse.json(
-      { success: false, message: "Unable to send appointment request." },
+      {
+        success: false,
+        message:
+          "Unable to send your request right now. Please contact us on WhatsApp or by phone and we will book you in.",
+      },
       { status: 500 },
     );
   }

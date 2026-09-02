@@ -33,7 +33,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - **Multi-branch support** — two clinic branches (Gokarneshwor & Boudha) with independent contact info, doctors, testimonials, and gallery. Branch choice persists in localStorage.
 - **Light / dark theme** — toggle with system preference detection, persisted in localStorage.
 - **SEO** — Open Graph, Twitter cards, JSON-LD structured data (Schema.org `Dentist`), robots.txt, and auto-generated sitemap.
-- **Contact form** — appointment booking via a secure `/api/appointment` route (Nodemailer SMTP) with a custom branded HTML email. If email is not configured, the API returns an error and the form directs patients to WhatsApp.
+- **Contact form** — appointment booking via a secure, per-IP rate-limited `/api/appointment` route (Nodemailer SMTP) with a custom branded HTML email. If email is not configured or delivery fails, the API returns an error and the form directs patients to WhatsApp.
 - **Mobile contact bar** — fixed bottom bar with one-tap Call and WhatsApp buttons.
 - **Scroll-reveal animations** — IntersectionObserver-based with `prefers-reduced-motion` respect.
 - **Responsive design** — mobile-first with a sticky navbar and hash-based section navigation.
@@ -79,7 +79,28 @@ Each data file supports branch-specific content. The site ships with two branche
 
 ## Deployment
 
-This is a fully static site (no server-side data or auth), so it deploys easily anywhere. Example on Vercel:
+The site is fully static except for the `/api/appointment` route, which sends appointment emails via Nodemailer over SMTP.
+
+### Environment Variables
+
+SMTP credentials live in `.env.local` locally (never committed). On your host (e.g. Vercel), set them through the dashboard or CLI (`vercel env add <NAME>`):
+
+| Variable            | Description                                           |
+| ------------------- | ----------------------------------------------------- |
+| `SMTP_HOST`         | SMTP server hostname                                  |
+| `SMTP_PORT`         | SMTP port (`587` default; use `465` for implicit TLS) |
+| `SMTP_USER`         | SMTP username (also used as the email "From" address) |
+| `SMTP_PASS`         | SMTP password                                         |
+| `APPOINTMENT_EMAIL` | Inbox that receives appointment requests              |
+
+If any variable is missing, the API returns `503` and the form directs patients to WhatsApp instead.
+
+### Behaviour & Fallbacks
+
+- **Rate limiting** — submissions are limited to 5 per IP per 15 minutes. The limiter is in-memory, so on serverless platforms the limit applies per instance.
+- **Email failure fallback** — if the email provider fails, the validated request is logged to the server logs (`[appointment] UNDELIVERED appointment request`) for manual recovery, and the patient is shown a message pointing to WhatsApp/phone.
+
+Deploy example on Vercel:
 
 ```bash
 vercel
