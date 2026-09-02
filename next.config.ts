@@ -20,9 +20,6 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  outputFileTracingIncludes: {
-    "/api/appointment": ["./public/images/logo-email.png"],
-  },
   images: {
     formats: ["image/avif", "image/webp"],
   },

@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import {
@@ -150,7 +148,7 @@ function buildEmailHtml(data: AppointmentInput): string {
           <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background-color:#ffffff;border-radius:16px;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,sans-serif;box-shadow:0 1px 3px rgba(8,47,73,0.08);">
             <tr>
               <td align="center" bgcolor="#0369a1" style="background-color:#0369a1;padding:30px 24px;">
-                <img src="cid:appointment-logo" width="52" height="52" alt="&#129463; ${escapeHtml(clinicInfo.shortName)} Dental Clinic" style="display:block;margin:0 auto 10px;border-radius:12px;border:0;">
+                <img src="${siteUrl}/images/logo-email.png" width="52" height="52" alt="&#129463; ${escapeHtml(clinicInfo.shortName)} Dental Clinic" style="display:block;margin:0 auto 10px;border-radius:12px;border:0;">
                 <div style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:0.02em;">${escapeHtml(clinicInfo.name)}</div>
                 <div style="margin-top:6px;color:#bae6fd;font-size:12px;letter-spacing:0.04em;">${escapeHtml(clinicInfo.tagline)}</div>
               </td>
@@ -280,24 +278,12 @@ export async function POST(request: Request) {
       socketTimeout: 15_000,
     });
 
-    const logo = readFileSync(
-      path.join(process.cwd(), "public", "images", "logo-email.png"),
-    );
-
     await transporter.sendMail({
       from: { name: clinicInfo.name, address: smtpUser },
       to: recipient,
       subject: `🦷 New Appointment Request — ${result.data.name} (${result.data.branch})`,
       text: buildEmailText(result.data),
       html: buildEmailHtml(result.data),
-      attachments: [
-        {
-          filename: false,
-          contentType: "image/png",
-          content: logo,
-          cid: "appointment-logo",
-        },
-      ],
     });
 
     return NextResponse.json({ success: true });
