@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import { faqs } from "@/data/faq";
+import { readBranchGalleryMap } from "@/lib/gallery";
 
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -20,7 +21,9 @@ const faqStructuredData = {
   })),
 };
 
-export default function Home() {
+export default async function Home() {
+  const imagesByBranch = await readBranchGalleryMap();
+
   return (
     <>
       <script
@@ -33,7 +36,7 @@ export default function Home() {
       <Testimonials />
       <WhyChooseUs />
       <DoctorProfile />
-      <Gallery />
+      <Gallery imagesByBranch={imagesByBranch} />
       <FAQ />
       <CTASection />
       <ContactSection />

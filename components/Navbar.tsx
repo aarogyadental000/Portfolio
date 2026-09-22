@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, MapPin } from "lucide-react";
@@ -9,6 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 import { BookButton, CallButton } from "./Buttons";
 import { useBranch } from "./BranchProvider";
 import { showDoctors } from "@/data/doctor";
+import { clinicInfo } from "@/lib/clinic";
 
 const baseNavItems = [
   { href: "/#home", label: "Home" },
@@ -31,6 +32,16 @@ const getId = (href: string) => href.split("#")[1] ?? "";
 
 const sectionIds = navItems.map((item) => getId(item.href));
 
+const sectionTitles: Record<string, string> = {
+  home: "Home",
+  about: "About Us",
+  services: "Services",
+  doctor: "Our Doctors",
+  gallery: "Gallery",
+  faq: "FAQ",
+  contact: "Contact",
+};
+
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -38,7 +49,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
-  const lastServicesClick = useRef(0);
+  const lastNavClick = useRef(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -47,20 +58,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleServicesClick = () => {
+  const navigateOnDoubleClick = (route: string, event?: MouseEvent) => {
     const now = Date.now();
-    if (now - lastServicesClick.current < 300) {
-      lastServicesClick.current = 0;
+    if (now - lastNavClick.current < 300) {
+      lastNavClick.current = 0;
       setOpen(false);
-      router.push("/services");
+      event?.preventDefault();
+      router.push(route);
     } else {
-      lastServicesClick.current = now;
+      lastNavClick.current = now;
     }
   };
 
   const isServicesRoute =
     pathname === "/services" || pathname.startsWith("/services/");
-  const activeNav = isServicesRoute ? "services" : active;
+  const isGalleryRoute = pathname === "/gallery";
+  const activeNav = isServicesRoute
+    ? "services"
+    : isGalleryRoute
+      ? "gallery"
+      : active;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,6 +98,14 @@ export default function Navbar() {
     });
     return () => observer.disconnect();
   }, [pathname]);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const title = sectionTitles[active];
+    if (title) {
+      document.title = `${title} | ${clinicInfo.name}`;
+    }
+  }, [active, pathname]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -117,7 +142,13 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  onClick={item.label === "Services" ? handleServicesClick : undefined}
+                  onClick={
+                    item.label === "Services"
+                      ? (event) => navigateOnDoubleClick("/services", event)
+                      : item.label === "Gallery"
+                        ? (event) => navigateOnDoubleClick("/gallery", event)
+                        : undefined
+                  }
                   aria-current={isActive ? "true" : undefined}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
@@ -176,7 +207,13 @@ export default function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={item.label === "Services" ? handleServicesClick : () => setOpen(false)}
+                    onClick={
+                      item.label === "Services"
+                        ? (event) => navigateOnDoubleClick("/services", event)
+                        : item.label === "Gallery"
+                          ? (event) => navigateOnDoubleClick("/gallery", event)
+                          : () => setOpen(false)
+                    }
                     aria-current={isActive ? "true" : undefined}
                     className={`flex items-center rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
                       isActive

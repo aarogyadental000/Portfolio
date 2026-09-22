@@ -61,10 +61,14 @@ All content lives in `lib/clinic.ts` and the `data/` directory — no component 
 - **`data/doctor.ts`** — doctor profiles organized by branch (hidden until `showDoctors` is set to `true`).
 - **`data/testimonials.ts`** — patient reviews organized by branch (hidden until `showTestimonials` is set to `true`).
 - **`data/faq.ts`** — the FAQ accordion.
-- **`data/gallery.ts`** and **`data/hero.ts`** — image paths for the gallery and hero slideshow.
+- **`data/hero.ts`** — image paths for the hero slideshow.
 - **`data/stats.ts`** — statistics numbers.
 
 Images live in `public/images/` (WebP).
+
+### Gallery Photos
+
+The gallery auto-reads the folders `public/images/gallery/<branch-slug>/` (e.g. `gokarneshwor/`, `branch-2/`). Drop any `.jpg`, `.jpeg`, `.png`, `.webp` or `.avif` file into a branch folder to add it to that branch's gallery — no code changes needed. The home section shows a preview and links to the full paged gallery at `/gallery`. In production, rebuilt images updates on the next deploy.
 
 ### Multi-Branch Content
 

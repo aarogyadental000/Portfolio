@@ -34,7 +34,7 @@ export const services: Service[] = [
     description:
       "Routine examinations, preventive care and treatment for the everyday health of your teeth and gums.",
     icon: Stethoscope,
-    image: "/images/service-checkup.webp",
+    image: "/images/Oral.jpg",
     imageAlt: "Dentist examining a patient's teeth with a mirror during a routine checkup",
     featured: true,
     longDescription: [
@@ -158,7 +158,7 @@ export const services: Service[] = [
     description:
       "Smile-enhancing treatments that improve the appearance of your teeth.",
     icon: Sparkles,
-    image: "/images/service-cosmetic.webp",
+    image: "/images/cosmetic.jpg",
     imageAlt: "Close-up of natural-looking dental veneers on a teeth model",
     featured: true,
     longDescription: [
@@ -189,7 +189,7 @@ export const services: Service[] = [
     description:
       "Braces and alignment options to straighten teeth and correct your bite.",
     icon: SlidersHorizontal,
-    image: "/images/service-orthodontic.webp",
+    image: "/images/Orthodontic.jpg",
     imageAlt: "Orthodontist adjusting braces brackets on a patient's teeth",
     featured: true,
     longDescription: [
@@ -251,7 +251,7 @@ export const services: Service[] = [
     description:
       "Root canal therapy that saves infected teeth and relieves pain.",
     icon: Syringe,
-    image: "/images/service-endodontics.webp",
+    image: "/images/endodontics.jpg",
     imageAlt: "Dental X-ray showing the roots of a tooth",
     featured: true,
     longDescription: [
@@ -313,7 +313,7 @@ export const services: Service[] = [
     description:
       "Safe, effective whitening that lifts stains and brightens your smile.",
     icon: Sun,
-    image: "/images/service-whitening.webp",
+    image: "/images/whitening.jpg",
     imageAlt: "Dentist performing a teeth whitening procedure",
     featured: true,
     longDescription: [
