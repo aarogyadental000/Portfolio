@@ -33,8 +33,8 @@ export default function Gallery({ imagesByBranch }: GalleryProps) {
         <Reveal>
           <SectionHeading
             eyebrow="Our Clinic"
-            title="A Look Inside"
-            description="A calm, clean and modern space designed with your comfort in mind."
+            title="Our Work, Our Space"
+            description="A calm, modern clinic paired with real results from our patients."
           />
         </Reveal>
 
@@ -74,12 +74,12 @@ export function FullGallery({ imagesByBranch }: GalleryProps) {
               Our Clinic
             </p>
             <h1 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              A look inside our {branch.shortName} clinic
+              Our work, our space — {branch.shortName}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {galleryImages.length > 0
-                ? `Browse through ${galleryImages.length} photos from our ${branch.shortName} clinic.`
-                : `Photos for the ${branch.shortName} branch are being added.`}
+                ? `Browse through ${galleryImages.length} photos showcasing our ${branch.shortName} clinic and patient results.`
+                : `Photos of our ${branch.shortName} clinic and patient results are being added.`}
             </p>
           </Reveal>
         </div>
@@ -286,7 +286,7 @@ function EmptyGallery({ branchName }: { branchName: string }) {
     <div className="col-span-2 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-6 py-16 text-center md:col-span-3">
       <p className="font-semibold text-foreground">Gallery coming soon</p>
       <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Photos for the {branchName} branch are being added.
+        Photos of our {branchName} clinic and patient results are being added.
       </p>
     </div>
   );
