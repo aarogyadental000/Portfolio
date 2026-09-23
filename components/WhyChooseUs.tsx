@@ -106,7 +106,7 @@ export default function WhyChooseUs() {
                 >
                   <article className="group relative flex h-full min-h-72 flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md">
                     <Image
-                      src="/images/clinic-bright.webp"
+                      src="/images/unnamed.webp"
                       alt="Bright and clean dental clinic room"
                       fill
                       sizes="(min-width: 1024px) 66vw, 100vw"

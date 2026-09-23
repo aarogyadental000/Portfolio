@@ -14,7 +14,6 @@ import {
   Stethoscope,
   UserRound,
   X,
-  ZoomIn,
 } from "lucide-react";
 import type { ComponentType } from "react";
 import type { Doctor } from "@/data/doctor";
@@ -38,6 +37,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const doctor = doctors[index];
+  const isCards = doctors.length > 3;
   const [showHours, setShowHours] = useState(false);
   const hoursDialogRef = useRef<HTMLDialogElement>(null);
   const [showBio, setShowBio] = useState(false);
@@ -79,6 +79,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
     setIndex((current) => (current - 1 + doctors.length) % doctors.length);
 
   useEffect(() => {
+    if (isCards) return;
     if (paused || showHours || showBio || showPhoto || doctors.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -87,12 +88,12 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
     }, AUTOPLAY_INTERVAL);
 
     return () => window.clearInterval(timer);
-  }, [paused, showHours, showBio, showPhoto, index, doctors.length]);
+  }, [isCards, paused, showHours, showBio, showPhoto, index, doctors.length]);
 
   return (
     <section id="doctor" className="relative bg-secondary py-20 lg:py-28">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="lg:hidden">
+        <div className={isCards ? "" : "lg:hidden"}>
           <Reveal>
             <SectionHeading
               eyebrow="Meet Your Dentist"
@@ -101,19 +102,17 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {doctors.map((item, i) => {
-              const isLastOdd = doctors.length % 2 === 1 && i === doctors.length - 1;
-              return (
+          <div className="mt-12 flex flex-wrap items-stretch justify-center gap-5 lg:grid lg:grid-cols-6">
+            {doctors.map((item, i) => (
               <Reveal
                 key={item.photoUrl}
                 delay={(i % 2) * 80}
-                className={`h-full ${isLastOdd ? "sm:col-span-2" : ""}`}
+                className={`h-full w-full sm:w-[calc(50%-0.625rem)] lg:w-auto lg:col-span-2 ${
+                  i === 0 ? "lg:col-start-2" : i === 1 ? "lg:col-start-4" : ""
+                }`}
               >
               <div
-                className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md ${
-                  isLastOdd ? "sm:mx-auto sm:w-[calc(50%-0.625rem)]" : ""
-                }`}
+                className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-sm shadow-ink-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
               >
                 <button
                   type="button"
@@ -128,26 +127,17 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                     src={item.photoUrl}
                     alt={item.photoAlt}
                     fill
-                    sizes="(min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent"
                   />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 flex items-center justify-center bg-ink-950/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  >
-                    <span className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-background/95 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur transition-transform duration-300 group-hover:translate-y-0">
-                      <ZoomIn className="h-4 w-4" aria-hidden="true" />
-                      View Photo
-                    </span>
-                  </div>
                 </button>
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-xl font-bold tracking-tight text-foreground">
-                    Dr. {item.name}
+                     {item.name}
                   </h3>
                   <span className="mt-2 inline-block w-fit rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
                     {item.specialization}
@@ -174,11 +164,11 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                 </div>
               </div>
               </Reveal>
-              );
-            })}
+            ))}
           </div>
         </div>
 
+        {!isCards && (
         <div className="hidden items-center gap-14 lg:grid lg:grid-cols-[5fr_6fr] lg:gap-16">
           <Reveal>
               <div
@@ -253,7 +243,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                   Meet Your Dentist
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                  Dr. {doctor.name}
+                  {doctor.name}
                 </h2>
                 <p className="mt-2 inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
                   {doctor.specialization}
@@ -302,23 +292,28 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
             </div>
           </Reveal>
         </div>
+        )}
 
-        <button
-          type="button"
-          onClick={prev}
-          aria-label="Previous doctor"
-          className="absolute -left-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
-        >
-          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={next}
-          aria-label="Next doctor"
-          className="absolute -right-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
-        >
-          <ChevronRight className="h-5 w-5" aria-hidden="true" />
-        </button>
+        {!isCards && (
+          <>
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous doctor"
+              className="absolute -left-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next doctor"
+              className="absolute -right-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow-md backdrop-blur transition-colors hover:bg-background hover:text-accent lg:flex"
+            >
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </>
+        )}
       </div>
 
       <dialog
@@ -340,7 +335,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
                 id="doctor-bio-title"
                 className="font-semibold tracking-tight text-foreground"
               >
-                Dr. {doctor.name}
+                {doctor.name}
               </h2>
               <p className="text-sm text-muted-foreground">{doctor.specialization}</p>
             </div>
@@ -415,7 +410,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
               id="doctor-photo-title"
               className="font-semibold tracking-tight text-foreground"
             >
-              Dr. {doctor.name}
+              {doctor.name}
             </h2>
             <p className="text-sm text-muted-foreground">
               {doctor.specialization}
@@ -453,7 +448,7 @@ export default function DoctorCarousel({ doctors }: { doctors: Doctor[] }) {
               >
                 Working Hours
               </h2>
-              <p className="text-sm text-muted-foreground">Dr. {doctor.name}</p>
+              <p className="text-sm text-muted-foreground">{doctor.name}</p>
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-2">

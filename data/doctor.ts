@@ -21,7 +21,7 @@ export const showDoctors = true;
 export const doctorsByBranch: Record<string, Doctor[]> = {
   gokarneshwor: [
     {
-      name: "Puspadip Kharel",
+      name: "Dr. Puspadip Kharel",
       qualification: "BDS, MDS (RUHS), Jaipur, India",
       specialization: "Maxillofacial Surgeon",
       experience: "10+ Years",
@@ -39,7 +39,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Gita Khadka Kharel",
+      name: "Dr. Gita Khadka Kharel",
       qualification: "Bachelor of Dental Surgery (Kathmandu University)",
       specialization: "Dental Surgeon",
       experience: "8+ Years",
@@ -57,7 +57,25 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Ankita Thapa",
+      name: "Chetana Rai",
+      qualification: "Diploma in Dental Hygiene",
+      specialization: "Professional Dental Hygienist",
+      experience: "1+ Years",
+      bio: "Chetana Rai, DH is a Professional Dental Hygienist focused on preventive oral health and gentle clinical care. Specializing in professional scaling, dental cleaning, and periodontal health assessments, Chetana works closely with patients to maintain healthy gums and teeth through effective treatments and personalized hygiene education.",
+      photoUrl: "/images/doctor/Chetanna.jpg",
+      photoAlt: "Dr. Chetana portrait",
+      hours: [
+        { days: "Sunday", time: "9:00 AM – 6:00 PM" },
+        { days: "Monday", time: "9:00 AM – 6:00 PM" },
+        { days: "Tuesday", time: "9:00 AM – 6:00 PM" },
+        { days: "Wednesday", time: "9:00 AM – 6:00 PM" },
+        { days: "Thursday", time: "9:00 AM – 6:00 PM" },
+        { days: "Friday", time: "3:00 PM – 8:00 PM" },
+        { days: "Saturday", time: "Closed" },
+      ],
+    },
+    {
+      name: "Dr. Ankita Thapa",
       qualification: "Bachelor of Dental Surgery (Kathmandu University)",
       specialization: "General Dentist",
       experience: "2+ Years",
@@ -74,10 +92,28 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
         { days: "Saturday", time: "Closed" },
       ],
     },
+    {
+      name: "Sonu Moktan",
+      qualification: "Diploma in Dental Hygiene",
+      specialization: "Professional Dental Hygienist",
+      experience: "1+ Years",
+      bio: "Sonu Moktan, DH is a Professional Dental Hygienist dedicated to preventive dentistry and comprehensive oral care. Specializing in professional scaling, dental prophylaxis, and periodontal assessments, Sonu empowers patients to achieve optimal oral health through thorough clinical treatments and clear hygiene guidance.",
+      photoUrl: "/images/doctor/Sonuu.jpg",
+      photoAlt: "Dr. Sonu portrait",
+      hours: [
+        { days: "Sunday", time: "9:30 AM – 5:30 PM" },
+        { days: "Monday", time: "9:30 AM – 5:30 PM" },
+        { days: "Tuesday", time: "9:30 AM – 5:30 PM" },
+        { days: "Wednesday", time: "9:30 AM – 5:30 PM" },
+        { days: "Thursday", time: "9:30 AM – 5:30 PM" },
+        { days: "Friday", time: "4:00 PM – 8:00 PM" },
+        { days: "Saturday", time: "Closed" },
+      ],
+    },
   ],
   "branch-2": [
     {
-      name: "Puspadip Kharel",
+      name: "Dr. Puspadip Kharel",
       qualification: "BDS, MDS (RUHS), Jaipur, India",
       specialization: "Maxillofacial Surgeon",
       experience: "10+ Years",
@@ -95,7 +131,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Gita Khadka Kharel",
+      name: "Dr. Gita Khadka Kharel",
       qualification: "Bachelor of Dental Surgery (Kathmandu University)",
       specialization: "Dental Surgeon",
       experience: "8+ Years",
@@ -113,7 +149,7 @@ export const doctorsByBranch: Record<string, Doctor[]> = {
       ],
     },
     {
-      name: "Ankita Thapa",
+      name: "Dr. Ankita Thapa",
       qualification: "Bachelor of Dental Surgery (Kathmandu University)",
       specialization: "General Dentist",
       experience: "2+ Years",
